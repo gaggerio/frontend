@@ -1,6 +1,5 @@
-import { Line } from "../models/Line.model"
-import { Meme } from "../models/Meme.model"
-import { galleryService } from "./gallery.service"
+import type { MemeLine } from "@/models/Line.model"
+import type { Meme } from "../models/Meme.model"
 import { utilService } from "./util.service"
 
 const KEY = 'curr_meme'
@@ -77,7 +76,8 @@ function createMeme(width: number, height: number, imgUrl: string): Meme {
         currLine: 0,
         imgUrl,
         width,
-        height
+        height,
+        arcPos: { x: 0, y: 0 }
     }
     meme.lines = [
         createLine(meme, 0),

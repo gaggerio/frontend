@@ -1,6 +1,6 @@
 import { utilService } from "../services/util.service"
 
-type pos = { x: number, y: number }
+export type Pos = { x: number, y: number }
 
 export interface MemeLine {
     _id: string
@@ -13,6 +13,6 @@ export interface MemeLine {
     isDrag: boolean
     textBaseline: CanvasTextBaseline
     lineWidth: number
-    pos: pos
+    pos: Pos
 }
 

@@ -56,20 +56,12 @@ function getHeaderLinks() {
             name: 'Home'
         },
         {
-            path: '/items',
-            name: 'Items'
+            path: '/explore',
+            name: 'explore'
         },
         {
             path: '/about',
             name: 'About'
-        },
-        {
-            path: '/editor',
-            name: 'editor'
-        },
-        {
-            path: '/explore',
-            name: 'explore'
         },
     ]
 }
