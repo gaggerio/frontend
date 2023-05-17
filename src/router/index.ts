@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
-import ItemApp from '../views/ItemApp.vue'
-import EditView from '../views/EditView.vue'
-import DetailsView from '../views/DetailsView.vue'
-import LoginViewVue from '../views/LoginView.vue'
+import LoginView from '../views/LoginView.vue'
+import EditorView from '../views/EditorView.vue'
+import ExploreView from '../views/ExploreView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,24 +19,19 @@ const router = createRouter({
             component: AboutView
         },
         {
-            path: '/items',
-            name: 'ItemApp',
-            component: ItemApp
-        },
-        {
-            path: '/edit/:id?',
-            name: 'edit',
-            component: EditView
-        },
-        {
-            path: '/details/:id',
-            name: 'details',
-            component: DetailsView
-        },
-        {
             path: '/login',
             name: 'login',
-            component: LoginViewVue
+            component: LoginView
+        },
+        {
+            path: '/editor/:id',
+            name: 'editor',
+            component: EditorView
+        },
+        {
+            path: '/explore',
+            name: 'explore',
+            component: ExploreView
         },
     ]
 })

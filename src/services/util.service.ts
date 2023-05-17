@@ -63,6 +63,14 @@ function getHeaderLinks() {
             path: '/about',
             name: 'About'
         },
+        {
+            path: '/editor',
+            name: 'editor'
+        },
+        {
+            path: '/explore',
+            name: 'explore'
+        },
     ]
 }
 
