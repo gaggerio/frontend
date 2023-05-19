@@ -1,7 +1,7 @@
-import { Img } from "../models/Img.model"
+import type { Img } from "../models/Img.model"
 import { storageService } from "./storage.service"
 import { utilService } from "./util.service"
-import { FilterBy } from '../models/FilterBy.model'
+import type { FilterBy } from '../models/FilterBy.model'
 import { httpService } from './http.service'
 import gImgs from '../../data/img.json'
 
@@ -14,7 +14,7 @@ export const imgService = {
     getById,
 }
 
-async function query(filterBy: FilterBy): Promise<Img> {
+async function query(filterBy: FilterBy = { txt: '' }): Promise<Img[]> {
     return ENV === 'local' ?
         await _filteredImgs(filterBy) :
         await httpService.get(API, filterBy)
@@ -28,12 +28,12 @@ function getById(itemId: string) {
 
 async function _filteredImgs(filterBy: FilterBy) {
     let imgs: Img[] = await storageService.query(IMG_KEY)
-    if (!filterBy) return imgs
+    // if (!filterBy) return imgs
 
-    imgs = imgs.filter(img => {
-        if (!img.keywords.includes(filterBy.txt)) return false
-        else return img
-    })
+    // imgs = imgs.filter(img => {
+    //     if (!img.keywords.includes(filterBy.txt)) return false
+    //     else return img
+    // })
     return imgs
 }
 

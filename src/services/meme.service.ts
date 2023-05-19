@@ -1,6 +1,7 @@
 import type { MemeLine } from "@/models/Line.model"
 import type { Meme } from "../models/Meme.model"
 import { utilService } from "./util.service"
+import type { Img } from "@/models/Img.model"
 
 const KEY = 'curr_meme'
 type CrudMap = { [type: string]: (meme: Meme) => void }
@@ -68,15 +69,15 @@ export const memeService = {
 // }
 
 
-function createMeme(width: number, height: number, imgUrl: string): Meme {
+function createMeme( img: Img): Meme {
     const meme: Meme = {
         _id: utilService.makeId(),
         outLineColor: '#7c7c7c',
         lines: [],
         currLine: 0,
-        imgUrl,
-        width,
-        height,
+        imgUrl: img.url,
+        width: 500,
+        height: 500,
         arcPos: { x: 0, y: 0 }
     }
     meme.lines = [

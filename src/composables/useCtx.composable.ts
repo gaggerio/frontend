@@ -1,52 +1,45 @@
-import { ref } from "vue"
-import type { Ref } from "vue"
-import type { MemeLine } from "../models/Line.model"
-import type { Meme } from "../models/Meme.model"
+import type { MemeLine } from '../models/Line.model'
+import type { Meme } from '../models/Meme.model'
 
-type ElCanvas = HTMLCanvasElement
-type Ctx = CanvasRenderingContext2D
+export function useCtx() {
 
-export type UseCanvas = {
-    renderMeme: (meme: Meme) => void,
-    canvasRef: Ref<ElCanvas | null>,
-    ctxRef: Ref<Ctx | null>
-}
+    var elCanvas: HTMLCanvasElement
+    var ctx: CanvasRenderingContext2D
+    var meme: Meme
 
-export function useCanvas(): UseCanvas {
-
-    const canvasRef = ref<ElCanvas | null>(null)
-    const ctxRef = ref<Ctx | null>(null)
-
-    const renderMeme = async (meme: Meme): Promise<void> => {
-        await drawImg(meme)
-        drawLines(meme)
-        drawOutline(meme)
+    const setContext = (canvasRef: HTMLCanvasElement) => {
+        elCanvas = canvasRef
+        ctx = elCanvas.getContext('2d') as CanvasRenderingContext2D
     }
 
-    const drawImg = (meme: Meme): Promise<void> => {
+    const setMeme = (_meme: Meme) => {
+        meme = _meme
+    }
+
+    const render = async () => {
+        await drawImg()
+        drawLines()
+        drawOutline()
+    }
+
+    const drawImg = () => {
         return new Promise((resolve) => {
             const elImg = new Image()
             elImg.src = meme.imgUrl
 
             elImg.onload = () => {
-                if (!ctxRef.value || !canvasRef.value) return
-                ctxRef.value.drawImage(
+                ctx.drawImage(
                     elImg,
                     0,
                     0,
-                    canvasRef.value.width,
-                    canvasRef.value.height
+                    elCanvas.width,
+                    elCanvas.height
                 )
-                resolve()
+                resolve(null)
             }
         })
     }
-
-    const drawLines = (meme: Meme): void => {
-        const elCanvas = canvasRef.value
-        const ctx = ctxRef.value
-        if (!ctx || !elCanvas) return
-
+    const drawLines = () => {
         meme.lines.forEach((line: MemeLine) => {
             ctx.font = `${(elCanvas.width * 0.08) + (line.fontSize * 0.1)}px ${line.font}`
             ctx.textAlign = line.textAlign
@@ -60,11 +53,7 @@ export function useCanvas(): UseCanvas {
         })
     }
 
-    const drawOutline = (meme: Meme): void => {
-        const elCanvas = canvasRef.value
-        const ctx = ctxRef.value
-        if (!ctx || !elCanvas) return
-
+    const drawOutline = () => {
         const line = meme.lines[meme.currLine]
         const { fontSize, pos } = line
         const textWidth = ctx.measureText(line.txt).width
@@ -92,12 +81,14 @@ export function useCanvas(): UseCanvas {
             elCanvas.width * 0.015, 0, 2 * Math.PI
         )
         ctx.fill()
-
     }
 
     return {
-        canvasRef,
-        ctxRef,
-        renderMeme
+        setContext,
+        drawImg,
+        drawLines,
+        drawOutline,
+        render,
+        setMeme
     }
 }
