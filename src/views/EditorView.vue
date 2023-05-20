@@ -3,13 +3,14 @@
         <h1>Meme generator</h1>
         <section class="flex">
             <section class="canvas-container">
-                <canvas width="500" height="500" ref="canvasRef"></canvas>
+                <canvas width="500" height="500" :ref="ctx.canvasRef"></canvas>
             </section>
 
-            <section class="meme-editor" v-if="memeRef">
+            <section class="meme-editor" v-if="meme">
                 <input type="text" v-model="currLine.txt">
                 <input type="color" v-model="currLine.strokeStyle">
                 <input type="color" v-model="currLine.fillStyle">
+                <button @click="memeService.switchLine">Switch line</button>
             </section>
         </section>
     </main>
@@ -18,34 +19,24 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { onMounted, ref, watch, computed } from 'vue'
-import { imgService } from '../services/img.service'
-import { memeService } from '../services/meme.service'
 import { useCtx } from '../composables/useCtx.composable'
-import type { Meme } from '@/models/Meme.model'
+import { memeService } from '@/services/meme.service'
 
 const route = useRoute()
 const ctx = useCtx()
 
-const memeRef = ref<Meme>(null!)
-const canvasRef = ref<HTMLCanvasElement>(null!)
-
 onMounted(async () => {
     const { id } = route.params
-    const img = await imgService.getById(id as string)
-
-    const meme = memeService.createMeme(img)
-    memeRef.value = meme
-
-    ctx.setContext(canvasRef.value)
-    ctx.setMeme(meme)
+    await memeService.getMeme(id)
+    ctx.setContext()
     ctx.render()
 })
 
-watch(memeRef, ctx.render, {
-    deep: true
-})
+const meme = memeService.MEME
+const currLine = computed(() => meme.value.lines[meme.value.currLine])
 
-const currLine = computed(() => {
-    return memeRef.value.lines[memeRef.value.currLine]
-})
+watch(meme, () => {
+    ctx.render()
+    memeService.saveMeme()
+}, { deep: true })
 </script>

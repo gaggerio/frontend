@@ -1,14 +1,15 @@
 import { createStore, Store } from 'vuex'
-import { userStore, UserState } from './modules/user.store'
+import { userStore } from './modules/user.store'
+import type { UserState } from './modules/user.store'
 
 export interface RootState {
-    userStore: UserState
+    userStore: UserState,
 }
 
 const store: Store<RootState> = createStore({
     strict: import.meta.env.NODE_ENV !== 'production',
     modules: {
-        userStore
+        userStore,
     }
 })
 

@@ -1,19 +1,15 @@
 import type { MemeLine } from '../models/Line.model'
-import type { Meme } from '../models/Meme.model'
+import { ref } from 'vue'
+import { memeService } from '@/services/meme.service'
 
 export function useCtx() {
 
-    var elCanvas: HTMLCanvasElement
+    const memeRef = memeService.MEME
+    const canvasRef = ref<HTMLCanvasElement>(null!)
     var ctx: CanvasRenderingContext2D
-    var meme: Meme
 
-    const setContext = (canvasRef: HTMLCanvasElement) => {
-        elCanvas = canvasRef
-        ctx = elCanvas.getContext('2d') as CanvasRenderingContext2D
-    }
-
-    const setMeme = (_meme: Meme) => {
-        meme = _meme
+    const setContext = () => {
+        ctx = canvasRef.value.getContext('2d') as CanvasRenderingContext2D
     }
 
     const render = async () => {
@@ -23,70 +19,71 @@ export function useCtx() {
     }
 
     const drawImg = (): Promise<void> => {
-        
         return new Promise((resolve) => {
             const elImg = new Image()
-            elImg.src = meme.imgUrl
+            elImg.src = memeRef.value.imgUrl
 
             elImg.onload = () => {
-                ctx.drawImage(elImg, 0, 0, elCanvas.width, elCanvas.height)
+                ctx.drawImage(elImg, 0, 0, memeRef.value.width, memeRef.value.height)
                 resolve()
             }
         })
     }
 
     const drawLines = () => {
-        meme.lines.forEach((line: MemeLine) => {
-            ctx.font = `${(elCanvas.width * 0.08) + (line.fontSize * 0.1)}px ${line.font}`
+        memeRef.value.lines.forEach((line: MemeLine) => {
+            ctx.font = `${(memeRef.value.width * 0.08) + (line.fontSize * 0.1)}px ${line.font}`
             ctx.textAlign = line.textAlign
             ctx.textBaseline = line.textBaseline
             ctx.lineWidth = line.lineWidth
             ctx.strokeStyle = line.strokeStyle
             ctx.fillStyle = line.fillStyle
 
-            ctx.strokeText(line.txt, line.pos.x, line.pos.y, elCanvas.width)
-            ctx.fillText(line.txt, line.pos.x, line.pos.y, elCanvas.width)
+            ctx.strokeText(line.txt, line.pos.x, line.pos.y, memeRef.value.width)
+            ctx.fillText(line.txt, line.pos.x, line.pos.y, memeRef.value.width)
         })
     }
 
     const drawOutline = () => {
-        const line = meme.lines[meme.currLine]
+        const line = memeRef.value.lines[memeRef.value.currLine]
         const { fontSize, pos } = line
         const textWidth = ctx.measureText(line.txt).width
-        const bottomRight = (elCanvas.width * 0.08) + (fontSize * 0.1)
-        
+        const bottomRight = (memeRef.value.width * 0.08) + (fontSize * 0.1)
+
         ctx.strokeStyle = '#fff'
-        ctx.lineWidth = elCanvas.width * 0.01
+        ctx.lineWidth = memeRef.value.width * 0.01
         ctx.beginPath()
         ctx.rect(
             pos.x - (textWidth / 2) - 10,
-            pos.y - elCanvas.height * 0.01,
+            pos.y - memeRef.value.height * 0.01,
             textWidth + 20,
-            bottomRight + elCanvas.height * 0.015
+            bottomRight + memeRef.value.height * 0.015
         )
         ctx.stroke()
 
-        meme.arcPos = {
+        const arcPos = {
             x: pos.x + (textWidth / 2) + 10,
-            y: pos.y + bottomRight + elCanvas.height * 0.005
+            y: pos.y + bottomRight + memeRef.value.height * 0.005
         }
+        ctx.strokeStyle = '#fff'
+        ctx.fillStyle = '#fff'
         ctx.beginPath()
         ctx.arc(
-            meme.arcPos.x,
-            meme.arcPos.y,
-            elCanvas.width * 0.015, 
-            0, 
+            arcPos.x,
+            arcPos.y,
+            memeRef.value.width * 0.015,
+            0,
             2 * Math.PI
         )
         ctx.fill()
     }
 
     return {
+        canvasRef,
         setContext,
         drawImg,
         drawLines,
         drawOutline,
-        render,
-        setMeme
+        render
     }
 }

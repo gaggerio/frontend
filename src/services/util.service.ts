@@ -1,6 +1,8 @@
 export const utilService = {
     saveToStorage,
     loadFromStorage,
+    saveToSession,
+    loadFromSession,
     getRandomIntInc,
     getRandomColor,
     makeId,
@@ -24,6 +26,16 @@ function loadFromStorage(key: string) {
     let data = localStorage.getItem(key)
     return data ? JSON.parse(data) : undefined
 }
+
+function saveToSession(key: string, value: any) {
+    sessionStorage.setItem(key, JSON.stringify(value))
+}
+
+function loadFromSession(key: string) {
+    let data = sessionStorage.getItem(key)
+    return data ? JSON.parse(data) : undefined
+}
+
 function getRandomColor() {
     const letters = '0123456789ABCDEF'
     let color = '#'
