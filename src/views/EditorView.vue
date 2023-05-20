@@ -6,11 +6,13 @@
                 <canvas width="500" height="500" :ref="ctx.canvasRef"></canvas>
             </section>
 
-            <section class="meme-editor" v-if="meme">
+            <section class="meme-editor" v-if="memeRef">
                 <input type="text" v-model="currLine.txt">
                 <input type="color" v-model="currLine.strokeStyle">
                 <input type="color" v-model="currLine.fillStyle">
-                <button @click="memeService.switchLine">Switch line</button>
+                <button @click="switchLine">Switch line</button>
+                <button @click="addLine">Add line</button>
+                <button @click="clearMeme">clear</button>
             </section>
         </section>
     </main>
@@ -21,22 +23,50 @@ import { useRoute } from 'vue-router'
 import { onMounted, ref, watch, computed } from 'vue'
 import { useCtx } from '../composables/useCtx.composable'
 import { memeService } from '@/services/meme.service'
+import type { Meme } from '@/models/Meme.model'
+
+const memeRef = ref<Meme>(null!)
 
 const route = useRoute()
-const ctx = useCtx()
+const ctx = useCtx(memeRef)
 
-onMounted(async () => {
-    const { id } = route.params
-    await memeService.getMeme(id)
-    ctx.setContext()
-    ctx.render()
+onMounted(loadMeme)
+watch(memeRef, renderCanvas, {
+    deep: true
 })
 
-const meme = memeService.MEME
-const currLine = computed(() => meme.value.lines[meme.value.currLine])
+const currLine = computed(() =>
+    memeRef.value.lines[memeRef.value.currLine]
+)
 
-watch(meme, () => {
+async function loadMeme() {
+    const { id } = route.params
+    memeRef.value = await memeService.getMeme(id as string)
+    ctx.setContext()
     ctx.render()
-    memeService.saveMeme()
-}, { deep: true })
+}
+
+function renderCanvas() {
+    ctx.render()
+    memeService.save(memeRef.value)
+}
+
+function switchLine() {
+    const meme = memeRef.value
+    if (meme.currLine === meme.lines.length - 1) meme.currLine = 0
+    else meme.currLine++
+}
+
+function addLine() {
+    const line = memeService.createLine(
+        memeRef.value,
+        memeRef.value.lines.length - 1
+    )
+    memeRef.value.lines.push(line)
+}
+
+function clearMeme() {
+    memeService.clear()
+    loadMeme()
+}
 </script>

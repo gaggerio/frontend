@@ -3,42 +3,38 @@ import type { Meme } from "../models/Meme.model"
 import { utilService } from "./util.service"
 import type { Img } from "@/models/Img.model"
 import { imgService } from "./img.service"
-import { ref } from "vue"
 
 const KEY = 'curr_meme'
-const MEME = ref<Meme>(null!)
 
 export const memeService = {
-    MEME,
-    switchLine,
-    saveMeme,
-    getMeme
+    save,
+    getMeme,
+    createLine,
+    clear
 }
 
 async function getMeme(imgId: string) {
-    let meme = loadMeme()
+    let meme = load()
     if (!meme) {
         const img = await imgService.getById(imgId)
         meme = createMeme(img)
-        saveMeme()
+        save(meme)
     }
-    MEME.value = meme
     return meme
 }
 
-function loadMeme(): Meme {
+function load(): Meme {
     return utilService.loadFromSession(KEY)
 }
 
-function saveMeme() {
-    utilService.saveToSession(KEY, MEME.value)
+function save(meme: Meme) {
+    utilService.saveToSession(KEY, meme)
 }
 
-function switchLine() {
-    if (MEME.value.currLine === MEME.value.lines.length - 1) MEME.value.currLine = 0
-    else MEME.value.currLine++
-    saveMeme()
+function clear() {
+    utilService.saveToSession(KEY, null)
 }
+
 
 function createMeme(img: Img): Meme {
     const meme: Meme = {
@@ -55,7 +51,6 @@ function createMeme(img: Img): Meme {
         createLine(meme, 0),
         createLine(meme, 1)
     ]
-    saveMeme()
     return meme
 }
 
@@ -78,7 +73,7 @@ function createLine({ width, height }: Meme, i: number): MemeLine {
         lineWidth: 50 / 15,
         pos: {
             x: width / 2,
-            y: posY[i]
+            y: i <= 2 ? posY[i] : posY[2]
         },
     }
     return line
