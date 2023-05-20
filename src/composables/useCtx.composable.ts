@@ -22,23 +22,19 @@ export function useCtx() {
         drawOutline()
     }
 
-    const drawImg = () => {
+    const drawImg = (): Promise<void> => {
+        
         return new Promise((resolve) => {
             const elImg = new Image()
             elImg.src = meme.imgUrl
 
             elImg.onload = () => {
-                ctx.drawImage(
-                    elImg,
-                    0,
-                    0,
-                    elCanvas.width,
-                    elCanvas.height
-                )
-                resolve(null)
+                ctx.drawImage(elImg, 0, 0, elCanvas.width, elCanvas.height)
+                resolve()
             }
         })
     }
+
     const drawLines = () => {
         meme.lines.forEach((line: MemeLine) => {
             ctx.font = `${(elCanvas.width * 0.08) + (line.fontSize * 0.1)}px ${line.font}`
@@ -58,9 +54,10 @@ export function useCtx() {
         const { fontSize, pos } = line
         const textWidth = ctx.measureText(line.txt).width
         const bottomRight = (elCanvas.width * 0.08) + (fontSize * 0.1)
-
+        
         ctx.strokeStyle = '#fff'
         ctx.lineWidth = elCanvas.width * 0.01
+        ctx.beginPath()
         ctx.rect(
             pos.x - (textWidth / 2) - 10,
             pos.y - elCanvas.height * 0.01,
@@ -74,11 +71,12 @@ export function useCtx() {
             y: pos.y + bottomRight + elCanvas.height * 0.005
         }
         ctx.beginPath()
-        ctx.fillStyle = '#fff'
         ctx.arc(
             meme.arcPos.x,
             meme.arcPos.y,
-            elCanvas.width * 0.015, 0, 2 * Math.PI
+            elCanvas.width * 0.015, 
+            0, 
+            2 * Math.PI
         )
         ctx.fill()
     }
