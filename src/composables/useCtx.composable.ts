@@ -1,16 +1,13 @@
 import type { MemeLine } from '../models/Line.model'
-import type { Ref } from 'vue'
-import type { Meme } from '../models/Meme.model'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
+import { useMemeStore } from '../composables/useMemeStore.composable'
 
-export function useCtx(_meme: Ref<Meme>) {
+export function useCtx() {
 
-    const canvasRef = ref<HTMLCanvasElement>(null!)
     var ctx: CanvasRenderingContext2D
-
-    const meme = computed(() => {
-        return _meme.value
-    })
+    const canvasRef = ref<HTMLCanvasElement>(null!)
+    const arcPosRef = ref({ x: 0, y: 0 })
+    const meme = useMemeStore().getMeme()
 
     const setContext = () => {
         ctx = canvasRef.value.getContext('2d') as CanvasRenderingContext2D
@@ -26,7 +23,6 @@ export function useCtx(_meme: Ref<Meme>) {
         return new Promise((resolve) => {
             const elImg = new Image()
             elImg.src = meme.value.imgUrl
-
             elImg.onload = () => {
                 ctx.drawImage(elImg, 0, 0, meme.value.width, meme.value.height)
                 resolve()
@@ -65,7 +61,7 @@ export function useCtx(_meme: Ref<Meme>) {
         )
         ctx.stroke()
 
-        const arcPos = {
+        arcPosRef.value = {
             x: pos.x + (textWidth / 2) + 10,
             y: pos.y + bottomRight + meme.value.height * 0.005
         }
@@ -73,14 +69,40 @@ export function useCtx(_meme: Ref<Meme>) {
         ctx.fillStyle = '#fff'
         ctx.beginPath()
         ctx.arc(
-            arcPos.x,
-            arcPos.y,
+            arcPosRef.value.x,
+            arcPosRef.value.y,
             meme.value.width * 0.015,
             0,
             2 * Math.PI
         )
         ctx.fill()
     }
+
+    // function onMouseOver(ev: any) {
+    //     const mousePos = getMousePos(ev)
+    //     const arcPos = arcPosRef.value
+
+    //     const distanceFromResize = Math.sqrt((arcPos.x - mousePos.x) ** 2 + (arcPos.y - mousePos.y) ** 2)
+    //     const isOverCurrLine = isOverLine(meme.currLine, mousePos)
+    //     const isOverText = meme.lines.some((line, i) => {
+    //         return (i === meme.currLine) ? false : isOverLine(i, mousePos)
+    //     })
+
+    //     let cursor = ''
+    //     if (distanceFromResize < 10) cursor = 'nwse-resize'
+    //     else if (isOverCurrLine) cursor = 'all-scroll'
+    //     else if (isOverText) cursor = 'pointer'
+    //     elCanvas.style.cursor = cursor
+    //     isOverCurrLine && isDragRef.current && moveLine(mousePos)
+    // }
+
+    // function getMousePos(ev: any) {
+    //     const { offsetLeft, clientLeft, offsetTop, clientTop } = ev.target
+    //     return {
+    //         x: ev.pageX - offsetLeft - clientLeft,
+    //         y: ev.pageY - offsetTop - clientTop,
+    //     }
+    // }
 
     return {
         canvasRef,

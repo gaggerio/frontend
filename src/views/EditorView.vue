@@ -6,13 +6,14 @@
                 <canvas width="500" height="500" :ref="ctx.canvasRef"></canvas>
             </section>
 
-            <section class="meme-editor" v-if="memeRef">
+            <section class="meme-editor" v-if="meme">
                 <input type="text" v-model="currLine.txt">
                 <input type="color" v-model="currLine.strokeStyle">
                 <input type="color" v-model="currLine.fillStyle">
-                <button @click="switchLine">Switch line</button>
-                <button @click="addLine">Add line</button>
+                <button @click="memeStore.switchLine">Switch line</button>
+                <button @click="memeStore.addLine">Add line</button>
                 <button @click="clearMeme">clear</button>
+                <button @click="memeStore.removeLine">Remove line</button>
             </section>
         </section>
     </main>
@@ -20,53 +21,38 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { onMounted, ref, watch, computed } from 'vue'
+import { onMounted, watch, computed } from 'vue'
 import { useCtx } from '../composables/useCtx.composable'
-import { memeService } from '@/services/meme.service'
-import type { Meme } from '@/models/Meme.model'
-
-const memeRef = ref<Meme>(null!)
+import { useMemeStore } from '../composables/useMemeStore.composable'
 
 const route = useRoute()
-const ctx = useCtx(memeRef)
+const ctx = useCtx()
 
-onMounted(loadMeme)
-watch(memeRef, renderCanvas, {
-    deep: true
+const memeStore = useMemeStore()
+const meme = memeStore.getMeme()
+
+const currLine = computed(() => {
+    return meme.value.lines[meme.value.currLine]
 })
 
-const currLine = computed(() =>
-    memeRef.value.lines[memeRef.value.currLine]
-)
+onMounted(loadMeme)
+watch(meme, onUpdateMeme, { deep: true })
 
 async function loadMeme() {
     const { id } = route.params
-    memeRef.value = await memeService.getMeme(id as string)
+    await memeStore.setMeme(id as string)
+
     ctx.setContext()
     ctx.render()
 }
 
-function renderCanvas() {
+function onUpdateMeme() {
+    memeStore.save()
     ctx.render()
-    memeService.save(memeRef.value)
-}
-
-function switchLine() {
-    const meme = memeRef.value
-    if (meme.currLine === meme.lines.length - 1) meme.currLine = 0
-    else meme.currLine++
-}
-
-function addLine() {
-    const line = memeService.createLine(
-        memeRef.value,
-        memeRef.value.lines.length - 1
-    )
-    memeRef.value.lines.push(line)
 }
 
 function clearMeme() {
-    memeService.clear()
+    memeStore.clear()
     loadMeme()
 }
 </script>

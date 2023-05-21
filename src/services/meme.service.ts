@@ -10,7 +10,8 @@ export const memeService = {
     save,
     getMeme,
     createLine,
-    clear
+    clear,
+    createMeme
 }
 
 async function getMeme(imgId: string) {
@@ -73,7 +74,7 @@ function createLine({ width, height }: Meme, i: number): MemeLine {
         lineWidth: 50 / 15,
         pos: {
             x: width / 2,
-            y: i <= 2 ? posY[i] : posY[2]
+            y: i > 2 ? posY[2] : posY[i]
         },
     }
     return line

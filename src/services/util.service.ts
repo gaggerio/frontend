@@ -71,10 +71,6 @@ function getHeaderLinks() {
             path: '/explore',
             name: 'explore'
         },
-        {
-            path: '/about',
-            name: 'About'
-        },
     ]
 }
 
