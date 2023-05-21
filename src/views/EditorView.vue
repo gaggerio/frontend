@@ -3,7 +3,8 @@
         <h1>Meme generator</h1>
         <section class="flex">
             <section class="canvas-container">
-                <canvas width="500" height="500" :ref="ctx.canvasRef"></canvas>
+                <canvas width="500" height="500" :ref="ctx.canvasRef" @mousemove="ctx.onMouseOver" @mousedown="ctx.onMouseDown"
+                   @mouseup="ctx.onMouseUp" ></canvas>
             </section>
 
             <section class="meme-editor" v-if="meme">

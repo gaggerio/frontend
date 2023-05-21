@@ -24,7 +24,11 @@ export function useMemeStore() {
         }
     }
 
-    const switchLine = () => {
+    const switchLine = (idx?: number) => {
+        if (idx !== undefined) {
+            gMeme.value.currLine = idx
+            return
+        }
         if (gMeme.value.currLine === gMeme.value.lines.length - 1) gMeme.value.currLine = 0
         else gMeme.value.currLine++
     }
