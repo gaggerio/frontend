@@ -1,7 +1,7 @@
-import type { MemeLine, Pos } from "@/models/Line.model"
+import type { Line, Pos } from "@/models/Line.model"
 import type { Meme } from "../models/Meme.model"
-import { utilService } from "./util.service"
 import type { Img } from "@/models/Img.model"
+import { utilService } from "./util.service"
 import { imgService } from "./img.service"
 
 const KEY = 'curr_meme'
@@ -12,12 +12,13 @@ export const memeService = {
     createLine,
     clear,
     createMeme,
-    caclLinePos,
+    calcLinePos,
     calcOutlinePos,
-    getMousePos
+    getMousePos,
+    calcFontSize
 }
 
-async function getMeme(imgId: string) {
+async function getMeme(imgId: string): Promise<Meme> {
     let meme = load()
     if (!meme) {
         const img = await imgService.getById(imgId)
@@ -27,34 +28,31 @@ async function getMeme(imgId: string) {
     return meme
 }
 
-function load(): Meme {
+function load(): Meme | null {
     return utilService.loadFromSession(KEY)
 }
 
-function save(meme: Meme) {
+function save(meme: Meme): void {
     utilService.saveToSession(KEY, meme)
 }
 
-function clear() {
+function clear(): void {
     utilService.saveToSession(KEY, null)
 }
 
 function createMeme(img: Img): Meme {
     const meme: Meme = {
         _id: utilService.makeId(),
-        outLineColor: '#7c7c7c',
+        outLineColor: '#fff',
         lines: [],
         currLine: 0,
         img,
     }
-    meme.lines = [
-        createLine(),
-        createLine()
-    ]
+    meme.lines = [createLine(), createLine()]
     return meme
 }
 
-function createLine(): MemeLine {
+function createLine(): Line {
     return {
         _id: utilService.makeId(),
         txt: 'Your Text',
@@ -66,35 +64,38 @@ function createLine(): MemeLine {
         textBaseline: 'top',
         pos: {
             x: 0,
-            y: 0
+            y: 0,
         },
     }
 }
 
-function caclLinePos(width: number, height: number, i: number) {
-    type PosY = { [idx: number]: number }
-    const posY: PosY = {
+function calcLinePos(width: number, height: number, i: number): Pos {
+    const posY: { [idx: number]: number } = {
         0: height * 0.03,
         1: height * 0.83,
-        2: height * 0.4
+        2: height * 0.4,
     }
     return {
         x: width / 2,
-        y: posY[i]
+        y: posY[i],
     }
 }
 
-function calcOutlinePos(line: MemeLine, textWidth: number) {
+function calcOutlinePos(line: Line, textWidth: number): Pos {
     return {
-        x: line.pos.x - (textWidth / 2) - 10,
-        y: line.pos.y - 5
+        x: line.pos.x - textWidth / 2 - 10,
+        y: line.pos.y - 5,
     }
 }
 
-function getMousePos(ev: any) {
-    const { offsetLeft, clientLeft, offsetTop, clientTop } = ev.target
+function getMousePos(ev: MouseEvent): Pos {
+    const { offsetLeft, clientLeft, offsetTop, clientTop } = ev.target as HTMLElement
     return {
         x: ev.pageX - offsetLeft - clientLeft,
         y: ev.pageY - offsetTop - clientTop,
     }
+}
+
+function calcFontSize(width: number): number {
+    return width * 0.1
 }

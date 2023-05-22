@@ -8,7 +8,8 @@ export const utilService = {
     makeId,
     delay,
     getHeaderLinks,
-    getIcon
+    getIcon,
+    getLorem
 }
 
 
@@ -92,4 +93,8 @@ function getIcon(iconName: string) {
         error: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760126/error_hfyagg.ico'
     }
     return iconMap[iconName]
+}
+
+function getLorem(): string {
+    return 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.'
 }

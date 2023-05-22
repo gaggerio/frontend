@@ -12,6 +12,7 @@ const ENV = import.meta.env.VITE_ENV
 export const imgService = {
     query,
     getById,
+    getImgUrls
 }
 
 async function query(filterBy: FilterBy = { txt: '' }): Promise<Img[]> {
@@ -35,6 +36,12 @@ async function _filteredImgs(filterBy: FilterBy) {
     //     else return img
     // })
     return imgs
+}
+
+function getImgUrls(): string[] {
+    return gImgs.map(img => {
+        return img.url
+    })
 }
 
 ; (async () => {

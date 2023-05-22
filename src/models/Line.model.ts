@@ -1,6 +1,4 @@
-export type Pos = { x: number, y: number }
-
-export interface MemeLine {
+export interface Line {
     _id: string
     txt: string
     fontSize: number
@@ -10,5 +8,10 @@ export interface MemeLine {
     font: string
     textBaseline: CanvasTextBaseline
     pos: Pos
+}
+
+export type Pos = { 
+    x: number, 
+    y: number 
 }
 

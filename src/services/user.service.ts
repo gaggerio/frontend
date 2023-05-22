@@ -1,7 +1,7 @@
 import { storageService } from './storage.service'
 import { httpService } from './http.service'
 import { utilService } from './util.service'
-import { User } from '../models/User.model'
+import type { User } from '../models/User.model'
 
 const LOGGEIN_USER_KEY = 'loggedinUser'
 const USER_KEY = 'user_db'
@@ -15,6 +15,7 @@ export const userService = {
     getLoggedinUser,
     saveLocalUser,
     update,
+    getEmptyUser
 }
 
 async function login(credentials: User) {
@@ -72,14 +73,27 @@ function getLoggedinUser() {
     else return JSON.parse(user)
 }
 
+function getEmptyUser(): User {
+    return {
+        _id: utilService.makeId(),
+        username: 'Baba',
+        fullname: 'Bab Jim',
+        imgUrl: defaultProfilePic()
+    }
+}
+
+function defaultProfilePic() {
+    return 'https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png'
+}
+
 ; (async () => {
     if (ENV !== 'local') return
 
     const users = await storageService.query(USER_KEY)
     if (!users || !users.length) {
-        await signup({ fullname: 'Puki Norma', username: 'puki', password: '123', isAdmin: false })
-        await signup({ fullname: 'Master Adminov', username: 'admin', password: '123', isAdmin: true })
-        await signup({ fullname: 'Muki G', username: 'muki', password: '123', isAdmin: false })
+        await signup({ fullname: 'Puki Norma', username: 'puki', password: '123', isAdmin: false, imgUrl: defaultProfilePic() })
+        await signup({ fullname: 'Master Adminov', username: 'admin', password: '123', isAdmin: true, imgUrl: defaultProfilePic() })
+        await signup({ fullname: 'Muki G', username: 'muki', password: '123', isAdmin: false, imgUrl: defaultProfilePic() })
         await storageService.postMany(USER_KEY, users)
     }
 })()

@@ -3,7 +3,7 @@
         <div class="screen" v-if="isNavOpen" :class="{ open: isNavOpen }" @click="toggleNav"></div>
         <div class="logo flex items-center gap-2">
             <img :src="icons.logo" alt="LOGO">
-            Item App
+            GAGGER
         </div>
         <button class="hamburger btn" @click="toggleNav">
             <img :src="icons.hamburger" />
