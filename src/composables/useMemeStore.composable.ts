@@ -1,31 +1,52 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { Meme } from '../models/Meme.model'
 import { memeService } from '../services/meme.service'
+import type { Pos } from '@/models/Line.model'
+import { showErrorMsg } from '@/services/event-bus.service'
 
 var gMeme = ref<Meme>(memeService.createMeme({
     _id: '',
     url: '',
-    keywords: []
+    keywords: [],
+    size: { width: 0, height: 0 }
 }))
 
 export function useMemeStore() {
 
-    const getMeme = () => {
+    const meme = computed(() => gMeme.value)
+    const currLine = computed(() => gMeme.value.lines[gMeme.value.currLine])
+    const lines = computed(() => gMeme.value.lines)
+    const currLineIdx = computed(() => gMeme.value.currLine)
+    const img = computed(() => gMeme.value.img)
+
+    function getMeme() {
         return gMeme
     }
 
-    const setMeme = async (imgId: string) => {
+    async function loadMeme(imgId: string) {
         try {
             const meme = await memeService.getMeme(imgId)
-            if (meme) gMeme.value = meme
+            gMeme.value = meme
         }
         catch (err) {
-            console.log('had error getting meme')
+            showErrorMsg('Oops somethign went wrong')
         }
     }
 
-    const switchLine = (idx?: number) => {
-        if (idx !== undefined) {
+    function init() {
+        gMeme.value.lines.forEach((line, i) => {
+            const { width, height } = img.value.size
+            line.fontSize = width * 0.1
+            line.pos = memeService.caclLinePos(width, height, i)
+        })
+    }
+
+    function setFontSize(size: number) {
+        gMeme.value.lines[gMeme.value.currLine].fontSize += size
+    }
+
+    function switchLine(idx?: number) {
+        if (idx !== undefined && !isNaN(idx)) {
             gMeme.value.currLine = idx
             return
         }
@@ -33,31 +54,49 @@ export function useMemeStore() {
         else gMeme.value.currLine++
     }
 
-    const addLine = () => {
-        const newLine = memeService.createLine(gMeme.value, 2)
+    function addLine() {
+        const { width, height } = img.value.size
+        const newLine = memeService.createLine()
+        newLine.fontSize = width * 0.1
+        newLine.pos = memeService.caclLinePos(width, height, 2)
         gMeme.value.lines.push(newLine)
     }
 
-    const removeLine = () => {
+    function removeLine() {
+        if (lines.value.length === 1) return
         gMeme.value.lines.splice(gMeme.value.currLine, 1)
         gMeme.value.currLine = 0
     }
 
-    const save = () => {
+    function moveLine(delta: Pos) {
+        const currLine = gMeme.value.lines[gMeme.value.currLine]
+        currLine.pos.x += delta.x
+        currLine.pos.y += delta.y
+    }
+
+    function save() {
         memeService.save(gMeme.value)
     }
 
-    const clear = () => {
+    function clear() {
         memeService.clear()
     }
 
     return {
+        meme,
+        currLine,
+        lines,
+        currLineIdx,
+        img,
         getMeme,
-        setMeme,
+        loadMeme,
         switchLine,
         addLine,
         removeLine,
         save,
-        clear
+        clear,
+        init,
+        moveLine,
+        setFontSize,
     }
 }

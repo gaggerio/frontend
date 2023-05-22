@@ -4,11 +4,11 @@ import type { MemeLine, Pos } from "./Line.model"
 
 export interface Meme {
     _id: string
-    imgUrl: string
+    img: Img
     lines: MemeLine[]
     currLine: number
     outLineColor: string,
-    width: number,
-    height: number,
-    arcPos: Pos
+
+    // width: number,
+    // height: number,
 }

@@ -2,7 +2,6 @@ import { ref } from 'vue'
 import type { UnwrapRef, Ref } from 'vue'
 import { showErrorMsg } from '../services/event-bus.service'
 
-
 export function useService<T>(func: (...args: any) => Promise<T>, ...args: any): Ref<UnwrapRef<T> | null> {
     const dataRef = ref<T | null>(null)
 
@@ -12,6 +11,5 @@ export function useService<T>(func: (...args: any) => Promise<T>, ...args: any):
             showErrorMsg('Oops something went wrong')
             console.error(err)
         })
-
     return dataRef
 }

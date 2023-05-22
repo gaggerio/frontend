@@ -1,173 +1,162 @@
-import type { MemeLine } from '../models/Line.model'
-import { ref } from 'vue'
+import type { MemeLine, Pos } from '../models/Line.model'
+import { ref, watch } from 'vue'
 import { useMemeStore } from '../composables/useMemeStore.composable'
+import { memeService } from '@/services/meme.service'
+import type { Img } from '@/models/Img.model'
 
 export function useCtx() {
 
     var ctx: CanvasRenderingContext2D
-    const canvasRef = ref<HTMLCanvasElement>(null!)
+    const elCanvas = ref<HTMLCanvasElement>(null!)
 
     const memeStore = useMemeStore()
-    const meme = memeStore.getMeme()
 
-    const arcPosRef = ref({ x: 0, y: 0 })
-    const startPosRef = ref({ x: 0, y: 0 })
-    const isDragRef = ref<boolean>(false)
+    const startPos = ref<Pos>({ x: 0, y: 0 })
+    const isDrag = ref<boolean>(false)
 
-    const setContext = () => {
-        ctx = canvasRef.value.getContext('2d') as CanvasRenderingContext2D
+    function init() {
+        ctx = elCanvas.value.getContext('2d') as CanvasRenderingContext2D
+        const { img } = memeStore.meme.value
+        resizeCanvas(img)
     }
 
-    const render = async () => {
+    function resizeCanvas({ size }: Img) {
+        elCanvas.value.width = size.width
+        elCanvas.value.height = size.height
+    }
+
+    async function render() {
         await drawImg()
         drawLines()
         drawOutline()
     }
 
-    const drawImg = (): Promise<void> => {
-        return new Promise((resolve) => {
+    function drawImg(): Promise<void> {
+        return new Promise(resolve => {
             const elImg = new Image()
-            elImg.src = meme.value.imgUrl
+            elImg.src = memeStore.img.value.url
             elImg.onload = () => {
-                ctx.drawImage(elImg, 0, 0, meme.value.width, meme.value.height)
+                const { width, height } = elCanvas.value
+                ctx.drawImage(elImg, 0, 0, width, height)
                 resolve()
             }
         })
     }
 
-    const drawLines = () => {
-        meme.value.lines.forEach((line: MemeLine) => {
-            ctx.font = `${(meme.value.width * 0.08) + (line.fontSize * 0.1)}px ${line.font}`
+    function drawLines() {
+        memeStore.lines.value.forEach(line => {
+            ctx.font = `${line.fontSize}px ${line.font}`
             ctx.textAlign = line.textAlign
             ctx.textBaseline = line.textBaseline
-            ctx.lineWidth = line.lineWidth
+            ctx.lineWidth = line.fontSize / 8
             ctx.strokeStyle = line.strokeStyle
             ctx.fillStyle = line.fillStyle
 
-            ctx.strokeText(line.txt, line.pos.x, line.pos.y, meme.value.width)
-            ctx.fillText(line.txt, line.pos.x, line.pos.y, meme.value.width)
+            ctx.strokeText(line.txt, line.pos.x, line.pos.y, elCanvas.value.width)
+            ctx.fillText(line.txt, line.pos.x, line.pos.y, elCanvas.value.width)
         })
     }
 
-    const drawOutline = () => {
-        const line = meme.value.lines[meme.value.currLine]
-        const { fontSize, pos } = line
-        const textWidth = ctx.measureText(line.txt).width
-        const bottomRight = (meme.value.width * 0.08) + (fontSize * 0.1)
+    function drawOutline() {
+        const line = memeStore.currLine.value
+        const outLineColor = '#fff'
+        const textWidth = calcTextWidth(line)
+        const outLinePos = memeService.calcOutlinePos(line, textWidth)
 
-        ctx.strokeStyle = '#fff'
-        ctx.lineWidth = meme.value.width * 0.01
+        ctx.strokeStyle = outLineColor
+        ctx.lineWidth = line.fontSize / 10
+
         ctx.beginPath()
         ctx.rect(
-            pos.x - (textWidth / 2) - 10,
-            pos.y - meme.value.height * 0.01,
+            outLinePos.x,
+            outLinePos.y,
             textWidth + 20,
-            bottomRight + meme.value.height * 0.015
+            line.fontSize + 10
         )
         ctx.stroke()
+    }
 
-        arcPosRef.value = {
-            x: pos.x + (textWidth / 2) + 10,
-            y: pos.y + bottomRight + meme.value.height * 0.005
-        }
-        ctx.strokeStyle = '#fff'
-        ctx.fillStyle = '#fff'
-        ctx.beginPath()
-        ctx.arc(
-            arcPosRef.value.x,
-            arcPosRef.value.y,
-            meme.value.width * 0.015,
-            0,
-            2 * Math.PI
-        )
-        ctx.fill()
+    function calcTextWidth(line: MemeLine) {
+        ctx.font = `${line.fontSize}px ${line.font}`
+        return ctx.measureText(line.txt).width
+    }
+
+    function calcTextHeight(line: MemeLine) {
+        return (elCanvas.value.width * 0.08) + (line.fontSize * 0.1)
     }
 
     function onMouseOver(ev: any) {
-        const mousePos = getMousePos(ev)
-        const arcPos = arcPosRef.value
+        const mousePos = memeService.getMousePos(ev)
+        const currLineIdx = memeStore.currLineIdx.value
+        const overLineIdx = getMouseOverLineIdx(mousePos)
 
-        const distanceFromResize = Math.sqrt((arcPos.x - mousePos.x) ** 2 + (arcPos.y - mousePos.y) ** 2)
-        const isOverResize = distanceFromResize < 10
-        const isOverCurrLine = isOverLine(meme.value.currLine, mousePos)
-        const isOverText = meme.value.lines.some((_, i) => {
-            return (i === meme.value.currLine) ? false : isOverLine(i, mousePos)
-        })
-
-        let cursor = ''
-        if (isOverResize) cursor = 'nwse-resize'
-        else if (isOverCurrLine) cursor = 'all-scroll'
-        else if (isOverText) cursor = 'pointer'
-        canvasRef.value.style.cursor = cursor
-
-        !isOverResize && isOverCurrLine && isDragRef.value && moveLine(mousePos)
-
-    }
-
-    function getMousePos(ev: any) {
-        const { offsetLeft, clientLeft, offsetTop, clientTop } = ev.target
-        return {
-            x: ev.pageX - offsetLeft - clientLeft,
-            y: ev.pageY - offsetTop - clientTop,
+        let cursor = 'auto'
+        if (overLineIdx >= 0) {
+            cursor = 'pointer'
         }
+        if (overLineIdx === currLineIdx) {
+            cursor = 'all-scroll'
+            isDrag.value && moveLine(mousePos)
+        }
+        elCanvas.value.style.cursor = cursor
     }
 
-    function isOverLine(i: number, clickedPos: any) {
-        const { pos, fontSize, txt } = meme.value.lines[i]
+    function getMouseOverLineIdx(mousePos: Pos) {
+        return memeStore.lines.value.findIndex(line => {
+            return isOverLine(line, mousePos)
+        })
+    }
 
-        const textWidth = ctx.measureText(txt).width || 10
-        const textHeight = (canvasRef.value.width * 0.08) + (fontSize * 0.1)
+    function isOverLine(line: MemeLine, mousePos: Pos) {
+        const textWidth = calcTextWidth(line)
+        const textHeight = calcTextHeight(line)
 
         const square = {
-            x: pos.x - (textWidth / 2) - 10,
-            y: pos.y - textHeight * 0.01,
+            x: line.pos.x - (textWidth / 2) - 10,
+            y: line.pos.y - textHeight * 0.01,
             length: textWidth + 20,
-            height: textHeight + canvasRef.value.height * 0.015
+            height: textHeight + elCanvas.value.height * 0.015
         }
-
         return (
-            clickedPos.x > square.x &&
-            clickedPos.y > square.y &&
-            clickedPos.x < square.length + square.x &&
-            clickedPos.y < square.height + square.y
+            mousePos.x > square.x &&
+            mousePos.y > square.y &&
+            mousePos.x < square.length + square.x &&
+            mousePos.y < square.height + square.y
         )
     }
 
     function onMouseDown(ev: any) {
-        const mousePos = getMousePos(ev)
-        meme.value.lines.forEach((_, i) => {
-            if (isOverLine(i, mousePos)) {
-                memeStore.switchLine(i)
-                isDragRef.value = true
-                startPosRef.value = mousePos
-            }
-        })
+        const mousePos = memeService.getMousePos(ev)
+        const idx = getMouseOverLineIdx(mousePos)
+        if (idx < 0) return
+
+        memeStore.switchLine(idx)
+        isDrag.value = true
+        startPos.value = mousePos
     }
 
     function onMouseUp() {
-        isDragRef.value = false
+        isDrag.value = false
     }
 
-    function moveLine(mousePos: { x: number, y: number }) {
-        const currLine = meme.value.lines[meme.value.currLine]
-        currLine.pos.x += mousePos.x - startPosRef.value.x
-        currLine.pos.y += mousePos.y - startPosRef.value.y
-        startPosRef.value = mousePos
-    }
-
-    function resize(mousePos: { x: number, y: number }) {
-        
+    function moveLine(mousePos: Pos) {
+        const delta = {
+            x: mousePos.x - startPos.value.x,
+            y: mousePos.y - startPos.value.y
+        }
+        memeStore.moveLine(delta)
+        startPos.value = mousePos
     }
 
     return {
-        canvasRef,
-        setContext,
+        elCanvas,
+        init,
         drawImg,
         drawLines,
         drawOutline,
         render,
         onMouseOver,
         onMouseDown,
-        onMouseUp
+        onMouseUp,
     }
 }

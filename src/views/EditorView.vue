@@ -3,8 +3,8 @@
         <h1>Meme generator</h1>
         <section class="flex">
             <section class="canvas-container">
-                <canvas width="500" height="500" :ref="ctx.canvasRef" @mousemove="ctx.onMouseOver" @mousedown="ctx.onMouseDown"
-                   @mouseup="ctx.onMouseUp" ></canvas>
+                <canvas :ref="ctx.elCanvas" @mousemove="ctx.onMouseOver" @mousedown="ctx.onMouseDown"
+                    @mouseup="ctx.onMouseUp"></canvas>
             </section>
 
             <section class="meme-editor" v-if="meme">
@@ -15,6 +15,8 @@
                 <button @click="memeStore.addLine">Add line</button>
                 <button @click="clearMeme">clear</button>
                 <button @click="memeStore.removeLine">Remove line</button>
+                <button @click="memeStore.setFontSize(5)">Font+</button>
+                <button @click="memeStore.setFontSize(-5)">Font-</button>
             </section>
         </section>
     </main>
@@ -41,9 +43,10 @@ watch(meme, onUpdateMeme, { deep: true })
 
 async function loadMeme() {
     const { id } = route.params
-    await memeStore.setMeme(id as string)
+    await memeStore.loadMeme(id as string)
 
-    ctx.setContext()
+    ctx.init()
+    memeStore.init()
     ctx.render()
 }
 
