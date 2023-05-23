@@ -13,10 +13,20 @@
 import { useRouter } from 'vue-router'
 import type { Img } from '../models/Img.model'
 import { imgService } from '../services/img.service'
-import { useService } from '../composables/useService.composable'
+import { onMounted, ref } from 'vue'
+import { showErrorMsg } from '@/services/event-bus.service'
 
 const router = useRouter()
-const imgs = useService<Img[]>(imgService.query)
+const imgs = ref<Img[]>(null!)
+
+onMounted(async () => {
+    try {
+        imgs.value = await imgService.query()
+    }
+    catch (err) {
+        showErrorMsg('Error loading imgs...')
+    }
+})
 
 function onImgSelect(imgId: string) {
     router.push(`/editor/${imgId}`)

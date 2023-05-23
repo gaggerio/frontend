@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import EditorView from '../views/EditorView.vue'
 import ExploreView from '../views/ExploreView.vue'
+import GagDetailsView from '../views/GagDetailsView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
             path: '/explore',
             name: 'explore',
             component: ExploreView
+        },
+        {
+            path: '/details/:id',
+            name: 'details',
+            component: GagDetailsView
         },
     ]
 })
