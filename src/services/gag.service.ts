@@ -72,8 +72,8 @@ function getEmptyComment(): Comment {
     const imgs = imgService.getImgUrls()
     return {
         _id: utilService.makeId(),
-        createBy: userService.getEmptyUser(),
-        createAt: Date.now(),
+        createdBy: userService.getEmptyUser(),
+        createdAt: Date.now(),
         text: utilService.getLorem(),
         attachments: chance > 0.5 ? imgs[utilService.getRandomIntInc(0, imgs.length - 1)] : '',
         rate: {
@@ -105,6 +105,11 @@ function _createGag(name: string) {
 }
 
 ; (() => {
+    // const _gags = []
+    // for (let i = 0; i < 15; i++) {
+    //     _gags.push(getEmptyGag())
+    // }
+    // console.log(JSON.stringify(_gags))
     if (ENV !== 'local') return
     let gags = utilService.loadFromStorage(GAG_KEY)
     if (!gags || !gags.length) {

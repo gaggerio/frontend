@@ -12,8 +12,8 @@ export interface Gag {
 
 export interface Comment {
     _id: string
-    createBy: User
-    createAt: number
+    createdBy: User
+    createdAt: number
     text: string
     attachments: string
     rate: Rate
