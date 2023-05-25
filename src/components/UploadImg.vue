@@ -1,6 +1,6 @@
 <template>
     <label @drop.prevent="handleDrop" @dragover.prevent>
-        <img :src="src" alt="">
+        <img :src="src" alt="" v-if="showPreview">
         <input type="file" @change="handleChange" hidden>
     </label>
 </template>
@@ -13,7 +13,8 @@ import { utilService } from '../services/util.service';
 
 const emit = defineEmits(['uploaded'])
 const props = defineProps({
-    imgUrl: String
+    imgUrl: String,
+    showPreview: Boolean
 })
 
 function handleChange(ev: Event) {

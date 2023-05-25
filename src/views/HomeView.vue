@@ -13,6 +13,6 @@ import GagList from '../components/GagList.vue'
 
 const store = useStore()
 const gags = computed(() => {
-    return store.getters.getGags
+    return store.getters.gags
 })
 </script>

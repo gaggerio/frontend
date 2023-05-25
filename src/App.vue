@@ -16,5 +16,6 @@ import UserMsg from './components/UserMsg.vue'
 
 const store = useStore()
 store.dispatch({ type: 'loadLoggedinUser' })
-store.dispatch({ type: 'loadGags', filterBy: { txt: '' } })
+store.dispatch({ type: 'loadGags' })
+// store.dispatch({ type: 'loadComments' })
 </script>

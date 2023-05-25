@@ -4,7 +4,7 @@ import type { Img } from "@/models/Img.model"
 import { utilService } from "./util.service"
 import { imgService } from "./img.service"
 
-const KEY = 'curr_meme'
+const STORAGE_KEY = 'curr_meme'
 
 export const memeService = {
     save,
@@ -29,15 +29,15 @@ async function getMeme(imgId: string): Promise<Meme> {
 }
 
 function load(): Meme | null {
-    return utilService.loadFromSession(KEY)
+    return utilService.loadFromSession(STORAGE_KEY)
 }
 
 function save(meme: Meme): void {
-    utilService.saveToSession(KEY, meme)
+    utilService.saveToSession(STORAGE_KEY, meme)
 }
 
 function clear(): void {
-    utilService.saveToSession(KEY, null)
+    utilService.saveToSession(STORAGE_KEY, null)
 }
 
 function createMeme(img: Img): Meme {

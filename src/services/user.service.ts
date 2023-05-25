@@ -4,7 +4,7 @@ import { utilService } from './util.service'
 import type { User } from '../models/User.model'
 
 const LOGGEIN_USER_KEY = 'loggedinUser'
-const USER_KEY = 'user_db'
+const STORAGE_KEY = 'user_db'
 const ENV = import.meta.env.VITE_ENV
 const API = 'auth'
 
@@ -30,7 +30,7 @@ async function signup(credentials: User) {
     if (!credentials.imgUrl) credentials.imgUrl = utilService.getIcon('user')
 
     const user = ENV === 'local' ?
-        await storageService.post(USER_KEY, credentials) :
+        await storageService.post(STORAGE_KEY, credentials) :
         await await httpService.post(`${API}/signup`, credentials)
 
     return saveLocalUser(user)
@@ -44,7 +44,7 @@ async function logout() {
 
 async function update(user: User) {
     const savedUser = ENV === 'local' ?
-        await storageService.put(USER_KEY, user) :
+        await storageService.put(STORAGE_KEY, user) :
         await httpService.put(`${API}/${user._id}`, user)
 
     saveLocalUser(savedUser)
@@ -52,7 +52,7 @@ async function update(user: User) {
 }
 
 async function _checkLogin(credentials: User) {
-    const users = await storageService.query(USER_KEY)
+    const users = await storageService.query(STORAGE_KEY)
     const user = users.find((user: User) =>
         user.username === credentials.username &&
         user.password === credentials.password
@@ -89,11 +89,11 @@ function defaultProfilePic() {
 ; (async () => {
     if (ENV !== 'local') return
 
-    const users = await storageService.query(USER_KEY)
+    const users = await storageService.query(STORAGE_KEY)
     if (!users || !users.length) {
         await signup({ fullname: 'Puki Norma', username: 'puki', password: '123', isAdmin: false, imgUrl: defaultProfilePic() })
         await signup({ fullname: 'Master Adminov', username: 'admin', password: '123', isAdmin: true, imgUrl: defaultProfilePic() })
         await signup({ fullname: 'Muki G', username: 'muki', password: '123', isAdmin: false, imgUrl: defaultProfilePic() })
-        await storageService.postMany(USER_KEY, users)
+        await storageService.postMany(STORAGE_KEY, users)
     }
 })()

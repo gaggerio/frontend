@@ -13,7 +13,7 @@ const store: Store<RootState> = createStore({
     strict: import.meta.env.NODE_ENV !== 'production',
     modules: {
         userStore,
-        gagStore
+        gagStore,
     }
 })
 

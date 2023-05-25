@@ -5,7 +5,7 @@ import type { FilterBy } from '../models/FilterBy.model'
 import { httpService } from './http.service'
 import gImgs from '../../data/img.json'
 
-const IMG_KEY = 'img_db'
+const STORAGE_KEY = 'img_db'
 const API = 'img'
 const ENV = import.meta.env.VITE_ENV
 
@@ -24,21 +24,14 @@ async function query(filterBy: FilterBy = { txt: '' }): Promise<Img[]> {
 
 function getById(itemId: string) {
     return ENV === 'local' ?
-        storageService.get(IMG_KEY, itemId) :
+        storageService.get(STORAGE_KEY, itemId) :
         httpService.get(`${API}/${itemId}`)
 }
 
 async function _filteredImgs(filterBy: FilterBy) {
-    let imgs: Img[] = await storageService.query(IMG_KEY)
-    // if (!filterBy) return imgs
-
-    // imgs = imgs.filter(img => {
-    //     if (!img.keywords.includes(filterBy.txt)) return false
-    //     else return img
-    // })
+    let imgs: Img[] = await storageService.query(STORAGE_KEY)
     return imgs
 }
-
 
 function getImgUrls(): string[] {
     return gImgs.map(img => {
@@ -54,13 +47,13 @@ function getImgSrc(img: Img): string {
 
 ; (async () => {
     try {
-        let imgs = await storageService.query(IMG_KEY) || []
+        let imgs = await storageService.query(STORAGE_KEY) || []
         if (!imgs.length) {
             imgs = gImgs.map((img) => {
                 img._id = utilService.makeId()
                 return img
             })
-            await storageService.postMany(IMG_KEY, imgs)
+            await storageService.postMany(STORAGE_KEY, imgs)
         }
     }
     catch (err) {
