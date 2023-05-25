@@ -11,6 +11,7 @@ const GAG_KEY = 'gag_db'
 const API = 'gag'
 const ENV = import.meta.env.VITE_ENV
 
+type Data = { imgUrl: string, title: string }
 export const gagService = {
     query,
     getById,
@@ -31,12 +32,10 @@ function getById(gagId: string) {
         httpService.get(`${API}/${gagId}`)
 }
 
-function save(gagToSave: Gag) {
-    const method = gagToSave._id ? 'put' : 'post'
-
+function save(data: Data) {
     return ENV === 'local' ?
-        storageService[method](GAG_KEY, gagToSave) :
-        httpService[method](API, gagToSave)
+        _createGag(data) :
+        httpService.get(API, data)
 }
 
 function remove(gagId: string) {
@@ -95,13 +94,19 @@ async function _filteredGags(filterBy: FilterBy) {
     return gags
 }
 
-function _createGag(name: string) {
-    return {
-        _id: utilService.makeId(),
-        name: name,
-        price: utilService.getRandomIntInc(10, 100),
-        imgUrl: utilService.getIcon(name)
+function _createGag({ title, imgUrl }: Data) {
+    const gag = {
+        title,
+        createdAt: Date.now(),
+        createdBy: userService.getEmptyUser(),
+        imgUrl,
+        rate: {
+            dislike: 0,
+            like: 0
+        },
+        comments: [],
     }
+    return storageService.post(GAG_KEY, gag)
 }
 
 ; (() => {

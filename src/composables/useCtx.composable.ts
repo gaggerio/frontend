@@ -3,6 +3,7 @@ import type { Img } from '@/models/Img.model'
 import { ref } from 'vue'
 import { useMemeStore } from '../composables/useMemeStore.composable'
 import { memeService } from '@/services/meme.service'
+import { imgService } from '@/services/img.service'
 
 /**
 Represents a composable for managing the canvas context and rendering functions.
@@ -51,7 +52,7 @@ export function useCtx() {
     function drawImg(): Promise<void> {
         return new Promise((resolve) => {
             const elImg = new Image()
-            elImg.src = memeStore.img.value.url
+            elImg.src = imgService.getImgSrc(memeStore.img.value)
             elImg.onload = () => {
                 const { width, height } = elCanvas.value
                 ctx.drawImage(elImg, 0, 0, width, height)
@@ -204,6 +205,16 @@ export function useCtx() {
         startPos.value = mousePos
     }
 
+    /**
+     * 
+     * @returns Returns the content of the current canvas as an image.
+     */
+    async function dataUrl() {
+        await drawImg()
+        drawLines()
+        return elCanvas.value.toDataURL()
+    }
+
     return {
         elCanvas,
         init,
@@ -214,5 +225,6 @@ export function useCtx() {
         onMouseOver,
         onMouseDown,
         onMouseUp,
+        dataUrl
     }
 }

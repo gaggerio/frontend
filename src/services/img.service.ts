@@ -12,7 +12,8 @@ const ENV = import.meta.env.VITE_ENV
 export const imgService = {
     query,
     getById,
-    getImgUrls
+    getImgUrls,
+    getImgSrc
 }
 
 async function query(filterBy: FilterBy = { txt: '' }): Promise<Img[]> {
@@ -38,10 +39,17 @@ async function _filteredImgs(filterBy: FilterBy) {
     return imgs
 }
 
+
 function getImgUrls(): string[] {
     return gImgs.map(img => {
         return img.url
     })
+}
+
+function getImgSrc(img: Img): string {
+    const proxyUrl = ENV === 'local' ?
+        'http://localhost:5173/proxy' : '/proxy'
+    return `${proxyUrl}/?url=${encodeURIComponent(img.url)}`
 }
 
 ; (async () => {

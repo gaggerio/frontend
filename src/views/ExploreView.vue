@@ -1,6 +1,6 @@
 <template>
     <main class="explore-view">
-        <h1>Image Gallery</h1>
+        <h1>Pick a template</h1>
         <ul class="img-gallery" v-if="imgs">
             <li class="img-preview" v-for="img in imgs" :key="img._id" @click="onImgSelect(img._id)">
                 <img :src="img.url" alt="">

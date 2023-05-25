@@ -1,6 +1,7 @@
 <template>
     <main class="home-view">
         <h1>HOT</h1>
+        <router-link to="/explore">Add Post</router-link>
         <GagList :gags="gags"/>
     </main>
 </template>

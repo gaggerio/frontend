@@ -1,5 +1,5 @@
 export interface Img {
-    _id: string
+    _id?: string
     url: string
     keywords: string[],
     size: {

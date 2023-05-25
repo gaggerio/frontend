@@ -1,8 +1,8 @@
 import { ActionContext } from "vuex"
-import { FilterBy } from "../../models/FilterBy.model"
-import { Gag } from "../../models/Gag.model"
+import type { FilterBy } from "../../models/FilterBy.model"
+import type { Gag } from "../../models/Gag.model"
 import { gagService } from "../../services/gag.service"
-import { RootState } from '../index'
+import type { RootState } from '../index'
 
 export interface GagState {
     gags: Gag[] | null
@@ -14,6 +14,10 @@ interface Payload {
     gag: Gag
     gagId: string
     filterBy: FilterBy
+    data: {
+        imgUrl: string
+        title: string
+    }
 }
 
 type Context = ActionContext<GagState, RootState>
@@ -36,7 +40,7 @@ export const gagStore = {
             const idx = gags.findIndex(gag => gag._id === gagId)
             if (idx >= 0) gags.splice(idx, 1)
         },
-        addGag({ gags }: GagState, { savedGag }: Payload) {
+        saveGag({ gags }: GagState, { savedGag }: Payload) {
             if (!gags) return
             gags.unshift(savedGag)
         },
@@ -67,16 +71,16 @@ export const gagStore = {
                 throw Error
             }
         },
-        async saveGag({ commit }: Context, { gag }: Payload) {
-            const type = gag._id ? 'updateGag' : 'addGag'
+        async saveGag({ commit }: Context, { data }: Payload) {
             try {
-                const savedGag = await gagService.save(gag)
-                commit({ type, savedGag })
+                const savedGag = await gagService.save(data)
+                commit({ type: 'saveGag', savedGag })
             }
             catch (err) {
                 console.dir(err)
                 throw Error
             }
         }
+
     }
 }

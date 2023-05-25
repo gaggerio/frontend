@@ -24,7 +24,7 @@ function get(entityType: string, entityId: string) {
 function post(entityType: string, newEntity: Entity) {
     newEntity._id = _makeId()
     return query(entityType).then(entities => {
-        entities.push(newEntity)
+        entities.unshift(newEntity)
         _save(entityType, entities)
         return newEntity
     })
@@ -32,7 +32,7 @@ function post(entityType: string, newEntity: Entity) {
 
 function postMany(entityType: string, newEntities: Entity[]) {
     return query(entityType).then(entities => {
-        entities.push(...newEntities)
+        entities.unshift(...newEntities)
         _save(entityType, entities)
         return entities
     })

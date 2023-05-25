@@ -11,7 +11,18 @@ export default defineConfig({
   server: {
     watch: {
       usePolling: true
-    }
+    },
+    proxy: {
+      '^/proxy': {
+        target: 'http://localhost:3100', // Update with your proxy server URL
+        changeOrigin: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      },
+    },
   },
   resolve: {
     alias: {
