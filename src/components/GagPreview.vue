@@ -1,5 +1,5 @@
 <template>
-    <li class="gag-preview" v-if="gag" @click="goToGag">
+    <article class="gag-preview" v-if="gag" @click="$router.push(`/details/${gag._id}`)">
         <section class="header flex items-center gap-1">
             <UserPreview :user="gag.createdBy" />
             <span>{{ createdAt }}</span>
@@ -8,12 +8,7 @@
             <h2>{{ gag.title }}</h2>
             <img :src="gag.imgUrl" alt="">
         </section>
-        <section class="footer">
-            <span @click.stop="changeRate('up')">Up: {{ gag.rate.up }}</span>
-            <span @click.stop="changeRate('down')">Down: {{ gag.rate.down }}</span>
-            <span @click="goToGag">Comments: {{ commentCount }}</span>
-        </section>
-    </li>
+    </article>
 </template>
 
 <script setup lang="ts">
@@ -25,7 +20,6 @@ import UserPreview from './UserPreview.vue'
 
 const router = useRouter()
 
-const emit = defineEmits('changeRate')
 const props = defineProps({
     gag: {
         type: Object as PropType<Gag>,
@@ -37,16 +31,4 @@ const createdAt = computed<string>(() => {
     if (!props.gag) return ''
     return new Date(props.gag.createdAt).getHours().toString()
 })
-
-const commentCount = computed<number>(() => {
-    return props.gag.comments.length
-})
-
-function goToGag() {
-    router.push(`/details/${props.gag?._id}`)
-}
-
-function changeRate(dir: string) {
-    emit('changeRate', { dir, gagId: props.gag._id })
-}
 </script>

@@ -103,7 +103,7 @@ function _createRandomGags() {
 
 function _createRandomGag() {
     const _id = utilService.makeId()
-    const imgUrl = imgService.getRandomImg()
+    const imgUrl = imgService.getRandomImg().url
     const comments = commentService.getRandomComments(_id)
 
     const gag = {
