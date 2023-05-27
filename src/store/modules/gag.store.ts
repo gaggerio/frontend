@@ -5,6 +5,7 @@ import type { Gag } from "../../models/Gag.model"
 import { gagService } from "../../services/gag.service"
 import { commentService } from '@/services/comment.service'
 import type { Comment, CommentForm } from '@/models/Comment.model'
+import { uploadImg } from '@/services/upload.service'
 
 export interface GagState {
     gags: Gag[] | null,
@@ -67,6 +68,7 @@ export const gagStore = {
             if (idx >= 0) gags.splice(idx, 1, savedGag)
         },
         saveComment({ gags, currGagId }: GagState, { savedComment }: Payload) {
+            console.log('setting comment', savedComment)
             const gag = gags?.find(g => g._id === currGagId)
             if (gag) gag.comments.unshift(savedComment)
         }
@@ -92,9 +94,16 @@ export const gagStore = {
                 throw Error
             }
         },
-        async saveComment({ commit }: Context, { commentForm }: Payload) {
+        async saveComment({ commit, getters }: Context, { commentForm }: Payload) {
             try {
-                const savedComment = await commentService.save(commentForm)
+                const file = await uploadImg(commentForm.file)
+                const commentToSave = {
+                    text: commentForm.text,
+                    file: file ? file.url : '',
+                    gagId: getters.currGagId
+                }
+                console.log(commentToSave)
+                const savedComment = await commentService.save(commentToSave)
                 commit({ type: 'saveComment', savedComment })
             }
             catch (err) {
@@ -104,6 +113,6 @@ export const gagStore = {
         },
         setCurrGagId({ commit }: Context, payload: Payload) {
             commit(payload)
-        }
+        },
     }
 }

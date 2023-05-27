@@ -45,14 +45,14 @@ function getRandomComment(gagId: string): Comment {
     }
 }
 
-function _createComment({ text, fileUrl, gagId }: CommentForm): Promise<Comment> {
+function _createComment({ text, file, gagId }: CommentForm): Promise<Comment> {
     const comment = {
         _id: utilService.makeId(),
         gagId,
         createdBy: userService.getLoggedinUser(),
         createdAt: Date.now(),
         text,
-        attachments: fileUrl,
+        attachments: file,
         rate: {
             dislike: 0,
             like: 0

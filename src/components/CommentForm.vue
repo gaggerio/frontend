@@ -1,36 +1,27 @@
 <template>
     <form @submit.prevent="postComment">
         <input type="file" @change="handleFile">
-        <input type="text" v-model="comment.text">
+        <input type="text" v-model="text" placeholder="Comment on post">
         <button>Post</button>
     </form>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
-import { uploadImg } from '../services/upload.service'
-import type { CommentForm } from '../models/Comment.model'
 import { useStore } from 'vuex'
-import { useRoute } from 'vue-router'
 import { showSuccessMsg } from '../services/event-bus.service'
+import { ref } from 'vue'
 
 const store = useStore()
-const route = useRoute()
-
-const comment = reactive<CommentForm>({
-    text: '',
-    file: null!
-})
+const text = ref<string>('')
+const file = ref<File>(null!)
 
 async function postComment() {
     try {
-        const { url } = await uploadImg(comment.file)
-        const { id } = route.params
         store.dispatch({
-            type: 'addComment', commentForm: {
-                text: comment.text,
-                fileUrl: url,
-                gagId: id
+            type: 'saveComment',
+            commentForm: {
+                text: text.value,
+                file: file.value
             }
         })
         showSuccessMsg('Comment Posted')
@@ -44,6 +35,6 @@ async function postComment() {
 function handleFile(ev: Event) {
     const files = (ev.target as HTMLInputElement).files
     if (!files) return
-    comment.file = files[0]
+    file.value = files[0]
 }
 </script>

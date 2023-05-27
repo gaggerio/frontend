@@ -2,6 +2,7 @@
     <main v-if="gag">
         <router-link to="/">Back</router-link>
         <GagPreview :gag="gag" />
+        <CommentForm />
         <CommentList :comments="gag.comments" />
     </main>
 </template>
@@ -14,6 +15,7 @@ import { showErrorMsg } from '../services/event-bus.service'
 import type { Gag } from '../models/Gag.model'
 import GagPreview from '../components/GagPreview.vue'
 import CommentList from '../components/CommentList.vue'
+import CommentForm from '../components/CommentForm.vue'
 
 const route = useRoute()
 const store = useStore()

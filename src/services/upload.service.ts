@@ -10,7 +10,7 @@ export interface CloudinaryResponse {
 }
 
 export async function uploadImg(file: File | string): Promise<CloudinaryResponse | null> {
-
+    if (!file) return null
     const FORM_DATA = new FormData()
 
     FORM_DATA.append('file', file)

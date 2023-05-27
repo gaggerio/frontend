@@ -5,6 +5,7 @@
             <span>{{ createdAt }}</span>
         </section>
         <section class="main">
+            <img :src="comment.attachments" alt="" v-if="comment.attachments">
             <p>{{ comment.text }}</p>
         </section>
         <section class="footer flex gap-1">
@@ -18,7 +19,7 @@
 
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { Comment } from '../models/Gag.model'
+import type { Comment } from '../models/Comment.model'
 import UserPreview from './UserPreview.vue'
 import { computed } from 'vue'
 

@@ -13,6 +13,6 @@ export interface Comment {
 
 export interface CommentForm {
     text: string,
-    fileUrl: string,
+    file: string,
     gagId: string
 }

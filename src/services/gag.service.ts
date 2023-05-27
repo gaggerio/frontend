@@ -42,29 +42,40 @@ function save(data: Data) {
 
 function getRandomGag() {
     const imgs = imgService.getImgUrls()
+    const _id = utilService.makeId()
+    const comments: Comment[] = []
+    for (let i = 0; i < utilService.getRandomIntInc(0, 25); i++) {
+        const comment = commentService.getRandomComment(_id)
+        comments.push(comment)
+    }
     const gag = {
-        _id: utilService.makeId(),
+        _id,
         title: utilService.getLorem().slice(0, 80),
         createdAt: Date.now(),
         createdBy: userService.getEmptyUser(),
         imgUrl: imgs[utilService.getRandomIntInc(0, imgs.length - 1)],
-        comments: [],
+        comments,
         rate: {
             dislike: utilService.getRandomIntInc(0, 50),
             like: utilService.getRandomIntInc(0, 110)
         },
     }
-    const comments: Comment[] = []
-    for (let i = 0; i < utilService.getRandomIntInc(0, 25); i++) {
-        comments.push(commentService.getRandomComment(gag._id))
-    }
-    gag.comments = comments
     return [gag, comments]
 }
 
 async function _filteredGags(filterBy: FilterBy) {
     let gags: Gag[] = await storageService.query(STORAGE_KEY)
+    let comments: Comment[] = await commentService.query()
+
+    gags = aggregate(gags, comments)
     return gags
+}
+
+function aggregate(gags: Gag[], comments: Comment[]): Gag[] {
+    return gags.map(gag => {
+        gag.comments = comments.filter(c => c.gagId === gag._id)
+        return gag
+    })
 }
 
 function _createGag({ title, imgUrl }: Data) {
@@ -88,7 +99,7 @@ function _createGag({ title, imgUrl }: Data) {
     // for (let i = 0; i < 25; i++) {
     //     const [gag, comments] = getRandomGag()
     //     gags.push(gag)
-    //     allComments.push(comments)
+    //     allComments.push(...comments)
 
     // }
     // console.log(JSON.stringify(gags))
