@@ -49,10 +49,21 @@ export const gagStore = {
             const gag = gags?.find(g => g._id === currGagId)
             if (gag) gag.comments.unshift(savedComment)
         },
-        updateRate({ gags }: GagState, { rateData }: Payload) {
+        updateGagRate({ gags }: GagState, { rateData }: Payload) {
             const { gagId, dir, diff } = rateData
             const gag = gags.find((g: Gag) => g._id === gagId)
-            if (gag) gag.rate[dir] += diff
+            if (!gag) return
+            if (gag.rate[dir] + diff < 0) return
+            gag.rate[dir] += diff
+
+        },
+        updateCommentRate({ gags }: GagState, { rateData }: Payload) {
+            const { gagId, dir, diff, commentId } = rateData
+            const gag = gags.find((g: Gag) => g._id === gagId)
+            const comment = gag?.comments.find(c => c._id === commentId)
+            if (!gag || !comment) return
+            if (comment.rate[dir] + diff < 0) return
+            comment.rate[dir] += diff
         }
     },
     actions: gagActions

@@ -23,10 +23,10 @@ export const gagService = {
     updateRate
 }
 
-async function query(filterBy: FilterBy) {
+function query(filterBy: FilterBy) {
     return ENV === 'local' ?
-        await _filteredGags(filterBy) :
-        await httpService.get(API, filterBy)
+        _filteredGags(filterBy) :
+        httpService.get(API, filterBy)
 }
 
 function getById(gagId: string) {
@@ -47,7 +47,7 @@ function update(gag: Gag) {
         httpService.put(API, gag)
 }
 
-async function updateRate(gagId: string, dir: string, diff: number) {
+function updateRate(gagId: string, dir: string, diff: number) {
     return ENV === 'local' ?
         _updateRate(gagId, dir, diff) :
         httpService.post(`${API}/rate`, { gagId, dir, diff })

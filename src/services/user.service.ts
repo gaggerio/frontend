@@ -51,6 +51,11 @@ function createUser({ username, fullname, imgUrl }: Credentials): User {
             up: [],
             down: [],
             uploaded: []
+        },
+        comment: {
+            up: [],
+            down: [],
+            posted: []
         }
     }
 }
@@ -73,6 +78,11 @@ function _createRandomUser(fullname: string): User {
             up: [],
             down: [],
             uploaded: []
+        },
+        comment: {
+            up: [],
+            down: [],
+            posted: []
         }
     }
 }

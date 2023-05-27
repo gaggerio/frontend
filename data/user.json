@@ -1,112 +1,162 @@
 [
     {
-        "_id": "EBkYM",
-        "username": "funny_elephant",
+        "_id": "chmTx",
+        "username": "brave_tiger",
         "fullname": "Baba Jom",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "xh5rz",
-        "username": "happy_tiger",
+        "_id": "tlRxw",
+        "username": "smart_lion",
         "fullname": "John Doe",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "YOfQy",
-        "username": "funny_cat",
+        "_id": "ee3HC",
+        "username": "silly_elephant",
         "fullname": "Alice Smith",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "HdCPW",
-        "username": "sad_panda",
+        "_id": "GS1Ki",
+        "username": "silly_lion",
         "fullname": "David Johnson",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "m229V",
-        "username": "happy_monkey",
+        "_id": "7giPf",
+        "username": "wild_monkey",
         "fullname": "Emma Brown",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "HIBax",
-        "username": "sad_dog",
+        "_id": "Gm1eQ",
+        "username": "wild_bird",
         "fullname": "Michael Davis",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "Mf5ow",
-        "username": "gentle_lion",
+        "_id": "TvZYR",
+        "username": "sad_lion",
         "fullname": "Olivia Wilson",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "tTvsm",
-        "username": "gentle_bird",
+        "_id": "VKwkS",
+        "username": "gentle_cat",
         "fullname": "James Martinez",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "fKVeZ",
-        "username": "sad_monkey",
+        "_id": "dj9qt",
+        "username": "funny_elephant",
         "fullname": "Sophia Anderson",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     },
     {
-        "_id": "iAqwx",
-        "username": "silly_bird",
+        "_id": "STaOX",
+        "username": "clever_elephant",
         "fullname": "William Taylor",
         "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
         "gag": {
             "up": [],
             "down": [],
             "uploaded": []
+        },
+        "comment": {
+            "up": [],
+            "down": [],
+            "posted": []
         }
     }
 ]

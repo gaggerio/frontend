@@ -14,13 +14,15 @@ const ENV = import.meta.env.VITE_ENV
 export const commentService = {
     query,
     save,
+    update,
+    updateRate,
     getRandomComments,
 }
 
-async function query(): Promise<Comment[]> {
+function query(): Promise<Comment[]> {
     return ENV === 'local' ?
-        await storageService.query(STORAGE_KEY) :
-        await httpService.get(API)
+        storageService.query(STORAGE_KEY) :
+        httpService.get(API)
 }
 
 function save(commentFrom: CommentForm): Promise<Comment> {
@@ -29,8 +31,32 @@ function save(commentFrom: CommentForm): Promise<Comment> {
         httpService.get(API, commentFrom)
 }
 
+function update(comment: Comment): Promise<Comment> {
+    return ENV === 'local' ?
+        storageService.put(STORAGE_KEY, comment) :
+        httpService.put(API, comment)
+}
+
+function getById(commentId: string): Promise<Comment> {
+    return ENV === 'local' ?
+        storageService.get(STORAGE_KEY, commentId) :
+        httpService.get(`${API}/${commentId}`)
+}
+
+function updateRate(commentId: string, dir: string, diff: number) {
+    return ENV === 'local' ?
+        _updateRate(commentId, dir, diff) :
+        httpService.post(`${API}/rate`, { commentId, dir, diff })
+}
+
+async function _updateRate(commentId: string, dir: string, diff: number) {
+    const gag = await getById(commentId)
+    gag.rate[dir] += diff
+    return update(gag)
+}
+
 function _createComment({ text, file, gagId }: CommentForm): Promise<Comment> {
-    const comment = {
+    const comment: Comment = {
         _id: utilService.makeId(),
         gagId,
         createdBy: authService.getLoggedinUser(),
@@ -38,8 +64,8 @@ function _createComment({ text, file, gagId }: CommentForm): Promise<Comment> {
         text,
         attachments: file,
         rate: {
-            dislike: 0,
-            like: 0
+            up: 0,
+            down: 0
         },
     }
     return storageService.post(STORAGE_KEY, comment)

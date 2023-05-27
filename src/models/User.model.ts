@@ -8,6 +8,11 @@ export interface User {
         down: string[]
         uploaded: string[]
     }
+    comment: {
+        up: string[]
+        down: string[]
+        posted: string[]
+    }
 }
 
 export interface Credentials {

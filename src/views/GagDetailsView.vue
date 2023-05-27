@@ -2,9 +2,9 @@
     <main v-if="gag">
         <router-link to="/">Back</router-link>
         <GagPreview :gag="gag" />
-        <GagActions :gag="gag" @changeRate="changeRate" />
+        <GagRate :gag="gag" @changeGagRate="changeGagRate" />
         <CommentForm />
-        <CommentList :comments="gag.comments"  />
+        <CommentList :comments="gag.comments" @changeCommentRate="changeCommentRate" />
     </main>
 </template>
 
@@ -15,9 +15,9 @@ import { useRoute } from 'vue-router'
 import { showErrorMsg } from '../services/event-bus.service'
 import type { Gag } from '../models/Gag.model'
 import GagPreview from '../components/GagPreview.vue'
-import GagActions from '../components/GagActions.vue'
 import CommentList from '../components/CommentList.vue'
 import CommentForm from '../components/CommentForm.vue'
+import GagRate from '../components/GagRate.vue'
 
 const route = useRoute()
 const store = useStore()
@@ -33,10 +33,20 @@ onMounted(async () => {
     }
     catch (err) {
         showErrorMsg('Gag not found')
-    } 
+    }
 })
 
-async function changeRate(rateData: { gagId: string, dir: string }) {
-    store.dispatch({ type: 'changeRate', rateData })
+function changeGagRate(rateData: { gagId: string, dir: string }) {
+    store.dispatch({ type: 'changeGagRate', rateData })
+}
+
+function changeCommentRate(rateData: { commentId: string, dir: string }) {
+    store.dispatch({
+        type: 'changeCommentRate',
+        rateData: {
+            ...rateData,
+            gagId: gag.value._id
+        }
+    })
 }
 </script>
