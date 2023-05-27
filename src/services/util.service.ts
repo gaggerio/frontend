@@ -9,7 +9,9 @@ export const utilService = {
     delay,
     getHeaderLinks,
     getIcon,
-    getLorem
+    getLorem,
+    getRandomNames,
+    getRandomUsername
 }
 
 
@@ -97,4 +99,29 @@ function getIcon(iconName: string) {
 
 function getLorem(): string {
     return 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.'
+}
+
+function getRandomNames(): string[] {
+    return [
+        'Baba Jom',
+        'John Doe',
+        'Alice Smith',
+        'David Johnson',
+        'Emma Brown',
+        'Michael Davis',
+        'Olivia Wilson',
+        'James Martinez',
+        'Sophia Anderson',
+        'William Taylor'
+    ]
+}
+
+function getRandomUsername(): string {
+    const adjectives = ['happy', 'sad', 'funny', 'brave', 'clever', 'kind', 'gentle', 'wild', 'smart', 'silly']
+    const nouns = ['cat', 'dog', 'bird', 'elephant', 'lion', 'tiger', 'monkey', 'dolphin', 'snake', 'panda']
+
+    const randomAdjective = adjectives[getRandomIntInc(0, adjectives.length - 1)]
+    const randomNoun = nouns[getRandomIntInc(0, nouns.length - 1)]
+
+    return randomAdjective + '_' + randomNoun
 }

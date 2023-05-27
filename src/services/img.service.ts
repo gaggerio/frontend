@@ -12,7 +12,7 @@ const ENV = import.meta.env.VITE_ENV
 export const imgService = {
     query,
     getById,
-    getImgUrls,
+    getRandomImg,
     getImgSrc
 }
 
@@ -33,10 +33,8 @@ async function _filteredImgs(filterBy: FilterBy) {
     return imgs
 }
 
-function getImgUrls(): string[] {
-    return gImgs.map(img => {
-        return img.url
-    })
+function getRandomImg() {
+    return gImgs[utilService.getRandomIntInc(0, gImgs.length - 1)]
 }
 
 function getImgSrc(img: Img): string {

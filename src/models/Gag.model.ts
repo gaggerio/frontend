@@ -12,6 +12,6 @@ export interface Gag {
 }
 
 export type Rate = {
-    dislike: number
-    like: number
+    up: number
+    down: number
 }

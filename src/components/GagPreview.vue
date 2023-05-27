@@ -9,8 +9,8 @@
             <img :src="gag.imgUrl" alt="">
         </section>
         <section class="footer">
-            <span>Likes: {{ gag.rate.like }}</span>
-            <span>Dislike: {{ gag.rate.dislike }}</span>
+            <span @click.stop="changeRate('up')">Up: {{ gag.rate.up }}</span>
+            <span @click.stop="changeRate('down')">Down: {{ gag.rate.down }}</span>
             <span @click="goToGag">Comments: {{ commentCount }}</span>
         </section>
     </li>
@@ -25,6 +25,7 @@ import UserPreview from './UserPreview.vue'
 
 const router = useRouter()
 
+const emit = defineEmits('changeRate')
 const props = defineProps({
     gag: {
         type: Object as PropType<Gag>,
@@ -43,5 +44,9 @@ const commentCount = computed<number>(() => {
 
 function goToGag() {
     router.push(`/details/${props.gag?._id}`)
+}
+
+function changeRate(dir: string) {
+    emit('changeRate', { dir, gagId: props.gag._id })
 }
 </script>

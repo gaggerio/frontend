@@ -1,0 +1,112 @@
+[
+    {
+        "_id": "EBkYM",
+        "username": "funny_elephant",
+        "fullname": "Baba Jom",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "xh5rz",
+        "username": "happy_tiger",
+        "fullname": "John Doe",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "YOfQy",
+        "username": "funny_cat",
+        "fullname": "Alice Smith",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "HdCPW",
+        "username": "sad_panda",
+        "fullname": "David Johnson",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "m229V",
+        "username": "happy_monkey",
+        "fullname": "Emma Brown",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "HIBax",
+        "username": "sad_dog",
+        "fullname": "Michael Davis",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "Mf5ow",
+        "username": "gentle_lion",
+        "fullname": "Olivia Wilson",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "tTvsm",
+        "username": "gentle_bird",
+        "fullname": "James Martinez",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "fKVeZ",
+        "username": "sad_monkey",
+        "fullname": "Sophia Anderson",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    },
+    {
+        "_id": "iAqwx",
+        "username": "silly_bird",
+        "fullname": "William Taylor",
+        "imgUrl": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png",
+        "gag": {
+            "up": [],
+            "down": [],
+            "uploaded": []
+        }
+    }
+]

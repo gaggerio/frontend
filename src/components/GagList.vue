@@ -1,6 +1,6 @@
 <template>
     <ul class="gag-list" v-if="gags">
-        <GagPreview v-for="gag in gags" :key="gag._id" :gag="gag" />
+        <GagPreview v-for="gag in gags" :key="gag._id" :gag="gag" @changeRate="changeRate" />
     </ul>
 </template>
 
@@ -12,4 +12,9 @@ import GagPreview from './GagPreview.vue'
 defineProps({
     gags: Array as PropType<Gag[]>
 })
+
+const emit = defineEmits()
+function changeRate(data: { gagId: string, dir: string }) {
+    emit('changeRate', data)
+}
 </script>

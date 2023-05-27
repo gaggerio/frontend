@@ -5,6 +5,7 @@ import { storageService } from "./storage.service"
 import { userService } from "./user.service"
 import { utilService } from "./util.service"
 import gComments from '../../data/comment.json'
+import { authService } from "./auth.service"
 
 const STORAGE_KEY = 'comment_db'
 const API = 'comment'
@@ -13,7 +14,7 @@ const ENV = import.meta.env.VITE_ENV
 export const commentService = {
     query,
     save,
-    getRandomComment,
+    getRandomComments,
 }
 
 async function query(): Promise<Comment[]> {
@@ -28,28 +29,11 @@ function save(commentFrom: CommentForm): Promise<Comment> {
         httpService.get(API, commentFrom)
 }
 
-function getRandomComment(gagId: string): Comment {
-    const chance = Math.random()
-    const imgs = imgService.getImgUrls()
-    return {
-        _id: utilService.makeId(),
-        gagId,
-        createdBy: userService.getEmptyUser(),
-        createdAt: Date.now(),
-        text: utilService.getLorem(),
-        attachments: chance > 0.5 ? imgs[utilService.getRandomIntInc(0, imgs.length - 1)] : '',
-        rate: {
-            dislike: utilService.getRandomIntInc(0, 50),
-            like: utilService.getRandomIntInc(0, 110)
-        },
-    }
-}
-
 function _createComment({ text, file, gagId }: CommentForm): Promise<Comment> {
     const comment = {
         _id: utilService.makeId(),
         gagId,
-        createdBy: userService.getLoggedinUser(),
+        createdBy: authService.getLoggedinUser(),
         createdAt: Date.now(),
         text,
         attachments: file,
@@ -59,6 +43,31 @@ function _createComment({ text, file, gagId }: CommentForm): Promise<Comment> {
         },
     }
     return storageService.post(STORAGE_KEY, comment)
+}
+
+function _getRandomComment(gagId: string): Comment {
+    const chance = Math.random()
+    return {
+        _id: utilService.makeId(),
+        gagId,
+        createdBy: userService.getRandomUser(),
+        createdAt: Date.now(),
+        text: utilService.getLorem(),
+        attachments: chance > 0.5 ? imgService.getRandomImg().url : '',
+        rate: {
+            up: utilService.getRandomIntInc(0, 50),
+            down: utilService.getRandomIntInc(0, 110)
+        },
+    }
+}
+
+function getRandomComments(id: string) {
+    const comments: Comment[] = []
+    for (let i = 0; i < utilService.getRandomIntInc(0, 25); i++) {
+        const comment = _getRandomComment(id)
+        comments.push(comment)
+    }
+    return comments
 }
 
 ; (() => {

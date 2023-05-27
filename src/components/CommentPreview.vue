@@ -10,8 +10,8 @@
         </section>
         <section class="footer flex gap-1">
             <router-link to="/">Reply</router-link>
-            <button>Up {{ comment.rate.like }}</button>
-            <button>Down {{ comment.rate.dislike }}</button>
+            <button @click="$emit('upVoteComment')">Up {{ comment.rate.up }}</button>
+            <button @click="$emit('downVoteComment')">Down {{ comment.rate.down }}</button>
             <button>:</button>
         </section>
     </li>

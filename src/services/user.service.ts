@@ -1,99 +1,87 @@
+import { utilService } from './util.service'
 import { storageService } from './storage.service'
 import { httpService } from './http.service'
-import { utilService } from './util.service'
-import type { User } from '../models/User.model'
+import type { Credentials, User } from '../models/User.model'
+import gUsers from '../../data/user.json'
 
-const LOGGEIN_USER_KEY = 'loggedinUser'
 const STORAGE_KEY = 'user_db'
 const ENV = import.meta.env.VITE_ENV
-const API = 'auth'
+const API = 'user'
 
 export const userService = {
-    login,
-    logout,
-    signup,
-    getLoggedinUser,
-    saveLocalUser,
+    query,
     update,
-    getEmptyUser
+    save,
+    getRandomUser,
+    createUser,
 }
 
-async function login(credentials: User) {
-    const user = ENV === 'local' ?
-        await _checkLogin(credentials) :
-        await httpService.post(`${API}/login`, credentials)
-
-    return (user) ? saveLocalUser(user) : null
+async function query() {
+    return storageService.query(STORAGE_KEY)
 }
 
-async function signup(credentials: User) {
-    if (!credentials.imgUrl) credentials.imgUrl = utilService.getIcon('user')
-
-    const user = ENV === 'local' ?
-        await storageService.post(STORAGE_KEY, credentials) :
-        await await httpService.post(`${API}/signup`, credentials)
-
-    return saveLocalUser(user)
-}
-
-async function logout() {
+async function save(user: User) {
     return ENV === 'local' ?
-        sessionStorage.removeItem(LOGGEIN_USER_KEY) :
-        await httpService.post(`${API}/logout`)
+        await storageService.post(STORAGE_KEY, user) :
+        await httpService.post(`${API}`, user)
 }
 
 async function update(user: User) {
-    const savedUser = ENV === 'local' ?
+    return ENV === 'local' ?
         await storageService.put(STORAGE_KEY, user) :
         await httpService.put(`${API}/${user._id}`, user)
-
-    saveLocalUser(savedUser)
-    return savedUser
 }
 
-async function _checkLogin(credentials: User) {
-    const users = await storageService.query(STORAGE_KEY)
-    const user = users.find((user: User) =>
-        user.username === credentials.username &&
-        user.password === credentials.password
-    )
-    if (user) return user
-    else throw new Error('Wrong credentials')
-}
-
-function saveLocalUser({ _id, fullname, imgUrl }: User) {
-    const user = { _id, fullname, imgUrl }
-    sessionStorage.setItem(LOGGEIN_USER_KEY, JSON.stringify(user))
-    return user
-}
-
-function getLoggedinUser() {
-    const user = sessionStorage.getItem(LOGGEIN_USER_KEY)
-    if (!user) throw new Error('No loggedin user')
-    else return JSON.parse(user)
-}
-
-function getEmptyUser(): User {
-    return {
-        _id: utilService.makeId(),
-        username: 'Baba',
-        fullname: 'Bab Jim',
-        imgUrl: defaultProfilePic()
-    }
+function getRandomUser(): User {
+    const users = utilService.loadFromStorage(STORAGE_KEY)
+    return users[utilService.getRandomIntInc(0, users.length - 1)]
 }
 
 function defaultProfilePic() {
     return 'https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png'
 }
 
-; (async () => {
-    if (ENV !== 'local') return
+function createUser({ username, fullname, imgUrl }: Credentials): User {
+    return {
+        _id: utilService.makeId(),
+        username,
+        fullname,
+        imgUrl: imgUrl ? imgUrl : defaultProfilePic(),
+        gag: {
+            up: [],
+            down: [],
+            uploaded: []
+        }
+    }
+}
 
-    const users = await storageService.query(STORAGE_KEY)
+function _createUsers() {
+    const names = utilService.getRandomNames()
+    const users = names.map(user => {
+        return _createRandomUser(user)
+    })
+    console.log(JSON.stringify(users))
+}
+
+function _createRandomUser(fullname: string): User {
+    return {
+        _id: utilService.makeId(),
+        username: utilService.getRandomUsername(),
+        fullname,
+        imgUrl: defaultProfilePic(),
+        gag: {
+            up: [],
+            down: [],
+            uploaded: []
+        }
+    }
+}
+
+; (() => {
+    // _createUsers()
+    if (ENV !== 'local') return
+    let users = utilService.loadFromStorage(STORAGE_KEY)
     if (!users || !users.length) {
-        await signup({ fullname: 'Puki Norma', username: 'puki', password: '123', isAdmin: false, imgUrl: defaultProfilePic() })
-        await signup({ fullname: 'Master Adminov', username: 'admin', password: '123', isAdmin: true, imgUrl: defaultProfilePic() })
-        await signup({ fullname: 'Muki G', username: 'muki', password: '123', isAdmin: false, imgUrl: defaultProfilePic() })
-        await storageService.postMany(STORAGE_KEY, users)
+        utilService.saveToStorage(STORAGE_KEY, gUsers)
     }
 })()

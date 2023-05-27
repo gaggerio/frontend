@@ -1,8 +1,18 @@
 export interface User {
-    _id?: string
+    _id: string
     username: string,
-    password?: string,
-    fullname?: string,
-    isAdmin?: boolean,
+    fullname: string,
+    imgUrl: string
+    gag: {
+        up: string[]
+        down: string[]
+        uploaded: string[]
+    }
+}
+
+export interface Credentials {
+    username: string
+    password: string
+    fullname: string
     imgUrl: string
 }

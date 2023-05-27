@@ -27,7 +27,7 @@ const gag = computed<Gag>(() => {
 onMounted(async () => {
     try {
         const { id } = route.params
-        store.dispatch({ type: 'setCurrGagId', gagId: id })
+        store.commit({ type: 'setCurrGagId', gagId: id })
     }
     catch (err) {
         showErrorMsg('Gag not found')

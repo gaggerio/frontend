@@ -1,8 +1,8 @@
 import { createStore, Store } from 'vuex'
-import { userStore } from './modules/user.store'
-import { gagStore } from './modules/gag.store'
-import type { UserState } from './modules/user.store'
-import type { GagState } from './modules/gag.store'
+import { userStore } from './modules/user/user.store'
+import { gagStore } from './modules/gag/gag.store'
+import type { UserState } from './modules/user/user.store'
+import type { GagState } from './modules/gag/gag.store'
 
 export interface RootState {
     userStore: UserState,
