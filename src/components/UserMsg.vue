@@ -11,7 +11,6 @@ import { eventBus } from '../services/event-bus.service'
 import type { Msg } from '../services/event-bus.service'
 import { utilService } from '../services/util.service'
 
-
 const msg = ref<Msg | null>(null)
 const unsub = eventBus.on('show-msg', showMsg)
 

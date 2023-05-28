@@ -14,12 +14,12 @@
 
 <script lang="ts" setup>
 import { reactive, ref, computed } from 'vue'
-import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import UploadImg from '../components/UploadImg.vue'
+import { useUserStore } from '@/stores/user.store'
 
-const store = useStore()
+const userStore = useUserStore()
 const router = useRouter()
 
 const credentials = reactive({
@@ -34,11 +34,8 @@ const isSignUp = ref(false)
 async function login() {
     try {
         const type = isSignUp.value ? 'signup' : 'login'
-        const user = await store.dispatch({
-            type,
-            credentials: { ...credentials }
-        })
-        showSuccessMsg('Welcom ' + user.fullname)
+        await userStore[type]({ ...credentials })
+        showSuccessMsg('Welcom ' + userStore.getLoggedinUser?.fullname)
         router.push('/')
     }
     catch (err) {

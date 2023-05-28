@@ -8,6 +8,7 @@ import gGags from '../../data/gag.json'
 import { imgService } from "./img.service"
 import { commentService } from "./comment.service"
 import type { Comment } from "@/models/Comment.model"
+import { authService } from "./auth.service"
 
 const STORAGE_KEY = 'gag_db'
 const API = 'gag'
@@ -61,28 +62,18 @@ async function _updateRate(gagId: string, dir: string, diff: number) {
 
 async function _filteredGags(filterBy: FilterBy) {
     let gags: Gag[] = await storageService.query(STORAGE_KEY)
-    let comments: Comment[] = await commentService.query()
-
-    gags = _aggregate(gags, comments)
     return gags
-}
-
-function _aggregate(gags: Gag[], comments: Comment[]): Gag[] {
-    return gags.map(gag => {
-        gag.comments = comments.filter(c => c.gagId === gag._id)
-        return gag
-    })
 }
 
 function _createGag({ title, imgUrl }: Data) {
     const gag = {
         title,
         createdAt: Date.now(),
-        createdBy: userService.getRandomUser(),
+        createdBy: authService.getLoggedinUser(),
         imgUrl,
         rate: {
-            up: 0,
-            down: 0
+            up: [],
+            down: []
         },
         comments: [],
     }
@@ -102,20 +93,20 @@ function _createRandomGags() {
 }
 
 function _createRandomGag() {
-    const _id = utilService.makeId()
-    const imgUrl = imgService.getRandomImg().url
-    const comments = commentService.getRandomComments(_id)
-
+    const id = utilService.makeId()
+    const img = imgService.getRandomImg().url
+    const comments = commentService.getRandomComments(id)
+    const { _id, username, imgUrl } = userService.getRandomUser()
     const gag = {
-        _id,
+        _id: id,
         title: utilService.getLorem().slice(0, 80),
         createdAt: Date.now(),
-        createdBy: userService.getRandomUser(),
-        imgUrl,
-        comments,
+        createdBy: { _id, username, imgUrl },
+        imgUrl: img,
+        comments: comments.map(c => c._id),
         rate: {
-            up: utilService.getRandomIntInc(0, 50),
-            down: utilService.getRandomIntInc(0, 110)
+            up: userService.getRandomUserIds(),
+            down: userService.getRandomUserIds()
         },
     }
     return [gag, comments]

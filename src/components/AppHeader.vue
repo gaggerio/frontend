@@ -27,11 +27,12 @@
 </template>
 
 <script lang="ts" setup>
+import { useUserStore } from '@/stores/user.store'
 import { ref, reactive, computed } from 'vue'
-import { useStore } from 'vuex'
 import { utilService } from '../services/util.service'
 
-const store = useStore()
+const userStore = useUserStore()
+
 const isNavOpen = ref(false)
 
 const state = reactive({
@@ -45,16 +46,15 @@ const icons = {
     hamburger: utilService.getIcon('hamburger')
 }
 
+const loggedinUser = computed(() => {
+    return userStore.getLoggedinUser
+})
+
 function toggleNav() {
     isNavOpen.value = !isNavOpen.value
 }
 
 function onLogout() {
-    store.dispatch({ type: 'logout' })
+    userStore.logout()
 }
-
-const loggedinUser = computed(() => {
-    return store.getters.loggedinUser
-})
-
 </script>

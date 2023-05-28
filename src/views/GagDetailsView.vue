@@ -2,51 +2,43 @@
     <main v-if="gag">
         <router-link to="/">Back</router-link>
         <GagPreview :gag="gag" />
-        <GagRate :gag="gag" @changeGagRate="changeGagRate" />
-        <CommentForm />
-        <CommentList :comments="gag.comments" @changeCommentRate="changeCommentRate" />
+        <GagRate :gag="gag" @changeGagRate="gagStore.changeGagRate" />
+        <CommentForm @saveComment="commentStore.saveComment" />
+        <CommentList :comments="comments" @changeCommentRate="commentStore.changeCommentRate" />
     </main>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { useStore } from 'vuex'
+import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useGagStore } from '@/stores/gag.store'
+import { useCommentStore } from '@/stores/comment.store'
 import { showErrorMsg } from '../services/event-bus.service'
-import type { Gag } from '../models/Gag.model'
 import GagPreview from '../components/GagPreview.vue'
 import CommentList from '../components/CommentList.vue'
 import CommentForm from '../components/CommentForm.vue'
 import GagRate from '../components/GagRate.vue'
 
 const route = useRoute()
-const store = useStore()
+const gagStore = useGagStore()
+const commentStore = useCommentStore()
 
-const gag = computed<Gag>(() => {
-    return store.getters.currGag
+const gag = computed(() => {
+    return gagStore.getCurrGag
+})
+
+const comments = computed(() => {
+    return commentStore.getComments
 })
 
 onMounted(async () => {
     try {
         const { id } = route.params
-        store.commit({ type: 'setCurrGagId', gagId: id })
+        gagStore.setCurrGagId(id as string)
+        await commentStore.setComments(id as string)
     }
     catch (err) {
         showErrorMsg('Gag not found')
     }
 })
-
-function changeGagRate(rateData: { gagId: string, dir: string }) {
-    store.dispatch({ type: 'changeGagRate', rateData })
-}
-
-function changeCommentRate(rateData: { commentId: string, dir: string }) {
-    store.dispatch({
-        type: 'changeCommentRate',
-        rateData: {
-            ...rateData,
-            gagId: gag.value._id
-        }
-    })
-}
 </script>

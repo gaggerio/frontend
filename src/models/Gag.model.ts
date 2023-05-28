@@ -1,5 +1,4 @@
-import type { Comment } from './Comment.model'
-import type { User } from './User.model'
+import type { User } from "./User.model"
 
 export interface Gag {
     _id: string
@@ -8,10 +7,10 @@ export interface Gag {
     createdBy: User
     imgUrl: string,
     title: string,
-    comments: Comment[]
+    comments: string[]
 }
 
 export type Rate = {
-    up: number
-    down: number
+    up: string[]
+    down: string[]
 }

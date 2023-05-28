@@ -1,5 +1,10 @@
 {
-  "files": [],
+  "files": [
+    "data/comment.json",
+    "data/user.json",
+    "data/img.json",
+    "data/gag.json"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

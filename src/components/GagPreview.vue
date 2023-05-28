@@ -18,8 +18,6 @@ import type { PropType } from 'vue'
 import type { Gag } from '../models/Gag.model'
 import UserPreview from './UserPreview.vue'
 
-const router = useRouter()
-
 const props = defineProps({
     gag: {
         type: Object as PropType<Gag>,

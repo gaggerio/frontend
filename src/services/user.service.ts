@@ -14,6 +14,7 @@ export const userService = {
     save,
     getRandomUser,
     createUser,
+    getRandomUserIds
 }
 
 async function query() {
@@ -66,6 +67,16 @@ function _createUsers() {
         return _createRandomUser(user)
     })
     console.log(JSON.stringify(users))
+}
+
+function getRandomUserIds() {
+    const ids = []
+
+    for (let i = 0; i < utilService.getRandomIntInc(0, 50); i++) {
+        const user = gUsers[utilService.getRandomIntInc(0, gUsers.length - 1)]
+        ids.push(user._id)
+    }
+    return ids
 }
 
 function _createRandomUser(fullname: string): User {

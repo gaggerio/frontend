@@ -25,20 +25,18 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted, watch, computed } from 'vue'
+import { onMounted, watch, computed, ref } from 'vue'
 import { useCtx } from '../composables/useCtx.composable'
 import { useMemeStore } from '../composables/useMemeStore.composable'
-import { useStore } from 'vuex'
 import { showErrorMsg, showSuccessMsg } from '@/services/event-bus.service'
-import { gagService } from '@/services/gag.service'
 import { uploadImg } from '@/services/upload.service'
-import { ref } from 'vue'
+import { useGagStore } from '@/stores/gag.store'
 
 const route = useRoute()
 const router = useRouter()
-const store = useStore()
-
 const ctx = useCtx()
+
+const gagStore = useGagStore()
 const memeStore = useMemeStore()
 
 const meme = memeStore.getMeme()
@@ -74,14 +72,11 @@ async function postMeme() {
     try {
         const dataUrl = await ctx.dataUrl()
         const imgData = await uploadImg(dataUrl)
-        if(!imgData) throw Error('Something went wrong')
+        if (!imgData) throw Error('Something went wrong')
 
-        await store.dispatch({
-            type: 'saveGag',
-            data: {
-                title: gagTitle.value,
-                imgUrl: imgData.url
-            }
+        await gagStore.saveGag({
+            imgUrl: imgData.url,
+            title: gagTitle.value
         })
         router.push('/')
         showSuccessMsg('Gag posted successfuly!')
