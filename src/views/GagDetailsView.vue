@@ -1,6 +1,5 @@
 <template>
     <main v-if="gag">
-        <router-link to="/">Back</router-link>
         <GagPreview :gag="gag" @changeGagRate="gagStore.changeGagRate"/>
         <CommentForm @saveComment="commentStore.saveComment" />
         <CommentList :comments="comments" @changeCommentRate="commentStore.changeCommentRate" />

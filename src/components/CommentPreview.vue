@@ -1,12 +1,15 @@
 <template>
-    <article class="comment-preview flex column gap-1" v-if="comment">
-        <section class="header flex items-center gap-1">
-            <UserPreview :user="comment.createdBy" />
-            <span>{{ createdAt }}</span>
-        </section>
+    <article class="comment-preview" v-if="comment">
         <section class="main">
-            <img :src="comment.attachments" alt="" v-if="comment.attachments">
+            <UserPreview :user="comment.createdBy" :createdAt="comment.createdAt" />
+            <div class="flex items-center justify-center">
+                <img :src="comment.attachments" alt="" v-if="comment.attachments">
+            </div>
             <p>{{ comment.text }}</p>
+        </section>
+        <section class="footer">
+            <router-link to="/">Reply</router-link>
+            <CommentRate :comment="comment" @changeCommentRate="(data) => $emit('changeCommentRate', data)" />
         </section>
     </article>
 </template>
@@ -15,16 +18,12 @@
 import type { PropType } from 'vue'
 import type { Comment } from '../models/Comment.model'
 import UserPreview from './UserPreview.vue'
-import { computed } from 'vue'
+import CommentRate from './CommentRate.vue'
 
-const props = defineProps({
+defineProps({
     comment: {
         type: Object as PropType<Comment>,
         require: true
     }
-})
-
-const createdAt = computed(() => {
-    return new Date(props.comment.createdAt).getHours()
 })
 </script>

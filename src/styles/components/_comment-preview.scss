@@ -1,0 +1,21 @@
+.comment-preview {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    padding-inline: rem(10px);
+    background-color: $clr3;
+
+    .main {
+        margin-block-end: em(10px);
+        img {
+            width: 100%;
+            margin-block-end: 10px;
+        }
+    }
+
+    .footer {
+        display: flex;
+        gap: em(10px);
+    }
+
+}

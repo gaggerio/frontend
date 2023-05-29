@@ -1,6 +1,6 @@
 <template>
     <article class="user-preview" v-if="user">
-        <div class="img-container" :style="{ backgroundImage: `url(${user.imgUrl})` }">
+        <div  class="img-container" :style="{ backgroundImage: `url(${user.imgUrl})` }">
         </div>
         <div class="flex items-end gap-1">
             <h3>{{ user.username }}</h3>
@@ -13,6 +13,7 @@
 import { computed, type PropType } from 'vue'
 import type { User } from '../models/User.model'
 import { utilService } from '@/services/util.service'
+import { useRoute } from 'vue-router';
 
 const props = defineProps({
     user: {
@@ -26,5 +27,9 @@ const props = defineProps({
 
 const createdAt = computed<string>(() => {
     return utilService.timeAgo(props.createdAt)
+})
+
+const shouldShow = computed(() => {
+    return useRoute().path === '/'
 })
 </script>

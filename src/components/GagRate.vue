@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { Gag } from '../models/Gag.model'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useUserStore } from '@/stores/user.store'
 
 const props = defineProps({
