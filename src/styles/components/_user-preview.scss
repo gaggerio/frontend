@@ -1,7 +1,23 @@
 .user-preview {
     display: flex;
     align-items: center;
-    img {
-        width: em(50px);
+    font-size: 0.8rem;
+    gap: rem(10px);
+    margin-bottom: em(10px);
+
+    .img-container {
+        width: em(36px);
+        height: em(36px);
+        border-radius: 50%;
+        background-position: center;
+        background-size: cover;
     }
-} 
+
+    div {
+        span {
+            color: $clr4;
+            font-size: 0.75rem;
+            padding-bottom: 1px;
+        }
+    }
+}

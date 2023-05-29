@@ -1,0 +1,22 @@
+.home-view {
+    position: relative;
+
+    .add-gag-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background-color: $clr1;
+        width: max-content;
+        height: max-content;
+        border-radius: 50%;
+
+        svg {
+            scale: 1.2;
+            color: $clr2;
+            width: em(50px);
+        }
+    }
+}

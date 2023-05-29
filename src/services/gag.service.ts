@@ -99,7 +99,7 @@ function _createRandomGag() {
     const { _id, username, imgUrl } = userService.getRandomUser()
     const gag = {
         _id: id,
-        title: utilService.getLorem().slice(0, 80),
+        title: utilService.getLorem().slice(0, 30),
         createdAt: Date.now(),
         createdBy: { _id, username, imgUrl },
         imgUrl: img,

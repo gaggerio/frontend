@@ -20,7 +20,8 @@ export const authService = {
     logout,
     signup,
     saveLocalUser,
-    getLoggedinUser
+    getLoggedinUser,
+    getGuest
 }
 
 /**
@@ -76,6 +77,11 @@ function saveLocalUser(user: User) {
 function getLoggedinUser() {
     const user = sessionStorage.getItem(STORAGE_KEY) || 'null'
     return JSON.parse(user)
+}
+
+function getGuest() {
+    const user = userService.createRandomUser('Guest')
+    return saveLocalUser(user)
 }
 
 /**

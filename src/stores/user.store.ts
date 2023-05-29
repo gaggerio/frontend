@@ -58,7 +58,7 @@ export const useUserStore = defineStore('user', {
         async loadLoggedinUser() {
             try {
                 const user = authService.getLoggedinUser()
-                if (user) this.loggedinUser = user
+                this.loggedinUser = user ? user : authService.getGuest()
             }
             catch (err) {
                 console.dir('userStore: Error in loadLoggedinUser', err)

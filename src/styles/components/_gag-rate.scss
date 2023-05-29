@@ -1,0 +1,31 @@
+.gag-rate {
+    display: flex;
+    gap: rem(10px);
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: em(10px);
+        padding-inline: em(10px);
+        width: max-content;
+        min-width: em(80px);
+
+        &.active {
+            border-color: $clr2;
+            color: $clr2;
+        }
+
+        svg {
+            width: em(30px);
+            color: $clr6;
+
+            &.active {
+                color: $clr2;
+            }
+        }
+
+        svg.down {
+            transform: rotate(180deg);
+        }
+    }
+}

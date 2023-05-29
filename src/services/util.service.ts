@@ -11,7 +11,8 @@ export const utilService = {
     getIcon,
     getLorem,
     getRandomNames,
-    getRandomUsername
+    getRandomUsername,
+    timeAgo
 }
 
 
@@ -83,7 +84,7 @@ function getIcon(iconName: string) {
     }
     const iconMap: IconsMap = {
         logo: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679493265/useful-items_bawwnb.png',
-        hamburger: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760122/hamburger-menu_vxqw9d.ico',
+        hamburger: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1685287498/hamburger-menu_a0alzo.ico',
         delete: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760132/delete_aixeha.ico',
         edit: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760130/edit_du3e36.ico',
         info: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760107/info_ii1yd6.ico',
@@ -124,4 +125,22 @@ function getRandomUsername(): string {
     const randomNoun = nouns[getRandomIntInc(0, nouns.length - 1)]
 
     return randomAdjective + '_' + randomNoun
+}
+
+function timeAgo(timestamp: number) {
+    const currentTime = Date.now()
+    const diff = currentTime - timestamp
+
+    if (diff < 0) {
+        return 'In the future'
+    } else if (diff < 60 * 60 * 1000) {
+        const minutes = Math.floor(diff / (60 * 1000))
+        return `${minutes}m`
+    } else if (diff < 24 * 60 * 60 * 1000) {
+        const hours = Math.floor(diff / (60 * 60 * 1000))
+        return `${hours}h`
+    } else {
+        const days = Math.floor(diff / (24 * 60 * 60 * 1000))
+        return `${days}d`
+    }
 }

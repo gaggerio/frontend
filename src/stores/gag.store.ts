@@ -4,6 +4,7 @@ import { useUserStore } from '@/stores/user.store'
 import type { Gag } from '@/models/Gag.model'
 import type { FilterBy } from '@/models/FilterBy.model'
 import type { RateData } from '@/models/Rate.model'
+import type { User } from '@/models/User.model'
 
 export interface GagState {
     gags: Gag[],
@@ -62,23 +63,25 @@ export const useGagStore = defineStore('gag', {
         },
         async changeGagRate(rateData: RateData) {
             try {
-                const { dir, gagId } = rateData
-                const subject = 'gag'
-                const user = this.userStore.getLoggedinUser
-                if (!user) return
-
+                const { gagId, dir } = rateData
                 const gag = this.getGagById(gagId)
                 if (!gag) return
-                let rate = gag.rate[dir]
 
-                if (rate.includes(user._id)) {
-                    const idx = rate.findIndex((id: string) => id === user._id)
-                    rate.splice(idx, 1)
-                    this.userStore.removeRate(gagId, dir, subject)
-                }
-                else {
-                    rate.push(user._id)
-                    this.userStore.addRate(gagId, dir, subject)
+                const user = this.userStore.loggedinUser
+                if (!user) return
+
+                const isUpvoted = gag.rate.up.includes(user._id)
+                const isDownvoted = gag.rate.down.includes(user._id)
+
+                switch (dir) {
+                    case 'up':
+                        this.toggleRate(gag, user, rateData)
+                        if (isDownvoted) this.toggleRate(gag, user, { dir: 'down', gagId })
+                        break;
+                    case 'down':
+                        this.toggleRate(gag, user, rateData)
+                        if (isUpvoted) this.toggleRate(gag, user, { dir: 'up', gagId })
+                        break;
                 }
                 await gagService.update(gag)
             }
@@ -86,6 +89,20 @@ export const useGagStore = defineStore('gag', {
                 console.dir('gagStore: Failed to rate gag', err)
                 throw Error
             }
-        }
+        },
+        toggleRate(gag: Gag, user: User, { dir, gagId }: RateData) {
+            const subject = 'gag'
+            let rate = gag.rate[dir]
+
+            if (rate.includes(user._id)) {
+                const idx = rate.findIndex((id: string) => id === user._id)
+                rate.splice(idx, 1)
+                this.userStore.removeRate(gagId, dir, subject)
+            }
+            else {
+                rate.push(user._id)
+                this.userStore.addRate(gagId, dir, subject)
+            }
+        },
     }
 })

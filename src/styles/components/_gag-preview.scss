@@ -1,20 +1,46 @@
 .gag-preview {
-    display: flex;
-    flex-direction: column;
-    gap: rem(20px);
+    background-color: $clr5;
+    padding-block: rem(20px);
 
-    background-color: rgba(0, 0, 0, 0.24);
-    padding: rem(10px);
+    .header {
+        padding-inline: rem(10px);
+
+        h2 {
+            font-size: 1em;
+        }
+
+        margin-bottom: em(5px);
+    }
 
     .main {
+        margin-block-end: em(10px);
         h2 {
             margin-block-end: em(10px);
+        }
+
+        img {
+            width: 100%;
         }
     }
 
     .footer {
-        display:  flex;
+        padding-inline: rem(10px);
+        display: flex;
         gap: em(10px);
         cursor: pointer;
+        width: 100%;
+
+        .comment {
+            display: flex;
+            align-items: center;
+            gap: em(15px);
+            padding-inline: em(15px);
+
+            svg {
+                width: em(30px);
+                color:$clr6;
+                // height: em(30px);
+            }
+        }
     }
 }

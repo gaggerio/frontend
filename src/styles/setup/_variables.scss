@@ -1,8 +1,12 @@
 // COLORS
-$clr1: #dfdfdf;
-$clr2: #ffffff;
+$clr1: #F5F5F5;
+$clr2: #005BA4;
 $clr3: #0000002d;
+$clr4: #616161;
+$clr5: rgba(0, 0, 0, 0.24);
+$clr6: #b3b3b3c5;
 $txt-clr: #000000c8;
+$bgc-clr: #25252B;
 
 $primary-clr: #409EFF;
 $success-clr: #67C23A;
@@ -27,4 +31,5 @@ $padded-break-normal: $break-normal + $layoutPadding * 2;
 $padded-break-wide: $break-wide + $layoutPadding * 2;
 
 
-$font1 : Roboto-Regular, sans-serif;
+$font1 : 'Poppins-bold',
+sans-serif;

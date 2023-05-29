@@ -1,28 +1,20 @@
 <template>
     <header class="app-header">
-        <div class="screen" v-if="isNavOpen" :class="{ open: isNavOpen }" @click="toggleNav"></div>
+        <!-- <div class="screen" v-if="isNavOpen" :class="{ open: isNavOpen }" @click="toggleNav"></div> -->
+        <div class="hamburger">
+            <svg @click="toggleNav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="hamburger-menu">
+                <path fill="currentColor"
+                    d="M5 7h14c.6 0 1-.4 1-1s-.4-1-1-1H5c-.6 0-1 .4-1 1s.4 1 1 1zm0 6h14c.6 0 1-.4 1-1s-.4-1-1-1H5c-.6 0-1 .4-1 1s.4 1 1 1zm0 6h14c.6 0 1-.4 1-1s-.4-1-1-1H5c-.6 0-1 .4-1 1s.4 1 1 1z">
+                </path>
+            </svg>
+        </div>
         <div class="logo flex items-center gap-2">
-            <img :src="icons.logo" alt="LOGO">
             GAGGER
         </div>
-        <button class="hamburger btn" @click="toggleNav">
-            <img :src="icons.hamburger" />
-        </button>
 
-        <nav :class="{ open: isNavOpen, nav: true }">
-            <RouterLink class="nav-link" v-for="link in links" :key="link.path" :to="link.path">
-                {{ link.name }}
-            </RouterLink>
-            <section class="nav-user">
-                <div v-if="loggedinUser" @click="state.showLogout = !state.showLogout">
-                    <img :src="loggedinUser.imgUrl" alt="">
-                    <button v-if="state.showLogout" class="c-btn" @click="onLogout">Logout</button>
-                </div>
-                <RouterLink to="/login" class="nav-link" v-else>
-                    Login
-                </RouterLink>
-            </section>
-        </nav>
+        <!-- <nav :class="{ open: isNavOpen, nav: true }">
+            
+        </nav> -->
     </header>
 </template>
 
@@ -30,6 +22,7 @@
 import { useUserStore } from '@/stores/user.store'
 import { ref, reactive, computed } from 'vue'
 import { utilService } from '../services/util.service'
+import HamburgerSvg from './HamburgerSvg.vue'
 
 const userStore = useUserStore()
 
@@ -39,6 +32,7 @@ const state = reactive({
     isNavOpen: false,
     showLogout: false
 })
+
 
 const links = ref(utilService.getHeaderLinks())
 const icons = {

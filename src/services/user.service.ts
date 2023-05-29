@@ -14,7 +14,8 @@ export const userService = {
     save,
     getRandomUser,
     createUser,
-    getRandomUserIds
+    getRandomUserIds,
+    createRandomUser
 }
 
 async function query() {
@@ -39,7 +40,7 @@ function getRandomUser(): User {
 }
 
 function defaultProfilePic() {
-    return 'https://res.cloudinary.com/dokgseqgj/image/upload/v1684759113/user_xbka0l.png'
+    return 'https://res.cloudinary.com/dokgseqgj/image/upload/v1685341751/user_wyvr3v.png'
 }
 
 function createUser({ username, fullname, imgUrl }: Credentials): User {
@@ -64,7 +65,7 @@ function createUser({ username, fullname, imgUrl }: Credentials): User {
 function _createUsers() {
     const names = utilService.getRandomNames()
     const users = names.map(user => {
-        return _createRandomUser(user)
+        return createRandomUser(user)
     })
     console.log(JSON.stringify(users))
 }
@@ -79,12 +80,12 @@ function getRandomUserIds() {
     return ids
 }
 
-function _createRandomUser(fullname: string): User {
+function createRandomUser(fullname: string): User {
     return {
         _id: utilService.makeId(),
         username: utilService.getRandomUsername(),
         fullname,
-        imgUrl: defaultProfilePic(),
+        imgUrl: `https://robohash.org/${fullname}`,
         gag: {
             up: [],
             down: [],
