@@ -1,8 +1,10 @@
 .gag-preview {
     background-color: $clr5;
     padding-block: rem(20px);
+    font-size: 1rem;
 
     .header {
+        font-size: 1em;
         padding-inline: rem(10px);
 
         h2 {
@@ -13,7 +15,9 @@
     }
 
     .main {
+        font-size: 1em;
         margin-block-end: em(10px);
+
         h2 {
             margin-block-end: em(10px);
         }
@@ -24,7 +28,8 @@
     }
 
     .footer {
-        padding-inline: rem(10px);
+        font-size: 1em;
+        padding-inline: em(10px);
         display: flex;
         gap: em(10px);
         cursor: pointer;
@@ -38,8 +43,7 @@
 
             svg {
                 width: em(30px);
-                color:$clr6;
-                // height: em(30px);
+                color: $clr6;
             }
         }
     }

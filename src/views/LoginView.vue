@@ -29,7 +29,18 @@ const credentials = reactive({
     isAdmin: false,
     imgUrl: ''
 })
+
 const isSignUp = ref(false)
+
+const loginType = computed(() => {
+    return isSignUp.value ? 'Signup' : 'Login'
+})
+
+const loginSignup = computed(() => {
+    return isSignUp.value ?
+        'Already a memeber? Click here to login' :
+        'Not a member? Click here to signup'
+})
 
 async function login() {
     try {
@@ -46,14 +57,4 @@ async function login() {
 function setImgUrl(imgUrl: string) {
     credentials.imgUrl = imgUrl
 }
-
-const loginType = computed(() => {
-    return isSignUp.value ? 'Signup' : 'Login'
-})
-
-const loginSignup = computed(() => {
-    return isSignUp.value ?
-        'Already a memeber? Click here to login' :
-        'Not a member? Click here to signup'
-})
 </script>

@@ -1,6 +1,7 @@
-.gag-rate {
+.item-rate {
     display: flex;
     gap: rem(10px);
+    font-size: 1rem;
 
     button {
         display: flex;
@@ -9,6 +10,7 @@
         padding-inline: em(10px);
         width: max-content;
         min-width: em(80px);
+        font-size: 0.8em;
 
         &.active {
             border-color: $clr2;
@@ -22,10 +24,6 @@
             &.active {
                 color: $clr2;
             }
-        }
-
-        svg.down {
-            transform: rotate(180deg);
         }
     }
 }

@@ -63,8 +63,8 @@ export const useGagStore = defineStore('gag', {
         },
         async changeGagRate(rateData: RateData) {
             try {
-                const { gagId, dir } = rateData
-                const gag = this.getGagById(gagId)
+                const { itemId, dir } = rateData
+                const gag = this.getGagById(itemId)
                 if (!gag) return
 
                 const user = this.userStore.loggedinUser
@@ -76,11 +76,11 @@ export const useGagStore = defineStore('gag', {
                 switch (dir) {
                     case 'up':
                         this.toggleRate(gag, user, rateData)
-                        if (isDownvoted) this.toggleRate(gag, user, { dir: 'down', gagId })
+                        if (isDownvoted) this.toggleRate(gag, user, { dir: 'down', itemId })
                         break;
                     case 'down':
                         this.toggleRate(gag, user, rateData)
-                        if (isUpvoted) this.toggleRate(gag, user, { dir: 'up', gagId })
+                        if (isUpvoted) this.toggleRate(gag, user, { dir: 'up', itemId })
                         break;
                 }
                 await gagService.update(gag)
@@ -90,18 +90,18 @@ export const useGagStore = defineStore('gag', {
                 throw Error
             }
         },
-        toggleRate(gag: Gag, user: User, { dir, gagId }: RateData) {
+        toggleRate(gag: Gag, user: User, { dir, itemId }: RateData) {
             const subject = 'gag'
             let rate = gag.rate[dir]
 
             if (rate.includes(user._id)) {
                 const idx = rate.findIndex((id: string) => id === user._id)
                 rate.splice(idx, 1)
-                this.userStore.removeRate(gagId, dir, subject)
+                this.userStore.removeRate(itemId, dir, subject)
             }
             else {
                 rate.push(user._id)
-                this.userStore.addRate(gagId, dir, subject)
+                this.userStore.addRate(itemId, dir, subject)
             }
         },
     }

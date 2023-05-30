@@ -12,13 +12,13 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 
-const filterBy = reactive({
-    txt: ''
-})
-
 const emit = defineEmits([
     'filterImgs'
 ])
+
+const filterBy = reactive({
+    txt: ''
+})
 
 function filterImg() {
     emit('filterImgs', { ...filterBy })

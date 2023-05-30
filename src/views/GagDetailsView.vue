@@ -1,8 +1,8 @@
 <template>
     <main v-if="gag">
-        <GagPreview :gag="gag" @changeGagRate="gagStore.changeGagRate"/>
+        <GagPreview :gag="gag" @changeGagRate="gagStore.changeGagRate" />
         <CommentForm @saveComment="commentStore.saveComment" />
-        <CommentList :comments="comments" @changeCommentRate="commentStore.changeCommentRate" />
+        <CommentList :comments="comments" @changeRate="commentStore.changeCommentRate" />
     </main>
 </template>
 
@@ -15,7 +15,6 @@ import { showErrorMsg } from '../services/event-bus.service'
 import GagPreview from '../components/GagPreview.vue'
 import CommentList from '../components/CommentList.vue'
 import CommentForm from '../components/CommentForm.vue'
-import GagRate from '../components/GagRate.vue'
 
 const route = useRoute()
 const gagStore = useGagStore()

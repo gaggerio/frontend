@@ -6,6 +6,7 @@ import { useGagStore } from './gag.store'
 import type { Comment } from '@/models/Comment.model'
 import type { CommentForm } from '@/models/Comment.model'
 import type { RateData } from '@/models/Rate.model'
+import type { User } from '@/models/User.model'
 
 export interface CommentState {
     comments: Comment[]
@@ -61,30 +62,46 @@ export const useCommentStore = defineStore('comment', {
         },
         async changeCommentRate(rateData: RateData) {
             try {
-                const { dir, gagId, commentId } = rateData
-                const subject = 'comment'
-                const user = this.userStore.getLoggedinUser
+                const { itemId, dir } = rateData
+                const comment = this.getCommentById(itemId)
+                if (!comment) return
+
+                const user = this.userStore.loggedinUser
                 if (!user) return
 
-                const comment = this.getCommentById(commentId as string)
-                if (!comment) return
-                let rate = comment.rate[dir]
+                const isUpvoted = comment.rate.up.includes(user._id)
+                const isDownvoted = comment.rate.down.includes(user._id)
 
-                if (rate.includes(user._id)) {
-                    const idx = rate.findIndex((id: string) => id === user._id)
-                    rate.splice(idx, 1)
-                    this.userStore.removeRate(gagId, dir, subject)
-                }
-                else {
-                    rate.push(user._id)
-                    this.userStore.addRate(gagId, dir, subject)
+                switch (dir) {
+                    case 'up':
+                        this.toggleRate(comment, user, rateData)
+                        if (isDownvoted) this.toggleRate(comment, user, { ...rateData, dir: 'down' })
+                        break;
+                    case 'down':
+                        this.toggleRate(comment, user, rateData)
+                        if (isUpvoted) this.toggleRate(comment, user, { ...rateData, dir: 'up' })
+                        break;
                 }
                 await commentService.update(comment)
             }
             catch (err) {
-                console.dir('gagStore: Failed to rate gag', err)
+                console.dir('commentStore: Failed to rate comment', err)
                 throw Error
             }
-        }
+        },
+        toggleRate(comment: Comment, user: User, { dir, itemId }: RateData) {
+            const subject = 'comment'
+            let rate = comment.rate[dir]
+
+            if (rate.includes(user._id)) {
+                const idx = rate.findIndex((id: string) => id === user._id)
+                rate.splice(idx, 1)
+                this.userStore.removeRate(itemId, dir, subject)
+            }
+            else {
+                rate.push(user._id)
+                this.userStore.addRate(itemId, dir, subject)
+            }
+        },
     }
 })

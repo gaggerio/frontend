@@ -2,20 +2,46 @@
     max-width: 100vw;
     display: flex;
     flex-direction: column;
-    padding-inline: rem(10px);
+    padding: rem(10px);
     background-color: $clr3;
+    border-bottom: 1px solid $clr6;
+    font-size: 1rem;
+
+    .header {
+        margin-block-end: em(5px);
+    }
 
     .main {
         margin-block-end: em(10px);
+
         img {
             width: 100%;
             margin-block-end: 10px;
+        }
+
+        p {
+            font-size: em(14px);
         }
     }
 
     .footer {
         display: flex;
+        align-items: center;
         gap: em(10px);
-    }
+        font-size: 1em;
 
+        .reply {
+            color: $clr2;
+            font-weight: 600;
+            font-size: em(14px);
+        }
+
+        .item-rate {
+            font-size: 0.7rem;
+
+            button {
+                border: none;
+            }
+        }
+    }
 }

@@ -14,29 +14,32 @@
     }
 
 
-    .hamburger {
-        cursor: pointer;
-        margin-inline-end: em(5px);
+    .menu {
+        display: flex;
+        align-items: center;
 
-        @include for-normal-layout {
-            display: none;
-        }
-
-        svg {
+        .hamburger {
+            cursor: pointer;
+            margin-inline-end: em(5px);
             width: em(50px);
             color: $clr1;
+
+            @include for-normal-layout {
+                display: none;
+            }
+        }
+
+        .logo {
+            font-size: em(36px);
+            font-weight: 500;
+            cursor: pointer;
+
+            img {
+                width: em(20px);
+            }
         }
     }
 
-    .logo {
-        font-size: em(36px);
-        font-weight: 500;
-        cursor: pointer;
-
-        img {
-            width: em(20px);
-        }
-    }
 
 
     .screen {
