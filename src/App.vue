@@ -1,7 +1,9 @@
 <template>
     <UserMsg />
-    <AppHeader />
-    <RouterView />
+    <div class="flex column full-h">
+        <AppHeader />
+        <RouterView />
+    </div>
 </template>
 
 

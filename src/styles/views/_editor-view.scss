@@ -1,0 +1,71 @@
+.editor-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .canvas-container {
+        display: flex;
+        flex-direction: column;
+
+        .header {
+            margin-block-end: em(10px);
+
+
+            .c-btn.post {
+                color: $clr1;
+                background-color: $clr2;
+            }
+
+            .c-input {
+                background-color: $bgc-clr;
+                color: $clr1;
+            }
+        }
+    }
+
+    .meme-editor {
+        padding-inline: rem(10px);
+        padding-block-start: rem(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+
+        .header {
+            display: flex;
+            gap: em(10px);
+            margin-block-end: em(10px);
+
+            .c-input {
+                flex: 1;
+            }
+        }
+
+        .actions,
+        .edits {
+            display: flex;
+            justify-content: center;
+            gap: em(15px);
+            margin-block-end: em(10px);
+        }
+
+        .c-btn {
+            background-color: $clr6;
+            position: relative;
+
+            & .color-picker {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+            }
+
+            img {
+                width: em(20px);
+            }
+        }
+    }
+}

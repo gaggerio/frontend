@@ -1,22 +1,19 @@
 <template>
     <main class="explore-view">
-        <h1>Pick a template</h1>
-        <ul class="img-gallery" v-if="imgs">
-            <li class="img-preview" v-for="img in imgs" :key="img._id" @click="onImgSelect(img._id as string)">
-                <img :src="img.url" alt="">
-            </li>
-        </ul>
+        <ImgFilter @file-select="goToEditor" />
+        <ImgGallery :imgs="imgs" />
     </main>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
 import type { Img } from '../models/Img.model'
 import { imgService } from '../services/img.service'
 import { onMounted, ref } from 'vue'
 import { showErrorMsg } from '@/services/event-bus.service'
+import ImgGallery from '../components/ImgGallery.vue'
+import ImgFilter from '../components/ImgFilter.vue'
+import { uploadImg } from '@/services/upload.service'
 
-const router = useRouter()
 const imgs = ref<Img[]>(null!)
 
 onMounted(async () => {
@@ -28,7 +25,14 @@ onMounted(async () => {
     }
 })
 
-function onImgSelect(imgId: string) {
-    router.push(`/editor/${imgId}`)
+async function goToEditor(file: File) {
+    try {
+        const data = await uploadImg(file)
+        if (!data) return 
+
+    }
+    catch (err) {
+        console.log('error', err)
+    }
 }
 </script>

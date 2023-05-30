@@ -21,7 +21,11 @@
 @import 'components/comment-form';
 @import 'components/comment-list';
 @import 'components/comment-preview';
+@import 'components/img-gallery';
+@import 'components/img-filter';
+
 
 // VIEWS
 @import 'views/home-view';
 @import 'views/login-view';
+@import 'views/editor-view';

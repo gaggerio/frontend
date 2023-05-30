@@ -2,10 +2,10 @@
     <header class="app-header">
         <!-- <div class="screen" v-if="isNavOpen" :class="{ open: isNavOpen }" @click="toggleNav"></div> -->
         <section class="go-back flex items-center gap-1" v-if="showBack">
-            <router-link to="/">
+            <button @click="$router.go(-1)">
                 <ArrowSvg :direction="'left'" />
-            </router-link>
-            Post
+            </button>
+            {{ getTitle }}
         </section>
         <section v-else class="menu">
             <HamburgerSvg @click="toggleNav" class="hamburger" />
@@ -22,13 +22,15 @@ import { useUserStore } from '@/stores/user.store'
 import { ref, reactive, computed } from 'vue'
 import { utilService } from '../services/util.service'
 import HamburgerSvg from '../svgs/HamburgerSvg.vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import ArrowSvg from '../svgs/ArrowSvg.vue'
 
 const userStore = useUserStore()
 const route = useRoute()
+const router = useRouter()
 
 const isNavOpen = ref(false)
+const currRoute = ref('')
 
 const state = reactive({
     isNavOpen: false,
@@ -36,7 +38,7 @@ const state = reactive({
 })
 
 const showBack = computed(() => {
-    return route.path.includes('details')
+    return route.path !== '/'
 })
 
 const links = ref(utilService.getHeaderLinks())
@@ -47,6 +49,15 @@ const icons = {
 
 const loggedinUser = computed(() => {
     return userStore.getLoggedinUser
+})
+
+const getTitle = computed(() => {
+    const titles: { [name: string]: string } = {
+        explore: 'Explore templates',
+        details: 'Post',
+        editor: 'Edit'
+    }
+    return titles[route.name as string]
 })
 
 function toggleNav() {

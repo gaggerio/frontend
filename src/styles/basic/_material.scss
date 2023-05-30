@@ -10,10 +10,10 @@
     display: block;
     width: max-content;
     
-    &:hover {
-        border-color: $primary-clr;
-        color: $primary-clr;
-    }
+    // &:hover {
+    //     border-color: $primary-clr;
+    //     color: $primary-clr;
+    // }
 
     &.primary{
         background-color: $primary-clr;

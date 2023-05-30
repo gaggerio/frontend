@@ -4,7 +4,8 @@ import type { Img } from "@/models/Img.model"
 import { utilService } from "./util.service"
 import { imgService } from "./img.service"
 
-const STORAGE_KEY = 'curr_meme'
+const MEME_KEY = 'curr_meme'
+const MOVES_KEY = 'meme_moves'
 
 export const memeService = {
     save,
@@ -15,7 +16,9 @@ export const memeService = {
     calcLinePos,
     calcOutlinePos,
     getMousePos,
-    calcFontSize
+    calcFontSize,
+    getLastMove,
+    saveMoves
 }
 
 async function getMeme(imgId: string): Promise<Meme> {
@@ -23,21 +26,40 @@ async function getMeme(imgId: string): Promise<Meme> {
     if (!meme) {
         const img = await imgService.getById(imgId)
         meme = createMeme(img)
-        save(meme)
+        clear()
     }
     return meme
 }
 
 function load(): Meme | null {
-    return utilService.loadFromSession(STORAGE_KEY)
+    return utilService.loadFromSession(MEME_KEY)
+}
+
+function loadMoves(): Meme[] | null {
+    return utilService.loadFromSession(MOVES_KEY)
 }
 
 function save(meme: Meme): void {
-    utilService.saveToSession(STORAGE_KEY, meme)
+    utilService.saveToSession(MEME_KEY, meme)
+}
+
+function saveMoves(meme: Meme) {
+    let moves = loadMoves() || []
+    moves.push(meme)
+    utilService.saveToSession(MOVES_KEY, moves)
+}
+
+function getLastMove(): Meme | void {
+    const moves = loadMoves() || []
+    if (moves.length === 1) return moves[0]
+    moves.pop()
+    utilService.saveToSession(MOVES_KEY, moves)
+    return moves[moves.length - 1]
 }
 
 function clear(): void {
-    utilService.saveToSession(STORAGE_KEY, null)
+    utilService.saveToSession(MOVES_KEY, null)
+    utilService.saveToSession(MEME_KEY, null)
 }
 
 function createMeme(img: Img): Meme {

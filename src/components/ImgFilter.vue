@@ -1,26 +1,33 @@
 <template>
-    <section class="img-filter">
-        <form @submit.prevent="filterImg" class="img-filter__form flex gap-1">
-            <input type="search" class="c-input" v-model="filterBy.txt" placeholder="Search img" />
-            <button class="c-btn">
-                Search
-            </button>
-        </form>
-    </section>
+    <div class="img-filter">
+        <input type="search" class="c-input" v-model="txt" placeholder="Search templates" />
+        <button class="file c-btn">
+            <CameraSvg />
+            <input type="file" @change="handleFile">
+        </button>
+    </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { ref } from 'vue'
+import CameraSvg from '../svgs/CameraSvg.vue'
 
 const emit = defineEmits([
-    'filterImgs'
+    'filterImgs',
+    'fileSelect'
 ])
 
-const filterBy = reactive({
-    txt: ''
-})
+const txt = ref<string>('')
+const file = ref<File>(null!)
+
+function handleFile(ev: Event) {
+    const files = (ev.target as HTMLInputElement).files
+    if (!files) return
+    file.value = files[0]
+    emit('fileSelect', file.value)
+}
 
 function filterImg() {
-    emit('filterImgs', { ...filterBy })
+    emit('filterImgs', txt.value)
 }
 </script>

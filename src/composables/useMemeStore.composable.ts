@@ -1,10 +1,12 @@
 import type { Pos } from '@/models/Line.model'
 import type { Meme } from '../models/Meme.model'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { memeService } from '../services/meme.service'
 import { showErrorMsg } from '@/services/event-bus.service'
 
-// A reactive reference to hold the current meme object
+/**
+ * A reactive reference to hold the current meme object
+ */
 var gMeme = ref<Meme>(memeService.createMeme({
     _id: '',
     url: '',
@@ -14,11 +16,11 @@ var gMeme = ref<Meme>(memeService.createMeme({
 
 /**
  * Custom composable for managing the Meme object.
- */
+*/
 export function useMemeStore() {
     /**
      * Getters and computed properties
-     */
+    */
     const meme = computed(() => gMeme.value)
     const currLine = computed(() => gMeme.value.lines[gMeme.value.currLine])
     const lines = computed(() => gMeme.value.lines)
@@ -59,6 +61,7 @@ export function useMemeStore() {
             line.fontSize = memeService.calcFontSize(width)
             line.pos = memeService.calcLinePos(width, height, i)
         })
+        saveMoves()
     }
 
     /**
@@ -67,6 +70,7 @@ export function useMemeStore() {
      */
     function setFontSize(size: number) {
         gMeme.value.lines[gMeme.value.currLine].fontSize += size
+        saveMoves()
     }
 
     /**
@@ -95,6 +99,7 @@ export function useMemeStore() {
         newLine.fontSize = memeService.calcFontSize(width)
         newLine.pos = memeService.calcLinePos(width, height, 2)
         gMeme.value.lines.push(newLine)
+        saveMoves()
     }
 
     /**
@@ -107,6 +112,7 @@ export function useMemeStore() {
         }
         gMeme.value.lines.splice(gMeme.value.currLine, 1)
         gMeme.value.currLine = 0
+        saveMoves()
     }
 
     /**
@@ -124,6 +130,16 @@ export function useMemeStore() {
      */
     function save() {
         memeService.save(gMeme.value)
+    }
+
+    function undo() {
+        const meme = memeService.getLastMove()
+        console.log('undiung', meme)
+        if (meme) gMeme.value = meme
+    }
+
+    function saveMoves() {
+        memeService.saveMoves(gMeme.value)
     }
 
     /**
@@ -145,6 +161,8 @@ export function useMemeStore() {
         moveLine,
         setFontSize,
         getMeme,
+        undo,
+        saveMoves,
         meme,
         currLine,
         lines,
