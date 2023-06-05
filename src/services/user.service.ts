@@ -51,15 +51,17 @@ function createUser({ username, fullname, imgUrl }: Credentials): User {
         username,
         fullname,
         imgUrl: imgUrl ? imgUrl : defaultProfilePic(),
-        gag: {
-            up: [],
-            down: [],
-            uploaded: []
-        },
-        comment: {
-            up: [],
-            down: [],
-            posted: []
+        rate: {
+            gag: {
+                up: [],
+                down: [],
+                uploaded: []
+            },
+            comment: {
+                up: [],
+                down: [],
+                posted: []
+            }
         }
     }
 }
@@ -88,22 +90,24 @@ function createRandomUser(fullname: string): User {
         username: utilService.getRandomUsername(),
         fullname,
         imgUrl: `https://robohash.org/${fullname}`,
-        gag: {
-            up: [],
-            down: [],
-            uploaded: []
-        },
-        comment: {
-            up: [],
-            down: [],
-            posted: []
+        rate: {
+            gag: {
+                up: [],
+                down: [],
+                uploaded: []
+            },
+            comment: {
+                up: [],
+                down: [],
+                posted: []
+            }
         }
     }
 }
 
 ; (() => {
     if (ENV !== 'local') return
-    let users: User[] = utilService.loadFromStorage(STORAGE_KEY) || []
+    let users = utilService.loadFromStorage(STORAGE_KEY) || []
     if (users.length) return
 
     users = gUsers

@@ -8,6 +8,7 @@ export interface Gag {
     imgUrl: string,
     title: string,
     comments: string[]
+    gags: string[]
 }
 
 export type Rate = {

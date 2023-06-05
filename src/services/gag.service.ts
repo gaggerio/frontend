@@ -75,6 +75,7 @@ function _createGag({ title, imgUrl }: { imgUrl: string, title: string }) {
             down: []
         },
         comments: [],
+        gags: []
     }
     return storageService.post(STORAGE_KEY, gag)
 }
@@ -102,6 +103,7 @@ function _createRandomGag() {
             up: userService.getRandomUserIds(),
             down: userService.getRandomUserIds()
         },
+        gags: []
     }
     return gag
 }

@@ -76,7 +76,10 @@ export const useUserStore = defineStore('user', {
         },
         async savePostedComment(commentId: string) {
             try {
-                this.loggedinUser?.comment.posted.push(commentId)
+                const user = this.getLoggedinUser
+                if (!user) return
+                
+                user.rate.comment.posted.push(commentId)
                 await this.saveLoggedinUser()
             }
             catch (err) {
@@ -86,7 +89,10 @@ export const useUserStore = defineStore('user', {
         },
         async savePostedGag(gagId: string) {
             try {
-                this.loggedinUser?.gag.uploaded.push(gagId)
+                const user = this.getLoggedinUser
+                if (!user) return
+
+                user.rate.gag.uploaded.push(gagId)
                 await this.saveLoggedinUser()
             }
             catch (err) {
@@ -95,14 +101,21 @@ export const useUserStore = defineStore('user', {
             }
         },
         async removeRate(gagId: string, dir: string, subject: string) {
-            if (!this.loggedinUser) return
-            const idx = this.loggedinUser[subject][dir].findIndex((id: string) => id === gagId)
-            if (idx >= 0) this.loggedinUser[subject][dir].splice(idx, 1)
+            const user = this.getLoggedinUser
+            if (!user) return
+
+            const ratings = user.rate[subject][dir]
+            const idx = ratings.findIndex((id: string) => id === gagId)
+            if (idx < 0) return
+
+            ratings.splice(idx, 1)
             this.saveLoggedinUser()
         },
         async addRate(gagId: string, dir: string, subject: string) {
-            if (!this.loggedinUser) return
-            this.loggedinUser[subject][dir].push(gagId)
+            const user = this.getLoggedinUser
+            if (!user) return
+
+            user.rate[subject][dir].push(gagId)
             this.saveLoggedinUser()
         }
     }

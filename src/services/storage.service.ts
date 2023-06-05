@@ -1,9 +1,10 @@
 import type { Gag } from "@/models/Gag.model"
 import type { Img } from "@/models/Img.model"
 import type { User } from "@/models/User.model"
+import type { Comment } from "@/models/Comment.model"
 import { utilService } from "./util.service"
 
-export function useStorageService<T extends User | Gag | Img>() {
+export function useStorageService<T extends User | Gag | Img | Comment>() {
 
     async function query(key: string): Promise<T[]> {
         const data = localStorage.getItem(key)

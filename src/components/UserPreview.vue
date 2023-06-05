@@ -11,13 +11,13 @@
 
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
-import type { User } from '../models/User.model'
+import type { MiniUser } from '../models/User.model'
 import { utilService } from '@/services/util.service'
 import { useRoute } from 'vue-router';
 
 const props = defineProps({
     user: {
-        type: Object as PropType<User>,
+        type: Object as PropType<MiniUser>,
         require: true
     },
     createdAt: {
