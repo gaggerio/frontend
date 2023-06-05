@@ -28,7 +28,7 @@ onMounted(async () => {
 async function goToEditor(file: File) {
     try {
         const data = await uploadImg(file)
-        if (!data) return 
+        if (!data) return
 
     }
     catch (err) {

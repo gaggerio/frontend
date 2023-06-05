@@ -1,13 +1,15 @@
 import type { Img } from "../models/Img.model"
-import { storageService } from "./storage.service"
-import { utilService } from "./util.service"
 import type { FilterBy } from '../models/FilterBy.model'
+import { useStorageService } from "./storage.service"
+import { utilService } from "./util.service"
 import { httpService } from './http.service'
-import gImgs from '../../data/img.json'
+import gImgs from '../assets/data/img.json'
 
 const STORAGE_KEY = 'img_db'
 const API = 'img'
+
 const ENV = import.meta.env.VITE_ENV
+const storageService = useStorageService<Img>()
 
 export const imgService = {
     query,
@@ -34,7 +36,8 @@ async function _filteredImgs(filterBy: FilterBy) {
 }
 
 function getRandomImg() {
-    return gImgs[utilService.getRandomIntInc(0, gImgs.length - 1)]
+    const imgs: Img[] = utilService.loadFromStorage(STORAGE_KEY) || []
+    return imgs[utilService.getRandomIntInc(0, imgs.length - 1)]
 }
 
 function getImgSrc(img: Img): string {
@@ -43,18 +46,15 @@ function getImgSrc(img: Img): string {
     return `${proxyUrl}/?url=${encodeURIComponent(img.url)}`
 }
 
-; (async () => {
-    try {
-        let imgs = await storageService.query(STORAGE_KEY) || []
-        if (!imgs.length) {
-            imgs = gImgs.map((img) => {
-                img._id = utilService.makeId()
-                return img
-            })
-            await storageService.postMany(STORAGE_KEY, imgs)
-        }
-    }
-    catch (err) {
-        console.log(err)
-    }
+; (() => {
+    if (ENV !== 'local') return
+    let imgs = utilService.loadFromStorage(STORAGE_KEY) || []
+    if (imgs.length) return
+
+    imgs = gImgs.map((img) => {
+        img._id = utilService.makeId()
+        return img
+    })
+    utilService.saveToStorage(STORAGE_KEY, imgs)
+    console.log(JSON.stringify(imgs))
 })()

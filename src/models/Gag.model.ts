@@ -1,16 +1,17 @@
-import type { User } from "./User.model"
+import type { MiniUser } from "./User.model"
 
 export interface Gag {
     _id: string
     rate: Rate
     createdAt: number
-    createdBy: User
+    createdBy: MiniUser
     imgUrl: string,
     title: string,
     comments: string[]
 }
 
 export type Rate = {
+    [key: string]: string[]
     up: string[]
     down: string[]
 }

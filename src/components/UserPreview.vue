@@ -28,7 +28,8 @@ const props = defineProps({
 const route = useRoute()
 
 const createdAt = computed<string>(() => {
-    if (route.path.includes('/editor')) return ''
+    if (route.name === 'editor') return ''
+    if (!props.createdAt) return ''
     return utilService.timeAgo(props.createdAt)
 })
 

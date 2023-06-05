@@ -6,7 +6,6 @@
     </div>
 </template>
 
-
 <script lang="ts" setup>
 import { useUserStore } from './stores/user.store'
 import { useGagStore } from './stores/gag.store'

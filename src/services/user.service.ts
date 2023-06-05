@@ -1,12 +1,14 @@
-import { utilService } from './util.service'
-import { storageService } from './storage.service'
-import { httpService } from './http.service'
 import type { Credentials, User } from '../models/User.model'
-import gUsers from '../../data/user.json'
+import { utilService } from './util.service'
+import { useStorageService } from './storage.service'
+import { httpService } from './http.service'
+import gUsers from '../assets/data/user.json'
 
 const STORAGE_KEY = 'user_db'
-const ENV = import.meta.env.VITE_ENV
 const API = 'user'
+
+const ENV = import.meta.env.VITE_ENV
+const storageService = useStorageService<User>()
 
 export const userService = {
     query,
@@ -35,7 +37,7 @@ async function update(user: User) {
 }
 
 function getRandomUser(): User {
-    const users = utilService.loadFromStorage(STORAGE_KEY)
+    const users: User[] = utilService.loadFromStorage(STORAGE_KEY) || []
     return users[utilService.getRandomIntInc(0, users.length - 1)]
 }
 
@@ -72,9 +74,9 @@ function _createUsers() {
 
 function getRandomUserIds() {
     const ids = []
-
+    const users: User[] = utilService.loadFromStorage(STORAGE_KEY) || []
     for (let i = 0; i < utilService.getRandomIntInc(0, 50); i++) {
-        const user = gUsers[utilService.getRandomIntInc(0, gUsers.length - 1)]
+        const user = users[utilService.getRandomIntInc(0, users.length - 1)]
         ids.push(user._id)
     }
     return ids
@@ -100,10 +102,12 @@ function createRandomUser(fullname: string): User {
 }
 
 ; (() => {
-    // _createUsers()
     if (ENV !== 'local') return
-    let users = utilService.loadFromStorage(STORAGE_KEY)
-    if (!users || !users.length) {
-        utilService.saveToStorage(STORAGE_KEY, gUsers)
-    }
+    let users: User[] = utilService.loadFromStorage(STORAGE_KEY) || []
+    if (users.length) return
+
+    users = gUsers
+    utilService.saveToStorage(STORAGE_KEY, users)
+    console.log(JSON.stringify(users))
 })()
+

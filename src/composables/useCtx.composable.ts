@@ -5,10 +5,6 @@ import { useMemeStore } from '../composables/useMemeStore.composable'
 import { memeService } from '@/services/meme.service'
 import { imgService } from '@/services/img.service'
 
-/**
-Represents a composable for managing the canvas context and rendering functions.
-@returns {Object} The object containing the composable functions and properties.
-*/
 export function useCtx() {
 
     var ctx: CanvasRenderingContext2D
@@ -18,37 +14,23 @@ export function useCtx() {
     const startPos = ref<Pos>({ x: 0, y: 0 })
     const isDrag = ref<boolean>(false)
 
-    /**
-    Initializes the canvas context and resizes it based on the image size.
-    */
     function init(): void {
         ctx = elCanvas.value.getContext('2d') as CanvasRenderingContext2D
         const { img } = memeStore.meme.value
         resizeCanvas(img)
     }
 
-    /**
-    Resizes the canvas based on the provided image size.
-    @param {Img} img - The image object containing the width and height.
-    */
     function resizeCanvas(img: Img): void {
         elCanvas.value.width = img.size.width
         elCanvas.value.height = img.size.height
     }
 
-    /**
-    Renders the meme by drawing the image, lines, and outline on the canvas.
-    */
     async function render(): Promise<void> {
         await drawImg()
         drawLines()
         drawOutline()
     }
 
-    /**
-    Draws the meme image on the canvas.
-    @returns {Promise<void>} A promise that resolves when the image is loaded and drawn.
-    */
     function drawImg(): Promise<void> {
         return new Promise((resolve) => {
             const elImg = new Image()
@@ -61,9 +43,6 @@ export function useCtx() {
         })
     }
 
-    /**
-    Draws the text lines of the meme on the canvas.
-    */
     function drawLines(): void {
         memeStore.lines.value.forEach((line) => {
             ctx.font = `${line.fontSize}px ${line.font}`
@@ -78,9 +57,6 @@ export function useCtx() {
         })
     }
 
-    /**
-    Draws the outline of the current line on the canvas.
-    */
     function drawOutline(): void {
         const line = memeStore.currLine.value
         const outLineColor = memeStore.meme.value.outLineColor
@@ -94,29 +70,15 @@ export function useCtx() {
         ctx.stroke()
     }
 
-    /**
-    Calculates the width of the text based on the current line's properties.
-    @param {Line} line - The line object containing the text and font properties.
-    @returns {number} The calculated width of the text.
-    */
     function calcTextWidth(line: Line): number {
         ctx.font = `${line.fontSize}px ${line.font}`
         return ctx.measureText(line.txt).width
     }
 
-    /**
-    Calculates the height of the text based on the current line's properties.
-    @param {Line} line - The line object containing the text and font properties.
-    @returns {number} The calculated height of the text.
-    */
     function calcTextHeight(line: Line): number {
         return elCanvas.value.width * 0.08 + line.fontSize * 0.1
     }
 
-    /**
-    Handles the mouse over event on the canvas.
-    @param {MouseEvent} ev - The mouse over event object.
-    */
     function onMouseOver(ev: MouseEvent): void {
         const mousePos = memeService.getMousePos(ev)
         const currLineIdx = memeStore.currLineIdx.value
@@ -134,23 +96,12 @@ export function useCtx() {
         elCanvas.value.style.cursor = cursor
     }
 
-    /**
-    Gets the index of the line that the mouse is currently over.
-    @param {Pos} mousePos - The mouse position object containing the x and y coordinates.
-    @returns {number} The index of the line, or -1 if not found.
-    */
     function getMouseOverLineIdx(mousePos: Pos): number {
         return memeStore.lines.value.findIndex((line) => {
             return isOverLine(line, mousePos)
         })
     }
 
-    /**
-    Checks if the mouse is over a specific line.
-    @param {Line} line - The line object to check against.
-    @param {Pos} mousePos - The mouse position object containing the x and y coordinates.
-    @returns {boolean} True if the mouse is over the line, false otherwise.
-    */
     function isOverLine(line: Line, mousePos: Pos): boolean {
         const textWidth = calcTextWidth(line)
         const textHeight = calcTextHeight(line)
@@ -169,11 +120,6 @@ export function useCtx() {
         )
     }
 
-    /**
-    Handles the mouse down event on the canvas.
-    If clicked on a line, switch to the selected line
-    @param {MouseEvent} ev - The mouse down event object.
-    */
     function onMouseDown(ev: MouseEvent): void {
         const mousePos = memeService.getMousePos(ev)
         const idx = getMouseOverLineIdx(mousePos)
@@ -184,18 +130,10 @@ export function useCtx() {
         startPos.value = mousePos
     }
 
-    /**
-    Handles the mouse up event on the canvas.
-    Sets the isDrag flag to false.
-    */
     function onMouseUp(): void {
         isDrag.value = false
     }
 
-    /**
-    Moves the current line based on the mouse position.
-    @param {Pos} mousePos - The mouse position object containing the x and y coordinates.
-    */
     function moveLine(mousePos: Pos): void {
         const delta = {
             x: mousePos.x - startPos.value.x,
@@ -205,10 +143,6 @@ export function useCtx() {
         startPos.value = mousePos
     }
 
-    /**
-     * 
-     * @returns Returns the content of the current canvas as an image.
-     */
     async function dataUrl() {
         await drawImg()
         drawLines()

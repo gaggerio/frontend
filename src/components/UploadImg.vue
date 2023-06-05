@@ -35,8 +35,9 @@ function handleDrop(ev: DragEvent) {
 async function handleUpload(file: File) {
     if (!file) return
     try {
-        const { url } = await uploadImg(file)
-        emit('uploaded', url)
+        const data = await uploadImg(file)
+        if (!data) return
+        emit('uploaded', data.url)
         showSuccessMsg('Image uploaded')
     }
     catch (err) {

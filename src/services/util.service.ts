@@ -26,9 +26,9 @@ function saveToStorage(key: string, value: any) {
     localStorage.setItem(key, JSON.stringify(value))
 }
 
-function loadFromStorage(key: string) {
+function loadFromStorage<T>(key: string): T[] | null {
     let data = localStorage.getItem(key)
-    return data ? JSON.parse(data) : undefined
+    return data ? JSON.parse(data) : null
 }
 
 function saveToSession(key: string, value: any) {
@@ -37,7 +37,7 @@ function saveToSession(key: string, value: any) {
 
 function loadFromSession(key: string) {
     let data = sessionStorage.getItem(key)
-    return data ? JSON.parse(data) : undefined
+    return data ? JSON.parse(data) : null
 }
 
 function getRandomColor() {

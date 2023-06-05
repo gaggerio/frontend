@@ -21,3 +21,9 @@ export interface Credentials {
     fullname: string
     imgUrl: string
 }
+
+export interface MiniUser {
+    _id: string
+    username: string,
+    imgUrl: string
+}
