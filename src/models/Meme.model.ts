@@ -1,5 +1,5 @@
-import type { Img } from "./Img.model"
-import type { Line } from "./Line.model"
+import type { Img } from './Img.model'
+import type { Line } from './Line.model'
 
 export interface Meme {
     _id: string

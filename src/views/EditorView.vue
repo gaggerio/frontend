@@ -103,15 +103,15 @@ function onUpdateMeme() {
     ctx.render()
 }
 
-function clearMeme() {
-    memeStore.clear()
-    loadMeme()
-}
+// function clearMeme() {
+//     memeStore.clear()
+//     loadMeme()
+// }
 
 async function postMeme() {
     try {
         const dataUrl = await ctx.dataUrl()
-        const imgData = await uploadImg(dataUrl)
+        const imgData = await uploadImg(dataUrl as string)
         if (!imgData) throw Error('Something went wrong')
 
         await gagStore.saveGag({

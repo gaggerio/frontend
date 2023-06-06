@@ -26,7 +26,7 @@ const emit = defineEmits([
 ])
 
 const text = ref<string>('')
-const file = ref<File>(null!)
+const file = ref<File>()
 
 function handleFile(ev: Event) {
     const files = (ev.target as HTMLInputElement).files

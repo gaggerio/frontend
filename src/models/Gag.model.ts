@@ -1,4 +1,4 @@
-import type { MiniUser } from "./User.model"
+import type { MiniUser } from './User.model'
 
 export interface Gag {
     _id: string

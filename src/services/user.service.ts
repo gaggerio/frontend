@@ -1,14 +1,15 @@
 import type { Credentials, User } from '../models/User.model'
 import { utilService } from './util.service'
 import { useStorageService } from './storage.service'
-import { httpService } from './http.service'
+import { useHttpService } from './http.service'
 import gUsers from '../assets/data/user.json'
 
 const STORAGE_KEY = 'user_db'
 const API = 'user'
-
 const ENV = import.meta.env.VITE_ENV
+
 const storageService = useStorageService<User>()
+const httpService = useHttpService<User>()
 
 export const userService = {
     query,
@@ -66,13 +67,13 @@ function createUser({ username, fullname, imgUrl }: Credentials): User {
     }
 }
 
-function _createUsers() {
-    const names = utilService.getRandomNames()
-    const users = names.map(user => {
-        return createRandomUser(user)
-    })
-    console.log(JSON.stringify(users))
-}
+// function _createUsers() {
+//     const names = utilService.getRandomNames()
+//     const users = names.map(user => {
+//         return createRandomUser(user)
+//     })
+//     console.log(JSON.stringify(users))
+// }
 
 function getRandomUserIds() {
     const ids = []
@@ -105,7 +106,7 @@ function createRandomUser(fullname: string): User {
     }
 }
 
-; (() => {
+(() => {
     if (ENV !== 'local') return
     let users = utilService.loadFromStorage(STORAGE_KEY) || []
     if (users.length) return

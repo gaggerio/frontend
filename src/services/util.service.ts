@@ -22,21 +22,21 @@ function delay(ms = 1500) {
     })
 }
 
-function saveToStorage(key: string, value: any) {
+function saveToStorage<T>(key: string, value: T) {
     localStorage.setItem(key, JSON.stringify(value))
 }
 
 function loadFromStorage<T>(key: string): T[] | null {
-    let data = localStorage.getItem(key)
+    const data = localStorage.getItem(key)
     return data ? JSON.parse(data) : null
 }
 
-function saveToSession(key: string, value: any) {
+function saveToSession<T>(key: string, value: T) {
     sessionStorage.setItem(key, JSON.stringify(value))
 }
 
 function loadFromSession(key: string) {
-    let data = sessionStorage.getItem(key)
+    const data = sessionStorage.getItem(key)
     return data ? JSON.parse(data) : null
 }
 
@@ -50,10 +50,10 @@ function getRandomColor() {
 }
 
 function makeId(length = 5) {
-    var txt = ''
-    var possible =
+    let txt = ''
+    const possible =
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length))
     }
     return txt

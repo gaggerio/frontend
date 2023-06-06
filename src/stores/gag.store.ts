@@ -13,7 +13,7 @@ export interface GagState {
 
 export const useGagStore = defineStore('gag', {
     state: (): GagState => ({
-        gags: null!,
+        gags: [],
         currGagId: ''
     }),
     getters: {
@@ -77,11 +77,11 @@ export const useGagStore = defineStore('gag', {
                     case 'up':
                         this.toggleRate(gag, user, rateData)
                         if (isDownvoted) this.toggleRate(gag, user, { dir: 'down', itemId })
-                        break;
+                        break
                     case 'down':
                         this.toggleRate(gag, user, rateData)
                         if (isUpvoted) this.toggleRate(gag, user, { dir: 'up', itemId })
-                        break;
+                        break
                 }
                 await gagService.update(gag)
             }
@@ -92,7 +92,7 @@ export const useGagStore = defineStore('gag', {
         },
         toggleRate(gag: Gag, user: User, { dir, itemId }: RateData) {
             const subject = 'gag'
-            let rate = gag.rate[dir]
+            const rate = gag.rate[dir]
 
             if (rate.includes(user._id)) {
                 const idx = rate.findIndex((id: string) => id === user._id)

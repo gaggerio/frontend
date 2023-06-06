@@ -1,47 +1,44 @@
+import type { FilterBy } from '@/models/FilterBy.model'
 import Axios from 'axios'
 
-interface HttpService {
-    [method: string]: (endpoint: string, data?: any) => Promise<any>
-}
-
 const BASE_URL =
-    import.meta.env.NODE_ENV === 'production' ?
-        '/api/' :
-        '//localhost:3030/api/'
+    import.meta.env.NODE_ENV === 'production' ? '/api/' : '//localhost:3030/api/'
 
 const axios = Axios.create({
     withCredentials: true,
 })
 
-export const httpService: HttpService = {
-    get(endpoint, data) {
-        return ajax(endpoint, 'GET', data)
-    },
-    post(endpoint, data) {
-        return ajax(endpoint, 'POST', data)
-    },
-    put(endpoint, data) {
-        return ajax(endpoint, 'PUT', data)
-    },
-    delete(endpoint, data) {
-        return ajax(endpoint, 'DELETE', data)
-    },
+export function useHttpService<T>() {
+    return {
+        async query(endpoint: string, data: FilterBy) {
+            return ajax<T>(endpoint, 'GET', data)
+        },
+        async get(endpoint: string) {
+            return ajax<T>(endpoint, 'GET', null)
+        },
+        async post<T>(endpoint: string, data: T) {
+            return ajax<T>(endpoint, 'POST', data)
+        },
+        async put<T>(endpoint: string, data: T) {
+            return ajax<T>(endpoint, 'PUT', data)
+        },
+        async delete<T>(endpoint: string, data: string) {
+            return ajax<T>(endpoint, 'DELETE', data)
+        },
+    }
 }
 
-async function ajax(endpoint: string, method = 'GET', data = null) {
+async function ajax<T>(endpoint: string, method = 'GET', data: T | FilterBy | string | null) {
     try {
-        const res = await axios({
+        const response = await axios({
             url: `${BASE_URL}${endpoint}`,
             method,
             data,
             params: method === 'GET' ? data : null,
         })
-        return res.data
-    } catch (err: any) {
-        console.log(
-            `Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`,
-            data
-        )
+        return response.data
+    } catch (err) {
+        console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`, data)
         console.dir(err)
         throw err
     }

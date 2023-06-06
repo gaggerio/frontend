@@ -1,5 +1,5 @@
-import type { Rate } from "./Gag.model"
-import type { MiniUser } from "./User.model"
+import type { Rate } from './Gag.model'
+import type { MiniUser } from './User.model'
 
 export interface Comment {
     [key: string]: string | number | Rate | MiniUser

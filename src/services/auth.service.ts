@@ -1,10 +1,12 @@
-import { httpService } from './http.service'
+import { useHttpService } from './http.service'
 import { userService } from './user.service'
 import type { Credentials, User } from '../models/User.model'
 
 const STORAGE_KEY = 'loggedinUser'
 const API = 'auth'
+
 const ENV = import.meta.env.VITE_ENV
+const httpService = useHttpService<Credentials | User>()
 
 export const authService = {
     login,
@@ -20,7 +22,7 @@ async function login(credentials: Credentials) {
         await _login(credentials) :
         await httpService.post(`${API}/login`, credentials)
 
-    return (user) ? saveLocalUser(user) : null
+    return (user) ? saveLocalUser(user as User) : null
 }
 
 async function signup(credentials: Credentials) {
@@ -34,7 +36,7 @@ async function signup(credentials: Credentials) {
 async function logout() {
     return ENV === 'local' ?
         sessionStorage.removeItem(STORAGE_KEY) :
-        await httpService.post(`${API}/logout`)
+        await httpService.post(`${API}/logout`, null)
 }
 
 function saveLocalUser(user: User) {

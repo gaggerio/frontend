@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
-    "proxy": "node ./proxy-server/index.js"
+    "proxy": "node ./proxy-server/index.js",
+    "lint":"npx eslint ."
   },
   "dependencies": {
     "axios": "^1.4.0",

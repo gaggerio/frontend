@@ -1,33 +1,38 @@
-export const SHOW_MSG = 'show-msg'
+type Listener<T> = (data: T) => void
 
-type ListenerMap = {
-    [listener: string]: Listener[]
+type ListenerMap<T> = {
+    [event: string]: Listener<T>[]
 }
-type Unsubscribe = () => void
 
-export type Listener = (args: any) => void
-export type Msg = { txt: string, type: string }
+type EventEmitter<T> = {
+    on(evName: string, listener: Listener<T>): () => void
+    emit(evName: string, data: T): void
+}
 
-function createEventEmitter() {
-    const listenersMap: ListenerMap = {}
+function createEventEmitter<T>(): EventEmitter<T> {
+    const listenersMap: ListenerMap<T> = {}
+
     return {
-        on(evName: string, listener: Listener): Unsubscribe {
-            listenersMap[evName] = (listenersMap[evName]) ? [...listenersMap[evName], listener] : [listener]
+        on(evName: string, listener: Listener<T>) {
+            listenersMap[evName] = listenersMap[evName] ? [...listenersMap[evName], listener] : [listener]
+
             return () => {
-                listenersMap[evName] = listenersMap[evName].filter(func => func !== listener)
+                listenersMap[evName] = listenersMap[evName].filter((func) => func !== listener)
             }
         },
-        emit(evName: string, data: any) {
+        emit(evName: string, data: T) {
             if (!listenersMap[evName]) return
-            listenersMap[evName].forEach(listener => listener(data))
-        }
+            listenersMap[evName].forEach((listener) => listener(data))
+        },
     }
 }
 
-export const eventBus = createEventEmitter()
+export const eventBus: EventEmitter<{ txt: string, type: string }> = createEventEmitter()
 
-export function showUserMsg(msg: Msg) {
-    eventBus.emit('show-msg', msg)
+export const SHOW_MSG = 'show-msg'
+
+export function showUserMsg(msg: { txt: string, type: string }) {
+    eventBus.emit(SHOW_MSG, msg)
 }
 
 export function showSuccessMsg(txt: string) {

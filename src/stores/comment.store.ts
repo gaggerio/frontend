@@ -14,7 +14,7 @@ export interface CommentState {
 
 export const useCommentStore = defineStore('comment', {
     state: (): CommentState => ({
-        comments: null!
+        comments: []
     }),
     getters: {
         getComments({ comments }) {
@@ -76,11 +76,11 @@ export const useCommentStore = defineStore('comment', {
                     case 'up':
                         this.toggleRate(comment, user, rateData)
                         if (isDownvoted) this.toggleRate(comment, user, { ...rateData, dir: 'down' })
-                        break;
+                        break
                     case 'down':
                         this.toggleRate(comment, user, rateData)
                         if (isUpvoted) this.toggleRate(comment, user, { ...rateData, dir: 'up' })
-                        break;
+                        break
                 }
                 await commentService.update(comment)
             }
@@ -91,7 +91,7 @@ export const useCommentStore = defineStore('comment', {
         },
         toggleRate(comment: Comment, user: User, { dir, itemId }: RateData) {
             const subject = 'comment'
-            let rate = comment.rate[dir]
+            const rate = comment.rate[dir]
 
             if (rate.includes(user._id)) {
                 const idx = rate.findIndex((id: string) => id === user._id)
