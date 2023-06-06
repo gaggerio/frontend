@@ -7,20 +7,22 @@ import { imgService } from '@/services/img.service'
 
 export function useCtx() {
 
-    var ctx: CanvasRenderingContext2D
+    let ctx: CanvasRenderingContext2D
     const memeStore = useMemeStore()
 
-    const elCanvas = ref<HTMLCanvasElement>(null!)
+    const elCanvas = ref<HTMLCanvasElement>()
     const startPos = ref<Pos>({ x: 0, y: 0 })
     const isDrag = ref<boolean>(false)
 
     function init(): void {
+        if (!elCanvas.value) return
         ctx = elCanvas.value.getContext('2d') as CanvasRenderingContext2D
         const { img } = memeStore.meme.value
         resizeCanvas(img)
     }
 
     function resizeCanvas(img: Img): void {
+        if (!elCanvas.value) return
         elCanvas.value.width = img.size.width
         elCanvas.value.height = img.size.height
     }
@@ -32,10 +34,12 @@ export function useCtx() {
     }
 
     function drawImg(): Promise<void> {
+        
         return new Promise((resolve) => {
             const elImg = new Image()
             elImg.src = imgService.getImgSrc(memeStore.img.value)
             elImg.onload = () => {
+                if (!elCanvas.value) return
                 const { width, height } = elCanvas.value
                 ctx.drawImage(elImg, 0, 0, width, height)
                 resolve()
@@ -44,7 +48,9 @@ export function useCtx() {
     }
 
     function drawLines(): void {
+        
         memeStore.lines.value.forEach((line) => {
+            if (!elCanvas.value) return
             ctx.font = `${line.fontSize}px ${line.font}`
             ctx.textAlign = line.textAlign
             ctx.textBaseline = line.textBaseline
@@ -76,10 +82,12 @@ export function useCtx() {
     }
 
     function calcTextHeight(line: Line): number {
+        if (!elCanvas.value) return -1
         return elCanvas.value.width * 0.08 + line.fontSize * 0.1
     }
 
     function onMouseOver(ev: MouseEvent): void {
+        if (!elCanvas.value) return
         const mousePos = memeService.getMousePos(ev)
         const currLineIdx = memeStore.currLineIdx.value
         const overLineIdx = getMouseOverLineIdx(mousePos)
@@ -144,6 +152,7 @@ export function useCtx() {
     }
 
     async function dataUrl() {
+        if (!elCanvas.value) return
         await drawImg()
         drawLines()
         return elCanvas.value.toDataURL()

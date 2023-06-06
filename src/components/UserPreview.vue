@@ -13,7 +13,7 @@
 import { computed, type PropType } from 'vue'
 import type { MiniUser } from '../models/User.model'
 import { utilService } from '@/services/util.service'
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router'
 
 const props = defineProps({
     user: {
@@ -33,7 +33,7 @@ const createdAt = computed<string>(() => {
     return utilService.timeAgo(props.createdAt)
 })
 
-const shouldShow = computed(() => {
-    return useRoute().path === '/'
-})
+// const shouldShow = computed(() => {
+//     return useRoute().path === '/'
+// })
 </script>

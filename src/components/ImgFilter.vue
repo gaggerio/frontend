@@ -18,7 +18,7 @@ const emit = defineEmits([
 ])
 
 const txt = ref<string>('')
-const file = ref<File>(null!)
+const file = ref<File>()
 
 function handleFile(ev: Event) {
     const files = (ev.target as HTMLInputElement).files
@@ -27,7 +27,7 @@ function handleFile(ev: Event) {
     emit('fileSelect', file.value)
 }
 
-function filterImg() {
-    emit('filterImgs', txt.value)
-}
+// function filterImg() {
+//     emit('filterImgs', txt.value)
+// }
 </script>

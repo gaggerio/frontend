@@ -1,15 +1,16 @@
-import type { Img } from "../models/Img.model"
+import type { Img } from '../models/Img.model'
 import type { FilterBy } from '../models/FilterBy.model'
-import { useStorageService } from "./storage.service"
-import { utilService } from "./util.service"
-import { httpService } from './http.service'
+import { useStorageService } from './storage.service'
+import { utilService } from './util.service'
+import { useHttpService } from './http.service'
 import gImgs from '../assets/data/img.json'
 
 const STORAGE_KEY = 'img_db'
 const API = 'img'
-
 const ENV = import.meta.env.VITE_ENV
+
 const storageService = useStorageService<Img>()
+const httpService = useHttpService<Img>()
 
 export const imgService = {
     query,
@@ -20,8 +21,8 @@ export const imgService = {
 
 async function query(filterBy: FilterBy = { txt: '' }): Promise<Img[]> {
     return ENV === 'local' ?
-        await _filteredImgs(filterBy) :
-        await httpService.get(API, filterBy)
+        await _filteredImgs() :
+        await httpService.query(API, filterBy)
 }
 
 function getById(itemId: string) {
@@ -30,9 +31,8 @@ function getById(itemId: string) {
         httpService.get(`${API}/${itemId}`)
 }
 
-async function _filteredImgs(filterBy: FilterBy) {
-    let imgs: Img[] = await storageService.query(STORAGE_KEY)
-    return imgs
+async function _filteredImgs() {
+    return await storageService.query(STORAGE_KEY)
 }
 
 function getRandomImg() {
@@ -46,7 +46,7 @@ function getImgSrc(img: Img): string {
     return `${proxyUrl}/?url=${encodeURIComponent(img.url)}`
 }
 
-; (() => {
+(() => {
     if (ENV !== 'local') return
     let imgs = utilService.loadFromStorage(STORAGE_KEY) || []
     if (imgs.length) return

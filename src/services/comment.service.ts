@@ -1,16 +1,17 @@
-import type { Comment, CommentForm } from "../models/Comment.model"
-import { httpService } from "./http.service"
-import { imgService } from "./img.service"
-import { useStorageService } from "./storage.service"
-import { userService } from "./user.service"
-import { utilService } from "./util.service"
-import { authService } from "./auth.service"
+import type { Comment, CommentForm } from '../models/Comment.model'
+import { useHttpService } from './http.service'
+import { imgService } from './img.service'
+import { useStorageService } from './storage.service'
+import { userService } from './user.service'
+import { utilService } from './util.service'
+import { authService } from './auth.service'
 
 const STORAGE_KEY = 'comment_db'
 const API = 'comment'
-
 const ENV = import.meta.env.VITE_ENV
+
 const storageService = useStorageService<Comment>()
+const httpService = useHttpService<Comment>()
 
 export const commentService = {
     query,

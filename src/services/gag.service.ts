@@ -1,18 +1,19 @@
-import type { FilterBy } from "../models/FilterBy.model"
-import type { Gag } from "../models/Gag.model"
-import { httpService } from "./http.service"
-import { useStorageService } from "./storage.service"
-import { userService } from "./user.service"
-import { utilService } from "./util.service"
-import { imgService } from "./img.service"
-import { authService } from "./auth.service"
-import { commentService } from "./comment.service"
+import type { FilterBy } from '../models/FilterBy.model'
+import type { Gag } from '../models/Gag.model'
+import { useHttpService } from './http.service'
+import { useStorageService } from './storage.service'
+import { userService } from './user.service'
+import { utilService } from './util.service'
+import { imgService } from './img.service'
+import { authService } from './auth.service'
+import { commentService } from './comment.service'
 
 const STORAGE_KEY = 'gag_db'
 const API = 'gag'
-
 const ENV = import.meta.env.VITE_ENV
+
 const storageService = useStorageService<Gag>()
+const httpService = useHttpService<Gag>()
 
 export const gagService = {
     query,
@@ -24,8 +25,8 @@ export const gagService = {
 
 function query(filterBy: FilterBy) {
     return ENV === 'local' ?
-        _filteredGags(filterBy) :
-        httpService.get(API, filterBy)
+        _filteredGags() :
+        httpService.query(API, filterBy)
 }
 
 function getById(gagId: string) {
@@ -58,9 +59,8 @@ async function _updateRate(gagId: string, dir: string, diff: number) {
     return update(gag)
 }
 
-async function _filteredGags(filterBy: FilterBy) {
-    let gags: Gag[] = await storageService.query(STORAGE_KEY)
-    return gags
+async function _filteredGags() {
+    return await storageService.query(STORAGE_KEY)
 }
 
 function _createGag({ title, imgUrl }: { imgUrl: string, title: string }) {
@@ -108,7 +108,7 @@ function _createRandomGag() {
     return gag
 }
 
-; (() => {
+(() => {
     if (ENV !== 'local') return
     let gags = utilService.loadFromStorage<Gag>(STORAGE_KEY)
     if (gags) return

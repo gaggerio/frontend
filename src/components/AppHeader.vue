@@ -18,38 +18,38 @@
 </template>
 
 <script lang="ts" setup>
-import { useUserStore } from '@/stores/user.store'
-import { ref, reactive, computed } from 'vue'
-import { utilService } from '../services/util.service'
+// import { useUserStore } from '@/stores/user.store'
+import { ref, computed } from 'vue'
+// import { utilService } from '../services/util.service'
 import HamburgerSvg from '../svgs/HamburgerSvg.vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import ArrowSvg from '../svgs/ArrowSvg.vue'
 
-const userStore = useUserStore()
+// const userStore = useUserStore()
 const route = useRoute()
-const router = useRouter()
+// const router = useRouter()
 
 const isNavOpen = ref(false)
-const currRoute = ref('')
+// const currRoute = ref('')
 
-const state = reactive({
-    isNavOpen: false,
-    showLogout: false
-})
+// const state = reactive({
+//     isNavOpen: false,
+//     showLogout: false
+// })
 
 const showBack = computed(() => {
     return route.path !== '/'
 })
 
-const links = ref(utilService.getHeaderLinks())
-const icons = {
-    logo: utilService.getIcon('logo'),
-    hamburger: utilService.getIcon('hamburger')
-}
+// const links = ref(utilService.getHeaderLinks())
+// const icons = {
+//     logo: utilService.getIcon('logo'),
+//     hamburger: utilService.getIcon('hamburger')
+// }
 
-const loggedinUser = computed(() => {
-    return userStore.getLoggedinUser
-})
+// const loggedinUser = computed(() => {
+//     return userStore.getLoggedinUser
+// })
 
 const getTitle = computed(() => {
     const titles: { [name: string]: string } = {
@@ -64,7 +64,7 @@ function toggleNav() {
     isNavOpen.value = !isNavOpen.value
 }
 
-function onLogout() {
-    userStore.logout()
-}
+// function onLogout() {
+//     userStore.logout()
+// }
 </script>

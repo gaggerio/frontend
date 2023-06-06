@@ -1,8 +1,8 @@
-import type { Line, Pos } from "@/models/Line.model"
-import type { Meme } from "../models/Meme.model"
-import type { Img } from "@/models/Img.model"
-import { utilService } from "./util.service"
-import { imgService } from "./img.service"
+import type { Line, Pos } from '@/models/Line.model'
+import type { Meme } from '../models/Meme.model'
+import type { Img } from '@/models/Img.model'
+import { utilService } from './util.service'
+import { imgService } from './img.service'
 
 const MEME_KEY = 'curr_meme'
 const MOVES_KEY = 'meme_moves'
@@ -44,7 +44,7 @@ function save(meme: Meme): void {
 }
 
 function saveMoves(meme: Meme) {
-    let moves = loadMoves() || []
+    const moves = loadMoves() || []
     moves.push(meme)
     utilService.saveToSession(MOVES_KEY, moves)
 }
@@ -82,7 +82,7 @@ function createLine(): Line {
         textAlign: 'center',
         strokeStyle: '#000000',
         fillStyle: '#ffffff',
-        font: `Impact`,
+        font: 'Impact',
         textBaseline: 'top',
         pos: {
             x: 0,

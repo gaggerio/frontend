@@ -9,7 +9,7 @@
 import { computed } from 'vue'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { uploadImg } from '../services/upload.service'
-import { utilService } from '../services/util.service';
+import { utilService } from '../services/util.service'
 
 const emit = defineEmits([
     'uploaded'

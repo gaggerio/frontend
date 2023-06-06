@@ -1,10 +1,10 @@
 import type { Pos } from '@/models/Line.model'
 import type { Meme } from '../models/Meme.model'
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import { memeService } from '../services/meme.service'
 import { showErrorMsg } from '@/services/event-bus.service'
 
-var gMeme = ref<Meme>(memeService.createMeme({
+const gMeme = ref<Meme>(memeService.createMeme({
     _id: '',
     url: '',
     keywords: [],
@@ -12,7 +12,7 @@ var gMeme = ref<Meme>(memeService.createMeme({
 }))
 
 export function useMemeStore() {
- 
+
     const meme = computed(() => gMeme.value)
     const currLine = computed(() => gMeme.value.lines[gMeme.value.currLine])
     const lines = computed(() => gMeme.value.lines)

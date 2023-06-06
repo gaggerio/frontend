@@ -14,7 +14,7 @@ import ImgGallery from '../components/ImgGallery.vue'
 import ImgFilter from '../components/ImgFilter.vue'
 import { uploadImg } from '@/services/upload.service'
 
-const imgs = ref<Img[]>(null!)
+const imgs = ref<Img[]>()
 
 onMounted(async () => {
     try {
