@@ -36,6 +36,6 @@ export interface Credentials {
 
 export interface MiniUser {
     _id: string
-    username: string,
+    username: string
     imgUrl: string
 }

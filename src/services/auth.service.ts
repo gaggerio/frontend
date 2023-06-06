@@ -14,29 +14,31 @@ export const authService = {
     signup,
     saveLocalUser,
     getLoggedinUser,
-    getGuest
+    getGuest,
 }
 
 async function login(credentials: Credentials) {
-    const user = ENV === 'local' ?
-        await _login(credentials) :
-        await httpService.post(`${API}/login`, credentials)
+    const user =
+        ENV === 'local'
+            ? await _login(credentials)
+            : await httpService.post(`${API}/login`, credentials)
 
-    return (user) ? saveLocalUser(user as User) : null
+    return user ? saveLocalUser(user as User) : null
 }
 
 async function signup(credentials: Credentials) {
-    const user = ENV === 'local' ?
-        await _signup(credentials) :
-        await await httpService.post(`${API}/signup`, credentials)
+    const user =
+        ENV === 'local'
+            ? await _signup(credentials)
+            : await await httpService.post(`${API}/signup`, credentials)
 
     return saveLocalUser(user)
 }
 
 async function logout() {
-    return ENV === 'local' ?
-        sessionStorage.removeItem(STORAGE_KEY) :
-        await httpService.post(`${API}/logout`, null)
+    return ENV === 'local'
+        ? sessionStorage.removeItem(STORAGE_KEY)
+        : await httpService.post(`${API}/logout`, null)
 }
 
 function saveLocalUser(user: User) {
@@ -61,8 +63,8 @@ async function _signup(credentials: Credentials) {
 
 async function _login(credentials: Credentials) {
     const users = await userService.query()
-    const user = users.find((user: User) =>
-        user.username === credentials.username
+    const user = users.find(
+        (user: User) => user.username === credentials.username
     )
     if (user) return user
     else throw new Error('Wrong credentials')

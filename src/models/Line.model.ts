@@ -10,8 +10,7 @@ export interface Line {
     pos: Pos
 }
 
-export type Pos = { 
-    x: number, 
-    y: number 
+export type Pos = {
+    x: number
+    y: number
 }
-

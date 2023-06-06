@@ -5,8 +5,8 @@ export interface Gag {
     rate: Rate
     createdAt: number
     createdBy: MiniUser
-    imgUrl: string,
-    title: string,
+    imgUrl: string
+    title: string
     comments: string[]
     gags: string[]
 }

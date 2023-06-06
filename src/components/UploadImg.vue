@@ -1,7 +1,7 @@
 <template>
     <label @drop.prevent="handleDrop" @dragover.prevent>
-        <img :src="src" alt="" v-if="showPreview">
-        <input type="file" @change="handleChange" hidden>
+        <img :src="src" alt="" v-if="showPreview" />
+        <input type="file" @change="handleChange" hidden />
     </label>
 </template>
 
@@ -11,13 +11,11 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { uploadImg } from '../services/upload.service'
 import { utilService } from '../services/util.service'
 
-const emit = defineEmits([
-    'uploaded'
-])
+const emit = defineEmits(['uploaded'])
 
 const props = defineProps({
     imgUrl: String,
-    showPreview: Boolean
+    showPreview: Boolean,
 })
 
 function handleChange(ev: Event) {
@@ -39,15 +37,12 @@ async function handleUpload(file: File) {
         if (!data) return
         emit('uploaded', data.url)
         showSuccessMsg('Image uploaded')
-    }
-    catch (err) {
+    } catch (err) {
         showErrorMsg('Failed to load image')
     }
 }
 
 const src = computed(() => {
-    return props.imgUrl ?
-        props.imgUrl :
-        utilService.getIcon('addImg')
+    return props.imgUrl ? props.imgUrl : utilService.getIcon('addImg')
 })
 </script>

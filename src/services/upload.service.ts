@@ -9,7 +9,9 @@ export interface CloudinaryResponse {
     url: string
 }
 
-export async function uploadImg(file: File | string): Promise<CloudinaryResponse | null> {
+export async function uploadImg(
+    file: File | string
+): Promise<CloudinaryResponse | null> {
     if (!file) return null
     const FORM_DATA = new FormData()
 
@@ -22,8 +24,7 @@ export async function uploadImg(file: File | string): Promise<CloudinaryResponse
             body: FORM_DATA,
         })
         return res.json()
-    }
-    catch (err) {
+    } catch (err) {
         console.dir(err)
         return null
     }

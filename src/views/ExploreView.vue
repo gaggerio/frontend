@@ -19,8 +19,7 @@ const imgs = ref<Img[]>()
 onMounted(async () => {
     try {
         imgs.value = await imgService.query()
-    }
-    catch (err) {
+    } catch (err) {
         showErrorMsg('Error loading imgs...')
     }
 })
@@ -29,9 +28,7 @@ async function goToEditor(file: File) {
     try {
         const data = await uploadImg(file)
         if (!data) return
-
-    }
-    catch (err) {
+    } catch (err) {
         console.log('error', err)
     }
 }

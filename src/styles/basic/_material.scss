@@ -9,13 +9,13 @@
     cursor: pointer;
     display: block;
     width: max-content;
-    
+
     // &:hover {
     //     border-color: $primary-clr;
     //     color: $primary-clr;
     // }
 
-    &.primary{
+    &.primary {
         background-color: $primary-clr;
         color: #fff;
     }

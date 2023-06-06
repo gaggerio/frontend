@@ -1,6 +1,6 @@
 // COLORS
-$clr1: #F5F5F5;
-$clr2: #005BA4;
+$clr1: #f5f5f5;
+$clr2: #005ba4;
 $clr3: #0000002d;
 $clr4: #616161;
 $clr5: rgba(0, 0, 0, 0.24);
@@ -8,13 +8,13 @@ $clr6: #b3b3b3c5;
 $clr7: #00000098;
 $clr8: #2b2b2b;
 $txt-clr: #000000c8;
-$bgc-clr: #25252B;
+$bgc-clr: #25252b;
 
-$primary-clr: #409EFF;
-$success-clr: #67C23A;
+$primary-clr: #409eff;
+$success-clr: #67c23a;
 $info-clr: #c5c5c5af;
-$warning-clr: #E6A23C;
-$danger-clr: #F56C6C;
+$warning-clr: #e6a23c;
+$danger-clr: #f56c6c;
 
 // LAYOUT
 $layoutPadding: 40px;
@@ -32,6 +32,4 @@ $padded-break-narrow: $break-narrow + $layoutPadding * 2;
 $padded-break-normal: $break-normal + $layoutPadding * 2;
 $padded-break-wide: $break-wide + $layoutPadding * 2;
 
-
-$font1 : 'Poppins-bold',
-sans-serif;
+$font1: 'Poppins-bold', sans-serif;

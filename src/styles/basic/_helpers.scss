@@ -1,108 +1,108 @@
 .hide {
-  display: none;
+    display: none;
 }
 
 .full-h {
-  height: 100vh;
-  padding-top: 70px;
+    height: 100vh;
+    padding-top: 70px;
 }
 
 .btn {
-  border: 1px solid $clr6;
-  color: $clr6;
-  padding: 5px;
-  border-radius: 2px;
+    border: 1px solid $clr6;
+    color: $clr6;
+    padding: 5px;
+    border-radius: 2px;
 }
 
 .grid {
-  display: grid;
+    display: grid;
 }
 
 .flex {
-  display: flex;
+    display: flex;
 }
 
 .flex.column {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 .flex.inline-flex {
-  display: inline-flex;
+    display: inline-flex;
 }
 
 .align-self-center {
-  align-self: center;
+    align-self: center;
 }
 
 .self-end {
-  align-self: flex-end;
+    align-self: flex-end;
 }
 
 .flex.items-center {
-  align-items: center;
+    align-items: center;
 }
 
 .flex.items-end {
-  align-items: flex-end;
+    align-items: flex-end;
 }
 
 .flex.justify-center {
-  justify-content: center;
+    justify-content: center;
 }
 
 .flex.justify-end {
-  justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 .flex.justify-between {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .gap-1 {
-  gap: 1em;
+    gap: 1em;
 }
 
 // List
 .clean-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .grow {
-  flex: 1;
+    flex: 1;
 }
 
 .w-100 {
-  width: 100%;
+    width: 100%;
 }
 
 // Text
 .vertical-text {
-  writing-mode: tb-rl;
-  transform: rotate(-180deg);
+    writing-mode: tb-rl;
+    transform: rotate(-180deg);
 }
 
 .tag-text {
-  // color: $clr1;
-  text-transform: uppercase;
-  @include type(boldCondensed);
+    // color: $clr1;
+    text-transform: uppercase;
+    @include type(boldCondensed);
 }
 
 // Aspect ratios
 
 .ratio-16-9 {
-  @include aspect-ratio(100, 56);
+    @include aspect-ratio(100, 56);
 }
 
 .ratio-square {
-  @include aspect-ratio(100, 100);
+    @include aspect-ratio(100, 100);
 }
 
 .ratio-card {
-  @include aspect-ratio(100, 80);
+    @include aspect-ratio(100, 80);
 }
 
 .ratio-poster {
-  @include aspect-ratio(100, 150);
+    @include aspect-ratio(100, 150);
 }

@@ -9,7 +9,7 @@ export interface UserState {
 
 export const useUserStore = defineStore('user', {
     state: (): UserState => ({
-        loggedinUser: null
+        loggedinUser: null,
     }),
     getters: {
         getLoggedinUser({ loggedinUser }: UserState) {
@@ -22,8 +22,7 @@ export const useUserStore = defineStore('user', {
                 const user = await authService.login(credentials)
                 console.log('user', user)
                 if (user) this.loggedinUser = user
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('userStore: Error in login', err)
                 throw Error
             }
@@ -59,8 +58,7 @@ export const useUserStore = defineStore('user', {
             try {
                 const user = authService.getLoggedinUser()
                 this.loggedinUser = user ? user : authService.getGuest()
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('userStore: Error in loadLoggedinUser', err)
                 throw Error
             }
@@ -69,8 +67,7 @@ export const useUserStore = defineStore('user', {
             try {
                 authService.saveLocalUser(this.loggedinUser as User)
                 await this.updateUser(this.loggedinUser as User)
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('userStore: Error in saving loggedinUser', err)
             }
         },
@@ -78,11 +75,10 @@ export const useUserStore = defineStore('user', {
             try {
                 const user = this.getLoggedinUser
                 if (!user) return
-                
+
                 user.rate.comment.posted.push(commentId)
                 await this.saveLoggedinUser()
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('userStore: Error in saving comment', err)
                 throw Error
             }
@@ -94,8 +90,7 @@ export const useUserStore = defineStore('user', {
 
                 user.rate.gag.uploaded.push(gagId)
                 await this.saveLoggedinUser()
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('userStore: Error in saving comment', err)
                 throw Error
             }
@@ -117,6 +112,6 @@ export const useUserStore = defineStore('user', {
 
             user.rate[subject][dir].push(gagId)
             this.saveLoggedinUser()
-        }
-    }
+        },
+    },
 })

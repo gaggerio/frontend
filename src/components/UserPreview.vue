@@ -1,7 +1,9 @@
 <template>
     <article class="user-preview" v-if="user">
-        <div class="img-container" :style="{ backgroundImage: `url(${user.imgUrl})` }">
-        </div>
+        <div
+            class="img-container"
+            :style="{ backgroundImage: `url(${user.imgUrl})` }"
+        ></div>
         <div class="flex items-end gap-1">
             <h3>{{ user.username }}</h3>
             <span>{{ createdAt }}</span>
@@ -18,11 +20,11 @@ import { useRoute } from 'vue-router'
 const props = defineProps({
     user: {
         type: Object as PropType<MiniUser>,
-        require: true
+        require: true,
     },
     createdAt: {
-        type: Number
-    }
+        type: Number,
+    },
 })
 
 const route = useRoute()

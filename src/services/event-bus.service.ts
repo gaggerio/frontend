@@ -14,10 +14,14 @@ function createEventEmitter<T>(): EventEmitter<T> {
 
     return {
         on(evName: string, listener: Listener<T>) {
-            listenersMap[evName] = listenersMap[evName] ? [...listenersMap[evName], listener] : [listener]
+            listenersMap[evName] = listenersMap[evName]
+                ? [...listenersMap[evName], listener]
+                : [listener]
 
             return () => {
-                listenersMap[evName] = listenersMap[evName].filter((func) => func !== listener)
+                listenersMap[evName] = listenersMap[evName].filter(
+                    (func) => func !== listener
+                )
             }
         },
         emit(evName: string, data: T) {
@@ -27,11 +31,12 @@ function createEventEmitter<T>(): EventEmitter<T> {
     }
 }
 
-export const eventBus: EventEmitter<{ txt: string, type: string }> = createEventEmitter()
+export const eventBus: EventEmitter<{ txt: string; type: string }> =
+    createEventEmitter()
 
 export const SHOW_MSG = 'show-msg'
 
-export function showUserMsg(msg: { txt: string, type: string }) {
+export function showUserMsg(msg: { txt: string; type: string }) {
     eventBus.emit(SHOW_MSG, msg)
 }
 

@@ -12,12 +12,11 @@ export const utilService = {
     getLorem,
     getRandomNames,
     getRandomUsername,
-    timeAgo
+    timeAgo,
 }
 
-
 function delay(ms = 1500) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         setTimeout(resolve, ms)
     })
 }
@@ -69,11 +68,11 @@ function getHeaderLinks() {
     return [
         {
             path: '/',
-            name: 'Home'
+            name: 'Home',
         },
         {
             path: '/explore',
-            name: 'explore'
+            name: 'explore',
         },
     ]
 }
@@ -84,7 +83,8 @@ function getIcon(iconName: string) {
     }
     const iconMap: IconsMap = {
         logo: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679493265/useful-items_bawwnb.png',
-        hamburger: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1685287498/hamburger-menu_a0alzo.ico',
+        hamburger:
+            'https://res.cloudinary.com/dokgseqgj/image/upload/v1685287498/hamburger-menu_a0alzo.ico',
         delete: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760132/delete_aixeha.ico',
         edit: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760130/edit_du3e36.ico',
         info: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760107/info_ii1yd6.ico',
@@ -92,8 +92,9 @@ function getIcon(iconName: string) {
         Hammer: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679493254/Hammer_ck25gz.png',
         Saw: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679493261/Saw_vpnv9i.png',
         Wrench: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679493275/Wrench_qp5fdp.png',
-        success: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760119/success_sdvaid.ico',
-        error: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760126/error_hfyagg.ico'
+        success:
+            'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760119/success_sdvaid.ico',
+        error: 'https://res.cloudinary.com/dokgseqgj/image/upload/v1679760126/error_hfyagg.ico',
     }
     return iconMap[iconName]
 }
@@ -113,15 +114,38 @@ function getRandomNames(): string[] {
         'Olivia Wilson',
         'James Martinez',
         'Sophia Anderson',
-        'William Taylor'
+        'William Taylor',
     ]
 }
 
 function getRandomUsername(): string {
-    const adjectives = ['happy', 'sad', 'funny', 'brave', 'clever', 'kind', 'gentle', 'wild', 'smart', 'silly']
-    const nouns = ['cat', 'dog', 'bird', 'elephant', 'lion', 'tiger', 'monkey', 'dolphin', 'snake', 'panda']
+    const adjectives = [
+        'happy',
+        'sad',
+        'funny',
+        'brave',
+        'clever',
+        'kind',
+        'gentle',
+        'wild',
+        'smart',
+        'silly',
+    ]
+    const nouns = [
+        'cat',
+        'dog',
+        'bird',
+        'elephant',
+        'lion',
+        'tiger',
+        'monkey',
+        'dolphin',
+        'snake',
+        'panda',
+    ]
 
-    const randomAdjective = adjectives[getRandomIntInc(0, adjectives.length - 1)]
+    const randomAdjective =
+        adjectives[getRandomIntInc(0, adjectives.length - 1)]
     const randomNoun = nouns[getRandomIntInc(0, nouns.length - 1)]
 
     return randomAdjective + '_' + randomNoun

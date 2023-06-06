@@ -18,7 +18,7 @@ export const memeService = {
     getMousePos,
     calcFontSize,
     getLastMove,
-    saveMoves
+    saveMoves,
 }
 
 async function getMeme(imgId: string): Promise<Meme> {
@@ -111,7 +111,8 @@ function calcOutlinePos(line: Line, textWidth: number): Pos {
 }
 
 function getMousePos(ev: MouseEvent): Pos {
-    const { offsetLeft, clientLeft, offsetTop, clientTop } = ev.target as HTMLElement
+    const { offsetLeft, clientLeft, offsetTop, clientTop } =
+        ev.target as HTMLElement
     return {
         x: ev.pageX - offsetLeft - clientLeft,
         y: ev.pageY - offsetTop - clientTop,

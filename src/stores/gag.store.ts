@@ -7,14 +7,14 @@ import type { RateData } from '@/models/Rate.model'
 import type { User } from '@/models/User.model'
 
 export interface GagState {
-    gags: Gag[],
+    gags: Gag[]
     currGagId: string
 }
 
 export const useGagStore = defineStore('gag', {
     state: (): GagState => ({
         gags: [],
-        currGagId: ''
+        currGagId: '',
     }),
     getters: {
         getGags({ gags }: GagState) {
@@ -25,16 +25,16 @@ export const useGagStore = defineStore('gag', {
         },
         getCurrGag({ gags, currGagId }: GagState) {
             if (!gags) return null
-            const gag = gags.find(gag => gag._id === currGagId)
+            const gag = gags.find((gag) => gag._id === currGagId)
             return gag ? gag : null
         },
         getGagById({ gags }) {
-            return (id: string) => gags.find(g => g._id === id)
+            return (id: string) => gags.find((g) => g._id === id)
         },
         userStore() {
             const userStore = useUserStore()
             return userStore
-        }
+        },
     },
     actions: {
         setCurrGagId(gagId: string) {
@@ -44,19 +44,17 @@ export const useGagStore = defineStore('gag', {
             try {
                 const gags = await gagService.query(filterBy)
                 if (gags) this.gags = gags
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('gagStore: Failed to load gags', err)
                 throw Error
             }
         },
-        async saveGag(data: { imgUrl: string, title: string }) {
+        async saveGag(data: { imgUrl: string; title: string }) {
             try {
                 const savedGag = await gagService.save(data)
                 this.gags.unshift(savedGag)
                 await this.userStore.savePostedGag(savedGag._id)
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('gagStore: Failed to save gag', err)
                 throw Error
             }
@@ -76,16 +74,17 @@ export const useGagStore = defineStore('gag', {
                 switch (dir) {
                     case 'up':
                         this.toggleRate(gag, user, rateData)
-                        if (isDownvoted) this.toggleRate(gag, user, { dir: 'down', itemId })
+                        if (isDownvoted)
+                            this.toggleRate(gag, user, { dir: 'down', itemId })
                         break
                     case 'down':
                         this.toggleRate(gag, user, rateData)
-                        if (isUpvoted) this.toggleRate(gag, user, { dir: 'up', itemId })
+                        if (isUpvoted)
+                            this.toggleRate(gag, user, { dir: 'up', itemId })
                         break
                 }
                 await gagService.update(gag)
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('gagStore: Failed to rate gag', err)
                 throw Error
             }
@@ -98,11 +97,10 @@ export const useGagStore = defineStore('gag', {
                 const idx = rate.findIndex((id: string) => id === user._id)
                 rate.splice(idx, 1)
                 this.userStore.removeRate(itemId, dir, subject)
-            }
-            else {
+            } else {
                 rate.push(user._id)
                 this.userStore.addRate(itemId, dir, subject)
             }
         },
-    }
+    },
 })

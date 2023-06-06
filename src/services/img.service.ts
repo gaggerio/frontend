@@ -16,19 +16,19 @@ export const imgService = {
     query,
     getById,
     getRandomImg,
-    getImgSrc
+    getImgSrc,
 }
 
 async function query(filterBy: FilterBy = { txt: '' }): Promise<Img[]> {
-    return ENV === 'local' ?
-        await _filteredImgs() :
-        await httpService.query(API, filterBy)
+    return ENV === 'local'
+        ? await _filteredImgs()
+        : await httpService.query(API, filterBy)
 }
 
 function getById(itemId: string) {
-    return ENV === 'local' ?
-        storageService.get(STORAGE_KEY, itemId) :
-        httpService.get(`${API}/${itemId}`)
+    return ENV === 'local'
+        ? storageService.get(STORAGE_KEY, itemId)
+        : httpService.get(`${API}/${itemId}`)
 }
 
 async function _filteredImgs() {
@@ -41,12 +41,11 @@ function getRandomImg() {
 }
 
 function getImgSrc(img: Img): string {
-    const proxyUrl = ENV === 'local' ?
-        'http://localhost:5173/proxy' : '/proxy'
+    const proxyUrl = ENV === 'local' ? 'http://localhost:5173/proxy' : '/proxy'
     return `${proxyUrl}/?url=${encodeURIComponent(img.url)}`
 }
 
-(() => {
+;(() => {
     if (ENV !== 'local') return
     let imgs = utilService.loadFromStorage(STORAGE_KEY) || []
     if (imgs.length) return

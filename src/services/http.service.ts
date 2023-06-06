@@ -2,7 +2,9 @@ import type { FilterBy } from '@/models/FilterBy.model'
 import Axios from 'axios'
 
 const BASE_URL =
-    import.meta.env.NODE_ENV === 'production' ? '/api/' : '//localhost:3030/api/'
+    import.meta.env.NODE_ENV === 'production'
+        ? '/api/'
+        : '//localhost:3030/api/'
 
 const axios = Axios.create({
     withCredentials: true,
@@ -28,7 +30,11 @@ export function useHttpService<T>() {
     }
 }
 
-async function ajax<T>(endpoint: string, method = 'GET', data: T | FilterBy | string | null) {
+async function ajax<T>(
+    endpoint: string,
+    method = 'GET',
+    data: T | FilterBy | string | null
+) {
     try {
         const response = await axios({
             url: `${BASE_URL}${endpoint}`,
@@ -38,7 +44,10 @@ async function ajax<T>(endpoint: string, method = 'GET', data: T | FilterBy | st
         })
         return response.data
     } catch (err) {
-        console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`, data)
+        console.log(
+            `Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`,
+            data
+        )
         console.dir(err)
         throw err
     }

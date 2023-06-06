@@ -8,7 +8,10 @@
             </div>
         </section>
         <li v-for="comment in comments" :key="comment._id">
-            <CommentPreview :comment=comment @changeRate="(data) => $emit('changeRate', data)" />
+            <CommentPreview
+                :comment="comment"
+                @changeRate="(data) => $emit('changeRate', data)"
+            />
         </li>
     </ul>
 </template>
@@ -22,7 +25,7 @@ import CommentPreview from './CommentPreview.vue'
 const props = defineProps({
     comments: {
         type: Array as PropType<Comment[]>,
-        require: true
+        require: true,
     },
 })
 
@@ -31,7 +34,6 @@ const commentsRef = ref<HTMLElement | null>(null)
 onMounted(() => {
     if (!commentsRef.value) return
     commentsRef.value.scrollIntoView({ behavior: 'smooth' })
-
 })
 
 const commentsCount = computed(() => {
