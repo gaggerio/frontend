@@ -6,5 +6,5 @@ export interface Meme {
     img: Img
     lines: Line[]
     currLine: number
-    outLineColor: string,
+    outLineColor: string
 }

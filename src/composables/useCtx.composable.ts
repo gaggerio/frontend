@@ -6,7 +6,6 @@ import { memeService } from '@/services/meme.service'
 import { imgService } from '@/services/img.service'
 
 export function useCtx() {
-
     let ctx: CanvasRenderingContext2D
     const memeStore = useMemeStore()
 
@@ -34,7 +33,6 @@ export function useCtx() {
     }
 
     function drawImg(): Promise<void> {
-        
         return new Promise((resolve) => {
             const elImg = new Image()
             elImg.src = imgService.getImgSrc(memeStore.img.value)
@@ -48,7 +46,6 @@ export function useCtx() {
     }
 
     function drawLines(): void {
-        
         memeStore.lines.value.forEach((line) => {
             if (!elCanvas.value) return
             ctx.font = `${line.fontSize}px ${line.font}`
@@ -58,7 +55,12 @@ export function useCtx() {
             ctx.strokeStyle = line.strokeStyle
             ctx.fillStyle = line.fillStyle
 
-            ctx.strokeText(line.txt, line.pos.x, line.pos.y, elCanvas.value.width)
+            ctx.strokeText(
+                line.txt,
+                line.pos.x,
+                line.pos.y,
+                elCanvas.value.width
+            )
             ctx.fillText(line.txt, line.pos.x, line.pos.y, elCanvas.value.width)
         })
     }
@@ -168,6 +170,6 @@ export function useCtx() {
         onMouseOver,
         onMouseDown,
         onMouseUp,
-        dataUrl
+        dataUrl,
     }
 }

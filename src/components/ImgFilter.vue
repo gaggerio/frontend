@@ -1,9 +1,14 @@
 <template>
     <div class="img-filter">
-        <input type="search" class="c-input" v-model="txt" placeholder="Search templates" />
+        <input
+            type="search"
+            class="c-input"
+            v-model="txt"
+            placeholder="Search templates"
+        />
         <button class="file c-btn">
             <CameraSvg />
-            <input type="file" @change="handleFile">
+            <input type="file" @change="handleFile" />
         </button>
     </div>
 </template>
@@ -12,10 +17,7 @@
 import { ref } from 'vue'
 import CameraSvg from '../svgs/CameraSvg.vue'
 
-const emit = defineEmits([
-    'filterImgs',
-    'fileSelect'
-])
+const emit = defineEmits(['filterImgs', 'fileSelect'])
 
 const txt = ref<string>('')
 const file = ref<File>()

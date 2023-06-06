@@ -14,7 +14,7 @@ export interface CommentState {
 
 export const useCommentStore = defineStore('comment', {
     state: (): CommentState => ({
-        comments: []
+        comments: [],
     }),
     getters: {
         getComments({ comments }) {
@@ -29,7 +29,7 @@ export const useCommentStore = defineStore('comment', {
             return userStore
         },
         getCommentById({ comments }) {
-            return (id: string) => comments.find(c => c._id === id)
+            return (id: string) => comments.find((c) => c._id === id)
         },
     },
     actions: {
@@ -37,8 +37,7 @@ export const useCommentStore = defineStore('comment', {
             try {
                 const comments = await commentService.query(gagId)
                 if (comments) this.comments = comments
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('commentStore: Failed to set comment', err)
                 throw Error
             }
@@ -49,13 +48,12 @@ export const useCommentStore = defineStore('comment', {
                 const commentToSave = {
                     text: commentForm.text,
                     file: file ? file.url : '',
-                    gagId: this.gagStore.currGagId
+                    gagId: this.gagStore.currGagId,
                 }
                 const savedComment = await commentService.save(commentToSave)
                 this.comments?.unshift(savedComment)
                 this.userStore.savePostedComment(savedComment._id)
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('commentStore: Failed to save comment', err)
                 throw Error
             }
@@ -75,16 +73,23 @@ export const useCommentStore = defineStore('comment', {
                 switch (dir) {
                     case 'up':
                         this.toggleRate(comment, user, rateData)
-                        if (isDownvoted) this.toggleRate(comment, user, { ...rateData, dir: 'down' })
+                        if (isDownvoted)
+                            this.toggleRate(comment, user, {
+                                ...rateData,
+                                dir: 'down',
+                            })
                         break
                     case 'down':
                         this.toggleRate(comment, user, rateData)
-                        if (isUpvoted) this.toggleRate(comment, user, { ...rateData, dir: 'up' })
+                        if (isUpvoted)
+                            this.toggleRate(comment, user, {
+                                ...rateData,
+                                dir: 'up',
+                            })
                         break
                 }
                 await commentService.update(comment)
-            }
-            catch (err) {
+            } catch (err) {
                 console.dir('commentStore: Failed to rate comment', err)
                 throw Error
             }
@@ -97,11 +102,10 @@ export const useCommentStore = defineStore('comment', {
                 const idx = rate.findIndex((id: string) => id === user._id)
                 rate.splice(idx, 1)
                 this.userStore.removeRate(itemId, dir, subject)
-            }
-            else {
+            } else {
                 rate.push(user._id)
                 this.userStore.addRate(itemId, dir, subject)
             }
         },
-    }
+    },
 })

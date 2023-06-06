@@ -3,9 +3,27 @@
         <form @submit.prevent="login" class="login-view__form">
             <h2>{{ loginType }}</h2>
             <UploadImg @uploaded="setImgUrl" :imgUrl="credentials.imgUrl" />
-            <input class="c-input" v-model="credentials.fullname" type="text" placeholder="Full name" v-if="isSignUp" />
-            <input class="c-input" v-model="credentials.username" type="text" placeholder="Username" autofocus />
-            <input class="c-input" v-model="credentials.password" type="password" placeholder="Password" show-password />
+            <input
+                class="c-input"
+                v-model="credentials.fullname"
+                type="text"
+                placeholder="Full name"
+                v-if="isSignUp"
+            />
+            <input
+                class="c-input"
+                v-model="credentials.username"
+                type="text"
+                placeholder="Username"
+                autofocus
+            />
+            <input
+                class="c-input"
+                v-model="credentials.password"
+                type="password"
+                placeholder="Password"
+                show-password
+            />
             <button class="c-btn">{{ loginType }}</button>
             <p @click="isSignUp = !isSignUp">{{ loginSignup }}</p>
         </form>
@@ -27,7 +45,7 @@ const credentials = reactive({
     password: '',
     fullname: '',
     isAdmin: false,
-    imgUrl: ''
+    imgUrl: '',
 })
 
 const isSignUp = ref(false)
@@ -37,9 +55,9 @@ const loginType = computed(() => {
 })
 
 const loginSignup = computed(() => {
-    return isSignUp.value ?
-        'Already a memeber? Click here to login' :
-        'Not a member? Click here to signup'
+    return isSignUp.value
+        ? 'Already a memeber? Click here to login'
+        : 'Not a member? Click here to signup'
 })
 
 async function login() {
@@ -48,8 +66,7 @@ async function login() {
         await userStore[type]({ ...credentials })
         showSuccessMsg('Welcom ' + userStore.getLoggedinUser?.fullname)
         router.push('/')
-    }
-    catch (err) {
+    } catch (err) {
         showErrorMsg('Wrong Credentials')
     }
 }

@@ -11,17 +11,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318864/gagger/5_vyuhy7.jpg",
         "rate": {
-            "up": [
-                "bMuAs",
-                "pSpHJ"
-            ],
-            "down": [
-                "sTTa6",
-                "n2r8P",
-                "RzL5G",
-                "pSpHJ",
-                "bMuAs"
-            ]
+            "up": ["bMuAs", "pSpHJ"],
+            "down": ["sTTa6", "n2r8P", "RzL5G", "pSpHJ", "bMuAs"]
         }
     },
     {
@@ -36,13 +27,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "RzL5G",
-                "sTTa6",
-                "bMuAs",
-                "tNTFu",
-                "NrMYQ"
-            ],
+            "up": ["RzL5G", "sTTa6", "bMuAs", "tNTFu", "NrMYQ"],
             "down": [
                 "qMeyK",
                 "QWlfi",
@@ -80,13 +65,7 @@
                 "NrMYQ",
                 "qMeyK"
             ],
-            "down": [
-                "NrMYQ",
-                "n2r8P",
-                "bMuAs",
-                "NrMYQ",
-                "n2r8P"
-            ]
+            "down": ["NrMYQ", "n2r8P", "bMuAs", "NrMYQ", "n2r8P"]
         }
     },
     {
@@ -112,13 +91,7 @@
                 "Giib1",
                 "NrMYQ"
             ],
-            "down": [
-                "tNTFu",
-                "NrMYQ",
-                "qMeyK",
-                "Giib1",
-                "n2r8P"
-            ]
+            "down": ["tNTFu", "NrMYQ", "qMeyK", "Giib1", "n2r8P"]
         }
     },
     {
@@ -133,11 +106,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318866/gagger/16_yaqen1.jpg",
         "rate": {
-            "up": [
-                "qMeyK",
-                "Giib1",
-                "bMuAs"
-            ],
+            "up": ["qMeyK", "Giib1", "bMuAs"],
             "down": [
                 "bMuAs",
                 "NrMYQ",
@@ -280,9 +249,7 @@
                 "NrMYQ",
                 "tNTFu"
             ],
-            "down": [
-                "NrMYQ"
-            ]
+            "down": ["NrMYQ"]
         }
     },
     {
@@ -297,17 +264,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "sTTa6",
-                "qMeyK"
-            ],
-            "down": [
-                "bMuAs",
-                "NrMYQ",
-                "NrMYQ",
-                "pSpHJ",
-                "Giib1"
-            ]
+            "up": ["sTTa6", "qMeyK"],
+            "down": ["bMuAs", "NrMYQ", "NrMYQ", "pSpHJ", "Giib1"]
         }
     },
     {
@@ -322,17 +280,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "sTTa6",
-                "qMeyK",
-                "Giib1"
-            ],
-            "down": [
-                "RzL5G",
-                "pSpHJ",
-                "NrMYQ",
-                "NrMYQ"
-            ]
+            "up": ["sTTa6", "qMeyK", "Giib1"],
+            "down": ["RzL5G", "pSpHJ", "NrMYQ", "NrMYQ"]
         }
     },
     {
@@ -359,13 +308,7 @@
                 "NrMYQ",
                 "n2r8P"
             ],
-            "down": [
-                "RzL5G",
-                "Giib1",
-                "pSpHJ",
-                "tNTFu",
-                "n2r8P"
-            ]
+            "down": ["RzL5G", "Giib1", "pSpHJ", "tNTFu", "n2r8P"]
         }
     },
     {
@@ -417,18 +360,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "n2r8P",
-                "tNTFu",
-                "qMeyK",
-                "qMeyK"
-            ],
-            "down": [
-                "n2r8P",
-                "QWlfi",
-                "Giib1",
-                "bMuAs"
-            ]
+            "up": ["n2r8P", "tNTFu", "qMeyK", "qMeyK"],
+            "down": ["n2r8P", "QWlfi", "Giib1", "bMuAs"]
         }
     },
     {
@@ -443,11 +376,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318866/gagger/16_yaqen1.jpg",
         "rate": {
-            "up": [
-                "sTTa6",
-                "bMuAs",
-                "n2r8P"
-            ],
+            "up": ["sTTa6", "bMuAs", "n2r8P"],
             "down": [
                 "NrMYQ",
                 "bMuAs",
@@ -482,11 +411,7 @@
                 "pSpHJ",
                 "Giib1"
             ],
-            "down": [
-                "Giib1",
-                "bMuAs",
-                "sTTa6"
-            ]
+            "down": ["Giib1", "bMuAs", "sTTa6"]
         }
     },
     {
@@ -501,12 +426,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "qMeyK",
-                "sTTa6",
-                "bMuAs",
-                "RzL5G"
-            ],
+            "up": ["qMeyK", "sTTa6", "bMuAs", "RzL5G"],
             "down": [
                 "pSpHJ",
                 "n2r8P",
@@ -530,9 +450,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "NrMYQ"
-            ],
+            "up": ["NrMYQ"],
             "down": [
                 "RzL5G",
                 "pSpHJ",
@@ -560,16 +478,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "RzL5G",
-                "sTTa6",
-                "qMeyK",
-                "sTTa6"
-            ],
-            "down": [
-                "RzL5G",
-                "QWlfi"
-            ]
+            "up": ["RzL5G", "sTTa6", "qMeyK", "sTTa6"],
+            "down": ["RzL5G", "QWlfi"]
         }
     },
     {
@@ -584,19 +494,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318864/gagger/2_sghsyb.jpg",
         "rate": {
-            "up": [
-                "bMuAs",
-                "RzL5G",
-                "sTTa6",
-                "QWlfi",
-                "pSpHJ",
-                "RzL5G"
-            ],
-            "down": [
-                "tNTFu",
-                "sTTa6",
-                "bMuAs"
-            ]
+            "up": ["bMuAs", "RzL5G", "sTTa6", "QWlfi", "pSpHJ", "RzL5G"],
+            "down": ["tNTFu", "sTTa6", "bMuAs"]
         }
     },
     {
@@ -651,13 +550,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318866/gagger/18_mg5ypp.jpg",
         "rate": {
-            "up": [
-                "pSpHJ",
-                "Giib1",
-                "NrMYQ",
-                "QWlfi",
-                "RzL5G"
-            ],
+            "up": ["pSpHJ", "Giib1", "NrMYQ", "QWlfi", "RzL5G"],
             "down": [
                 "tNTFu",
                 "n2r8P",
@@ -685,14 +578,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/14_iqdjso.jpg",
         "rate": {
-            "up": [
-                "qMeyK",
-                "n2r8P",
-                "QWlfi",
-                "NrMYQ",
-                "n2r8P",
-                "RzL5G"
-            ],
+            "up": ["qMeyK", "n2r8P", "QWlfi", "NrMYQ", "n2r8P", "RzL5G"],
             "down": [
                 "NrMYQ",
                 "bMuAs",
@@ -738,12 +624,7 @@
                 "NrMYQ",
                 "qMeyK"
             ],
-            "down": [
-                "qMeyK",
-                "RzL5G",
-                "qMeyK",
-                "tNTFu"
-            ]
+            "down": ["qMeyK", "RzL5G", "qMeyK", "tNTFu"]
         }
     },
     {
@@ -794,19 +675,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "qMeyK",
-                "bMuAs",
-                "Giib1",
-                "QWlfi",
-                "qMeyK"
-            ],
-            "down": [
-                "qMeyK",
-                "RzL5G",
-                "tNTFu",
-                "RzL5G"
-            ]
+            "up": ["qMeyK", "bMuAs", "Giib1", "QWlfi", "qMeyK"],
+            "down": ["qMeyK", "RzL5G", "tNTFu", "RzL5G"]
         }
     },
     {
@@ -821,21 +691,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "RzL5G",
-                "Giib1",
-                "QWlfi",
-                "sTTa6",
-                "NrMYQ"
-            ],
-            "down": [
-                "RzL5G",
-                "sTTa6",
-                "Giib1",
-                "n2r8P",
-                "bMuAs",
-                "QWlfi"
-            ]
+            "up": ["RzL5G", "Giib1", "QWlfi", "sTTa6", "NrMYQ"],
+            "down": ["RzL5G", "sTTa6", "Giib1", "n2r8P", "bMuAs", "QWlfi"]
         }
     },
     {
@@ -850,15 +707,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318864/gagger/1_qaqpfb.jpg",
         "rate": {
-            "up": [
-                "qMeyK",
-                "QWlfi"
-            ],
-            "down": [
-                "n2r8P",
-                "RzL5G",
-                "sTTa6"
-            ]
+            "up": ["qMeyK", "QWlfi"],
+            "down": ["n2r8P", "RzL5G", "sTTa6"]
         }
     },
     {
@@ -915,10 +765,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "NrMYQ",
-                "bMuAs"
-            ],
+            "up": ["NrMYQ", "bMuAs"],
             "down": [
                 "RzL5G",
                 "bMuAs",
@@ -954,11 +801,7 @@
                 "QWlfi",
                 "qMeyK"
             ],
-            "down": [
-                "Giib1",
-                "Giib1",
-                "n2r8P"
-            ]
+            "down": ["Giib1", "Giib1", "n2r8P"]
         }
     },
     {
@@ -973,14 +816,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "bMuAs",
-                "qMeyK",
-                "n2r8P",
-                "bMuAs",
-                "sTTa6",
-                "Giib1"
-            ],
+            "up": ["bMuAs", "qMeyK", "n2r8P", "bMuAs", "sTTa6", "Giib1"],
             "down": [
                 "tNTFu",
                 "RzL5G",
@@ -1040,18 +876,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "Giib1",
-                "QWlfi",
-                "NrMYQ",
-                "NrMYQ",
-                "sTTa6"
-            ],
-            "down": [
-                "RzL5G",
-                "sTTa6",
-                "RzL5G"
-            ]
+            "up": ["Giib1", "QWlfi", "NrMYQ", "NrMYQ", "sTTa6"],
+            "down": ["RzL5G", "sTTa6", "RzL5G"]
         }
     },
     {
@@ -1082,11 +908,7 @@
                 "Giib1",
                 "n2r8P"
             ],
-            "down": [
-                "QWlfi",
-                "QWlfi",
-                "Giib1"
-            ]
+            "down": ["QWlfi", "QWlfi", "Giib1"]
         }
     },
     {
@@ -1136,9 +958,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318864/gagger/5_vyuhy7.jpg",
         "rate": {
-            "up": [
-                "NrMYQ"
-            ],
+            "up": ["NrMYQ"],
             "down": [
                 "sTTa6",
                 "sTTa6",
@@ -1216,13 +1036,7 @@
                 "RzL5G",
                 "pSpHJ"
             ],
-            "down": [
-                "QWlfi",
-                "RzL5G",
-                "RzL5G",
-                "Giib1",
-                "pSpHJ"
-            ]
+            "down": ["QWlfi", "RzL5G", "RzL5G", "Giib1", "pSpHJ"]
         }
     },
     {
@@ -1320,14 +1134,7 @@
                 "Giib1",
                 "Giib1"
             ],
-            "down": [
-                "pSpHJ",
-                "n2r8P",
-                "Giib1",
-                "NrMYQ",
-                "RzL5G",
-                "n2r8P"
-            ]
+            "down": ["pSpHJ", "n2r8P", "Giib1", "NrMYQ", "RzL5G", "n2r8P"]
         }
     },
     {
@@ -1342,12 +1149,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/11_zvars3.jpg",
         "rate": {
-            "up": [
-                "tNTFu",
-                "NrMYQ",
-                "tNTFu",
-                "QWlfi"
-            ],
+            "up": ["tNTFu", "NrMYQ", "tNTFu", "QWlfi"],
             "down": [
                 "tNTFu",
                 "sTTa6",
@@ -1376,19 +1178,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/11_zvars3.jpg",
         "rate": {
-            "up": [
-                "tNTFu",
-                "NrMYQ",
-                "sTTa6",
-                "Giib1",
-                "NrMYQ"
-            ],
-            "down": [
-                "n2r8P",
-                "QWlfi",
-                "tNTFu",
-                "Giib1"
-            ]
+            "up": ["tNTFu", "NrMYQ", "sTTa6", "Giib1", "NrMYQ"],
+            "down": ["n2r8P", "QWlfi", "tNTFu", "Giib1"]
         }
     },
     {
@@ -1447,9 +1238,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/15_nyt2xe.jpg",
         "rate": {
-            "up": [
-                "RzL5G"
-            ],
+            "up": ["RzL5G"],
             "down": [
                 "tNTFu",
                 "qMeyK",
@@ -1556,17 +1345,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "n2r8P",
-                "n2r8P",
-                "pSpHJ",
-                "sTTa6",
-                "bMuAs"
-            ],
-            "down": [
-                "pSpHJ",
-                "bMuAs"
-            ]
+            "up": ["n2r8P", "n2r8P", "pSpHJ", "sTTa6", "bMuAs"],
+            "down": ["pSpHJ", "bMuAs"]
         }
     },
     {
@@ -1656,22 +1436,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "RzL5G",
-                "qMeyK",
-                "qMeyK",
-                "n2r8P",
-                "RzL5G",
-                "sTTa6"
-            ],
-            "down": [
-                "qMeyK",
-                "sTTa6",
-                "Giib1",
-                "sTTa6",
-                "qMeyK",
-                "qMeyK"
-            ]
+            "up": ["RzL5G", "qMeyK", "qMeyK", "n2r8P", "RzL5G", "sTTa6"],
+            "down": ["qMeyK", "sTTa6", "Giib1", "sTTa6", "qMeyK", "qMeyK"]
         }
     },
     {
@@ -1704,10 +1470,7 @@
                 "RzL5G",
                 "tNTFu"
             ],
-            "down": [
-                "Giib1",
-                "tNTFu"
-            ]
+            "down": ["Giib1", "tNTFu"]
         }
     },
     {
@@ -1722,16 +1485,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "tNTFu",
-                "bMuAs",
-                "tNTFu"
-            ],
-            "down": [
-                "QWlfi",
-                "qMeyK",
-                "pSpHJ"
-            ]
+            "up": ["tNTFu", "bMuAs", "tNTFu"],
+            "down": ["QWlfi", "qMeyK", "pSpHJ"]
         }
     },
     {
@@ -1760,10 +1515,7 @@
                 "Giib1",
                 "Giib1"
             ],
-            "down": [
-                "tNTFu",
-                "pSpHJ"
-            ]
+            "down": ["tNTFu", "pSpHJ"]
         }
     },
     {
@@ -1778,14 +1530,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318864/gagger/6_vjhwu2.jpg",
         "rate": {
-            "up": [
-                "QWlfi",
-                "n2r8P"
-            ],
-            "down": [
-                "sTTa6",
-                "RzL5G"
-            ]
+            "up": ["QWlfi", "n2r8P"],
+            "down": ["sTTa6", "RzL5G"]
         }
     },
     {
@@ -1815,13 +1561,7 @@
                 "n2r8P",
                 "NrMYQ"
             ],
-            "down": [
-                "RzL5G",
-                "RzL5G",
-                "QWlfi",
-                "pSpHJ",
-                "QWlfi"
-            ]
+            "down": ["RzL5G", "RzL5G", "QWlfi", "pSpHJ", "QWlfi"]
         }
     },
     {
@@ -1940,12 +1680,7 @@
                 "qMeyK",
                 "tNTFu"
             ],
-            "down": [
-                "Giib1",
-                "RzL5G",
-                "n2r8P",
-                "bMuAs"
-            ]
+            "down": ["Giib1", "RzL5G", "n2r8P", "bMuAs"]
         }
     },
     {
@@ -1960,14 +1695,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/8_jfml8y.jpg",
         "rate": {
-            "up": [
-                "RzL5G",
-                "QWlfi",
-                "qMeyK",
-                "tNTFu",
-                "Giib1",
-                "tNTFu"
-            ],
+            "up": ["RzL5G", "QWlfi", "qMeyK", "tNTFu", "Giib1", "tNTFu"],
             "down": [
                 "Giib1",
                 "bMuAs",
@@ -1991,20 +1719,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "Giib1",
-                "QWlfi",
-                "sTTa6",
-                "sTTa6",
-                "QWlfi",
-                "NrMYQ"
-            ],
-            "down": [
-                "QWlfi",
-                "bMuAs",
-                "n2r8P",
-                "n2r8P"
-            ]
+            "up": ["Giib1", "QWlfi", "sTTa6", "sTTa6", "QWlfi", "NrMYQ"],
+            "down": ["QWlfi", "bMuAs", "n2r8P", "n2r8P"]
         }
     },
     {
@@ -2033,11 +1749,7 @@
                 "Giib1",
                 "tNTFu"
             ],
-            "down": [
-                "NrMYQ",
-                "pSpHJ",
-                "bMuAs"
-            ]
+            "down": ["NrMYQ", "pSpHJ", "bMuAs"]
         }
     },
     {
@@ -2052,21 +1764,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "n2r8P",
-                "Giib1",
-                "bMuAs",
-                "QWlfi",
-                "qMeyK",
-                "QWlfi"
-            ],
-            "down": [
-                "tNTFu",
-                "pSpHJ",
-                "NrMYQ",
-                "n2r8P",
-                "sTTa6"
-            ]
+            "up": ["n2r8P", "Giib1", "bMuAs", "QWlfi", "qMeyK", "QWlfi"],
+            "down": ["tNTFu", "pSpHJ", "NrMYQ", "n2r8P", "sTTa6"]
         }
     },
     {
@@ -2081,14 +1780,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "RzL5G",
-                "RzL5G",
-                "qMeyK",
-                "QWlfi",
-                "RzL5G",
-                "n2r8P"
-            ],
+            "up": ["RzL5G", "RzL5G", "qMeyK", "QWlfi", "RzL5G", "n2r8P"],
             "down": [
                 "pSpHJ",
                 "NrMYQ",
@@ -2152,18 +1844,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "sTTa6",
-                "RzL5G",
-                "QWlfi",
-                "RzL5G",
-                "Giib1"
-            ],
-            "down": [
-                "qMeyK",
-                "NrMYQ",
-                "Giib1"
-            ]
+            "up": ["sTTa6", "RzL5G", "QWlfi", "RzL5G", "Giib1"],
+            "down": ["qMeyK", "NrMYQ", "Giib1"]
         }
     },
     {
@@ -2204,13 +1886,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318864/gagger/6_vjhwu2.jpg",
         "rate": {
-            "up": [
-                "NrMYQ",
-                "RzL5G"
-            ],
-            "down": [
-                "n2r8P"
-            ]
+            "up": ["NrMYQ", "RzL5G"],
+            "down": ["n2r8P"]
         }
     },
     {
@@ -2225,10 +1902,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318866/gagger/18_mg5ypp.jpg",
         "rate": {
-            "up": [
-                "qMeyK",
-                "sTTa6"
-            ],
+            "up": ["qMeyK", "sTTa6"],
             "down": [
                 "tNTFu",
                 "Giib1",
@@ -2294,11 +1968,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/14_iqdjso.jpg",
         "rate": {
-            "up": [
-                "qMeyK",
-                "n2r8P",
-                "qMeyK"
-            ],
+            "up": ["qMeyK", "n2r8P", "qMeyK"],
             "down": [
                 "Giib1",
                 "NrMYQ",
@@ -2324,15 +1994,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "tNTFu",
-                "bMuAs"
-            ],
-            "down": [
-                "sTTa6",
-                "pSpHJ",
-                "qMeyK"
-            ]
+            "up": ["tNTFu", "bMuAs"],
+            "down": ["sTTa6", "pSpHJ", "qMeyK"]
         }
     },
     {
@@ -2347,12 +2010,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "tNTFu",
-                "RzL5G",
-                "pSpHJ",
-                "n2r8P"
-            ],
+            "up": ["tNTFu", "RzL5G", "pSpHJ", "n2r8P"],
             "down": [
                 "QWlfi",
                 "tNTFu",
@@ -2383,13 +2041,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/8_jfml8y.jpg",
         "rate": {
-            "up": [
-                "qMeyK",
-                "Giib1",
-                "bMuAs",
-                "n2r8P",
-                "Giib1"
-            ],
+            "up": ["qMeyK", "Giib1", "bMuAs", "n2r8P", "Giib1"],
             "down": [
                 "n2r8P",
                 "qMeyK",
@@ -2430,9 +2082,7 @@
                 "pSpHJ",
                 "tNTFu"
             ],
-            "down": [
-                "tNTFu"
-            ]
+            "down": ["tNTFu"]
         }
     },
     {
@@ -2490,10 +2140,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318864/gagger/5_vyuhy7.jpg",
         "rate": {
-            "up": [
-                "sTTa6",
-                "pSpHJ"
-            ],
+            "up": ["sTTa6", "pSpHJ"],
             "down": [
                 "tNTFu",
                 "bMuAs",
@@ -2604,11 +2251,7 @@
                 "qMeyK",
                 "QWlfi"
             ],
-            "down": [
-                "bMuAs",
-                "tNTFu",
-                "bMuAs"
-            ]
+            "down": ["bMuAs", "tNTFu", "bMuAs"]
         }
     },
     {
@@ -2623,9 +2266,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "Giib1"
-            ],
+            "up": ["Giib1"],
             "down": [
                 "sTTa6",
                 "tNTFu",
@@ -2653,20 +2294,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "RzL5G",
-                "Giib1",
-                "RzL5G",
-                "n2r8P"
-            ],
-            "down": [
-                "NrMYQ",
-                "QWlfi",
-                "sTTa6",
-                "qMeyK",
-                "NrMYQ",
-                "n2r8P"
-            ]
+            "up": ["RzL5G", "Giib1", "RzL5G", "n2r8P"],
+            "down": ["NrMYQ", "QWlfi", "sTTa6", "qMeyK", "NrMYQ", "n2r8P"]
         }
     },
     {
@@ -2757,11 +2386,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/10_ovotsk.jpg",
         "rate": {
-            "up": [
-                "tNTFu",
-                "NrMYQ",
-                "n2r8P"
-            ],
+            "up": ["tNTFu", "NrMYQ", "n2r8P"],
             "down": [
                 "tNTFu",
                 "pSpHJ",
@@ -2788,18 +2413,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "NrMYQ",
-                "pSpHJ"
-            ],
-            "down": [
-                "pSpHJ",
-                "tNTFu",
-                "n2r8P",
-                "NrMYQ",
-                "n2r8P",
-                "sTTa6"
-            ]
+            "up": ["NrMYQ", "pSpHJ"],
+            "down": ["pSpHJ", "tNTFu", "n2r8P", "NrMYQ", "n2r8P", "sTTa6"]
         }
     },
     {
@@ -2814,9 +2429,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "Giib1"
-            ],
+            "up": ["Giib1"],
             "down": [
                 "tNTFu",
                 "n2r8P",
@@ -2856,12 +2469,7 @@
                 "RzL5G",
                 "bMuAs"
             ],
-            "down": [
-                "pSpHJ",
-                "bMuAs",
-                "NrMYQ",
-                "bMuAs"
-            ]
+            "down": ["pSpHJ", "bMuAs", "NrMYQ", "bMuAs"]
         }
     },
     {
@@ -2905,18 +2513,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "QWlfi",
-                "n2r8P"
-            ],
-            "down": [
-                "RzL5G",
-                "tNTFu",
-                "tNTFu",
-                "QWlfi",
-                "qMeyK",
-                "NrMYQ"
-            ]
+            "up": ["QWlfi", "n2r8P"],
+            "down": ["RzL5G", "tNTFu", "tNTFu", "QWlfi", "qMeyK", "NrMYQ"]
         }
     },
     {
@@ -2977,9 +2575,7 @@
                 "n2r8P",
                 "bMuAs"
             ],
-            "down": [
-                "NrMYQ"
-            ]
+            "down": ["NrMYQ"]
         }
     },
     {
@@ -3028,15 +2624,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/14_iqdjso.jpg",
         "rate": {
-            "up": [
-                "tNTFu",
-                "Giib1"
-            ],
-            "down": [
-                "NrMYQ",
-                "NrMYQ",
-                "bMuAs"
-            ]
+            "up": ["tNTFu", "Giib1"],
+            "down": ["NrMYQ", "NrMYQ", "bMuAs"]
         }
     },
     {
@@ -3051,13 +2640,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "QWlfi",
-                "NrMYQ",
-                "tNTFu",
-                "sTTa6",
-                "Giib1"
-            ],
+            "up": ["QWlfi", "NrMYQ", "tNTFu", "sTTa6", "Giib1"],
             "down": [
                 "sTTa6",
                 "tNTFu",
@@ -3084,14 +2667,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318866/gagger/18_mg5ypp.jpg",
         "rate": {
-            "up": [
-                "sTTa6",
-                "bMuAs",
-                "Giib1",
-                "n2r8P",
-                "pSpHJ",
-                "n2r8P"
-            ],
+            "up": ["sTTa6", "bMuAs", "Giib1", "n2r8P", "pSpHJ", "n2r8P"],
             "down": [
                 "NrMYQ",
                 "tNTFu",
@@ -3126,13 +2702,7 @@
                 "pSpHJ",
                 "sTTa6"
             ],
-            "down": [
-                "qMeyK",
-                "qMeyK",
-                "qMeyK",
-                "NrMYQ",
-                "QWlfi"
-            ]
+            "down": ["qMeyK", "qMeyK", "qMeyK", "NrMYQ", "QWlfi"]
         }
     },
     {
@@ -3147,13 +2717,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/9_ewfron.jpg",
         "rate": {
-            "up": [
-                "pSpHJ",
-                "sTTa6",
-                "Giib1",
-                "RzL5G",
-                "n2r8P"
-            ],
+            "up": ["pSpHJ", "sTTa6", "Giib1", "RzL5G", "n2r8P"],
             "down": [
                 "Giib1",
                 "n2r8P",
@@ -3177,10 +2741,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/3_malelt.jpg",
         "rate": {
-            "up": [
-                "qMeyK",
-                "tNTFu"
-            ],
+            "up": ["qMeyK", "tNTFu"],
             "down": [
                 "pSpHJ",
                 "Giib1",
@@ -3216,10 +2777,7 @@
                 "RzL5G",
                 "Giib1"
             ],
-            "down": [
-                "Giib1",
-                "n2r8P"
-            ]
+            "down": ["Giib1", "n2r8P"]
         }
     },
     {
@@ -3234,10 +2792,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "sTTa6",
-                "n2r8P"
-            ],
+            "up": ["sTTa6", "n2r8P"],
             "down": [
                 "RzL5G",
                 "n2r8P",
@@ -3263,20 +2818,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "RzL5G",
-                "n2r8P",
-                "QWlfi",
-                "pSpHJ"
-            ],
-            "down": [
-                "NrMYQ",
-                "NrMYQ",
-                "NrMYQ",
-                "QWlfi",
-                "QWlfi",
-                "pSpHJ"
-            ]
+            "up": ["RzL5G", "n2r8P", "QWlfi", "pSpHJ"],
+            "down": ["NrMYQ", "NrMYQ", "NrMYQ", "QWlfi", "QWlfi", "pSpHJ"]
         }
     },
     {
@@ -3291,16 +2834,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "bMuAs",
-                "qMeyK"
-            ],
-            "down": [
-                "tNTFu",
-                "RzL5G",
-                "RzL5G",
-                "QWlfi"
-            ]
+            "up": ["bMuAs", "qMeyK"],
+            "down": ["tNTFu", "RzL5G", "RzL5G", "QWlfi"]
         }
     },
     {
@@ -3351,14 +2886,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "RzL5G"
-            ],
-            "down": [
-                "n2r8P",
-                "NrMYQ",
-                "Giib1"
-            ]
+            "up": ["RzL5G"],
+            "down": ["n2r8P", "NrMYQ", "Giib1"]
         }
     },
     {
@@ -3373,20 +2902,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "bMuAs",
-                "bMuAs",
-                "RzL5G",
-                "qMeyK",
-                "Giib1"
-            ],
-            "down": [
-                "pSpHJ",
-                "pSpHJ",
-                "Giib1",
-                "qMeyK",
-                "QWlfi"
-            ]
+            "up": ["bMuAs", "bMuAs", "RzL5G", "qMeyK", "Giib1"],
+            "down": ["pSpHJ", "pSpHJ", "Giib1", "qMeyK", "QWlfi"]
         }
     },
     {
@@ -3401,13 +2918,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "sTTa6",
-                "qMeyK",
-                "n2r8P",
-                "NrMYQ",
-                "tNTFu"
-            ],
+            "up": ["sTTa6", "qMeyK", "n2r8P", "NrMYQ", "tNTFu"],
             "down": [
                 "qMeyK",
                 "RzL5G",
@@ -3431,9 +2942,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/7_iefxqt.jpg",
         "rate": {
-            "up": [
-                "sTTa6"
-            ],
+            "up": ["sTTa6"],
             "down": []
         }
     },
@@ -3449,18 +2958,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/14_iqdjso.jpg",
         "rate": {
-            "up": [
-                "qMeyK",
-                "qMeyK",
-                "RzL5G",
-                "RzL5G",
-                "tNTFu"
-            ],
-            "down": [
-                "pSpHJ",
-                "pSpHJ",
-                "n2r8P"
-            ]
+            "up": ["qMeyK", "qMeyK", "RzL5G", "RzL5G", "tNTFu"],
+            "down": ["pSpHJ", "pSpHJ", "n2r8P"]
         }
     },
     {
@@ -3485,13 +2984,7 @@
                 "qMeyK",
                 "QWlfi"
             ],
-            "down": [
-                "pSpHJ",
-                "bMuAs",
-                "pSpHJ",
-                "qMeyK",
-                "NrMYQ"
-            ]
+            "down": ["pSpHJ", "bMuAs", "pSpHJ", "qMeyK", "NrMYQ"]
         }
     },
     {
@@ -3520,11 +3013,7 @@
                 "bMuAs",
                 "pSpHJ"
             ],
-            "down": [
-                "bMuAs",
-                "RzL5G",
-                "Giib1"
-            ]
+            "down": ["bMuAs", "RzL5G", "Giib1"]
         }
     },
     {
@@ -3590,12 +3079,7 @@
                 "tNTFu",
                 "NrMYQ"
             ],
-            "down": [
-                "bMuAs",
-                "tNTFu",
-                "sTTa6",
-                "pSpHJ"
-            ]
+            "down": ["bMuAs", "tNTFu", "sTTa6", "pSpHJ"]
         }
     },
     {
@@ -3644,11 +3128,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/13_q6tbgu.jpg",
         "rate": {
-            "up": [
-                "sTTa6",
-                "tNTFu",
-                "sTTa6"
-            ],
+            "up": ["sTTa6", "tNTFu", "sTTa6"],
             "down": [
                 "n2r8P",
                 "pSpHJ",
@@ -3732,12 +3212,7 @@
                 "tNTFu",
                 "n2r8P"
             ],
-            "down": [
-                "RzL5G",
-                "Giib1",
-                "tNTFu",
-                "qMeyK"
-            ]
+            "down": ["RzL5G", "Giib1", "tNTFu", "qMeyK"]
         }
     },
     {
@@ -3752,11 +3227,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318866/gagger/16_yaqen1.jpg",
         "rate": {
-            "up": [
-                "tNTFu",
-                "qMeyK",
-                "NrMYQ"
-            ],
+            "up": ["tNTFu", "qMeyK", "NrMYQ"],
             "down": [
                 "Giib1",
                 "pSpHJ",
@@ -3819,12 +3290,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318864/gagger/5_vyuhy7.jpg",
         "rate": {
-            "up": [
-                "bMuAs",
-                "tNTFu",
-                "QWlfi",
-                "RzL5G"
-            ],
+            "up": ["bMuAs", "tNTFu", "QWlfi", "RzL5G"],
             "down": [
                 "qMeyK",
                 "n2r8P",
@@ -3858,20 +3324,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "qMeyK",
-                "tNTFu",
-                "QWlfi",
-                "QWlfi"
-            ],
-            "down": [
-                "RzL5G",
-                "pSpHJ",
-                "sTTa6",
-                "QWlfi",
-                "NrMYQ",
-                "bMuAs"
-            ]
+            "up": ["qMeyK", "tNTFu", "QWlfi", "QWlfi"],
+            "down": ["RzL5G", "pSpHJ", "sTTa6", "QWlfi", "NrMYQ", "bMuAs"]
         }
     },
     {
@@ -3923,9 +3377,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "QWlfi"
-            ],
+            "up": ["QWlfi"],
             "down": [
                 "QWlfi",
                 "NrMYQ",
@@ -3954,18 +3406,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "tNTFu",
-                "sTTa6",
-                "QWlfi",
-                "bMuAs",
-                "RzL5G",
-                "RzL5G"
-            ],
-            "down": [
-                "sTTa6",
-                "NrMYQ"
-            ]
+            "up": ["tNTFu", "sTTa6", "QWlfi", "bMuAs", "RzL5G", "RzL5G"],
+            "down": ["sTTa6", "NrMYQ"]
         }
     },
     {
@@ -3994,14 +3436,7 @@
                 "Giib1",
                 "RzL5G"
             ],
-            "down": [
-                "RzL5G",
-                "pSpHJ",
-                "NrMYQ",
-                "tNTFu",
-                "pSpHJ",
-                "NrMYQ"
-            ]
+            "down": ["RzL5G", "pSpHJ", "NrMYQ", "tNTFu", "pSpHJ", "NrMYQ"]
         }
     },
     {
@@ -4016,10 +3451,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "sTTa6",
-                "pSpHJ"
-            ],
+            "up": ["sTTa6", "pSpHJ"],
             "down": [
                 "sTTa6",
                 "tNTFu",
@@ -4062,11 +3494,7 @@
                 "Giib1",
                 "QWlfi"
             ],
-            "down": [
-                "RzL5G",
-                "sTTa6",
-                "RzL5G"
-            ]
+            "down": ["RzL5G", "sTTa6", "RzL5G"]
         }
     },
     {
@@ -4081,17 +3509,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "qMeyK",
-                "QWlfi",
-                "n2r8P",
-                "Giib1",
-                "QWlfi"
-            ],
-            "down": [
-                "NrMYQ",
-                "n2r8P"
-            ]
+            "up": ["qMeyK", "QWlfi", "n2r8P", "Giib1", "QWlfi"],
+            "down": ["NrMYQ", "n2r8P"]
         }
     },
     {
@@ -4212,12 +3631,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318865/gagger/11_zvars3.jpg",
         "rate": {
-            "up": [
-                "QWlfi",
-                "Giib1",
-                "QWlfi",
-                "qMeyK"
-            ],
+            "up": ["QWlfi", "Giib1", "QWlfi", "qMeyK"],
             "down": [
                 "RzL5G",
                 "Giib1",
@@ -4243,12 +3657,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "https://res.cloudinary.com/dokgseqgj/image/upload/v1684318866/gagger/18_mg5ypp.jpg",
         "rate": {
-            "up": [
-                "bMuAs",
-                "sTTa6",
-                "n2r8P",
-                "QWlfi"
-            ],
+            "up": ["bMuAs", "sTTa6", "n2r8P", "QWlfi"],
             "down": [
                 "Giib1",
                 "qMeyK",
@@ -4318,14 +3727,7 @@
                 "sTTa6",
                 "n2r8P"
             ],
-            "down": [
-                "pSpHJ",
-                "QWlfi",
-                "pSpHJ",
-                "sTTa6",
-                "Giib1",
-                "QWlfi"
-            ]
+            "down": ["pSpHJ", "QWlfi", "pSpHJ", "sTTa6", "Giib1", "QWlfi"]
         }
     },
     {
@@ -4340,9 +3742,7 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "NrMYQ"
-            ],
+            "up": ["NrMYQ"],
             "down": [
                 "NrMYQ",
                 "qMeyK",
@@ -4416,15 +3816,8 @@
         "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt eum quaerat eligendi amet asperiores repudiandae itaque excepturi nam cupiditate omnis, eos saepe veritatis dicta necessitatibus delectus ratione consectetur accusamus? Laboriosam.",
         "attachments": "",
         "rate": {
-            "up": [
-                "sTTa6"
-            ],
-            "down": [
-                "qMeyK",
-                "sTTa6",
-                "pSpHJ",
-                "n2r8P"
-            ]
+            "up": ["sTTa6"],
+            "down": ["qMeyK", "sTTa6", "pSpHJ", "n2r8P"]
         }
     }
 ]

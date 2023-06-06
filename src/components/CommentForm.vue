@@ -3,7 +3,7 @@
         <section class="flex items-center gap-1">
             <div class="file">
                 <CameraSvg />
-                <input type="file" @change="handleFile">
+                <input type="file" @change="handleFile" />
             </div>
             <div class="file">
                 <GifSvg />
@@ -21,9 +21,7 @@ import { ref } from 'vue'
 import CameraSvg from '../svgs/CameraSvg.vue'
 import GifSvg from '../svgs/GifSvg.vue'
 
-const emit = defineEmits([
-    'saveComment'
-])
+const emit = defineEmits(['saveComment'])
 
 const text = ref<string>('')
 const file = ref<File>()

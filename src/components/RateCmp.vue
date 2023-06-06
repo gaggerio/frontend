@@ -20,12 +20,10 @@ import { useUserStore } from '@/stores/user.store'
 import ArrowSvg from '../svgs/ArrowSvg.vue'
 
 const props = defineProps({
-    item: Object as PropType<Comment | Gag>
+    item: Object as PropType<Comment | Gag>,
 })
 
-const emit = defineEmits([
-    'changeRate'
-])
+const emit = defineEmits(['changeRate'])
 
 const userStore = useUserStore()
 const user = userStore.getLoggedinUser

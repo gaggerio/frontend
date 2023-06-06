@@ -4,15 +4,16 @@ import { computed, ref } from 'vue'
 import { memeService } from '../services/meme.service'
 import { showErrorMsg } from '@/services/event-bus.service'
 
-const gMeme = ref<Meme>(memeService.createMeme({
-    _id: '',
-    url: '',
-    keywords: [],
-    size: { width: 0, height: 0 }
-}))
+const gMeme = ref<Meme>(
+    memeService.createMeme({
+        _id: '',
+        url: '',
+        keywords: [],
+        size: { width: 0, height: 0 },
+    })
+)
 
 export function useMemeStore() {
-
     const meme = computed(() => gMeme.value)
     const currLine = computed(() => gMeme.value.lines[gMeme.value.currLine])
     const lines = computed(() => gMeme.value.lines)

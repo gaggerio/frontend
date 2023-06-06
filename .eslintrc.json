@@ -13,18 +13,9 @@
         "parser": "@typescript-eslint/parser",
         "sourceType": "module"
     },
-    "plugins": [
-        "@typescript-eslint",
-        "vue"
-    ],
+    "plugins": ["@typescript-eslint", "vue"],
     "rules": {
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ]
+        "quotes": ["error", "single"],
+        "semi": ["error", "never"]
     }
 }

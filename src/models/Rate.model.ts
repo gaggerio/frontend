@@ -1,4 +1,4 @@
 export interface RateData {
-    dir: string,
+    dir: string
     itemId: string
 }

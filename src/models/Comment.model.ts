@@ -13,7 +13,7 @@ export interface Comment {
 }
 
 export interface CommentForm {
-    text: string,
-    file: string | File,
+    text: string
+    file: string | File
     gagId: string
 }

@@ -18,7 +18,7 @@ export const userService = {
     getRandomUser,
     createUser,
     getRandomUserIds,
-    createRandomUser
+    createRandomUser,
 }
 
 async function query() {
@@ -26,15 +26,15 @@ async function query() {
 }
 
 async function save(user: User) {
-    return ENV === 'local' ?
-        await storageService.post(STORAGE_KEY, user) :
-        await httpService.post(`${API}`, user)
+    return ENV === 'local'
+        ? await storageService.post(STORAGE_KEY, user)
+        : await httpService.post(`${API}`, user)
 }
 
 async function update(user: User) {
-    return ENV === 'local' ?
-        await storageService.put(STORAGE_KEY, user) :
-        await httpService.put(`${API}/${user._id}`, user)
+    return ENV === 'local'
+        ? await storageService.put(STORAGE_KEY, user)
+        : await httpService.put(`${API}/${user._id}`, user)
 }
 
 function getRandomUser(): User {
@@ -56,14 +56,14 @@ function createUser({ username, fullname, imgUrl }: Credentials): User {
             gag: {
                 up: [],
                 down: [],
-                uploaded: []
+                uploaded: [],
             },
             comment: {
                 up: [],
                 down: [],
-                posted: []
-            }
-        }
+                posted: [],
+            },
+        },
     }
 }
 
@@ -95,18 +95,18 @@ function createRandomUser(fullname: string): User {
             gag: {
                 up: [],
                 down: [],
-                uploaded: []
+                uploaded: [],
             },
             comment: {
                 up: [],
                 down: [],
-                posted: []
-            }
-        }
+                posted: [],
+            },
+        },
     }
 }
 
-(() => {
+;(() => {
     if (ENV !== 'local') return
     let users = utilService.loadFromStorage(STORAGE_KEY) || []
     if (users.length) return
@@ -115,4 +115,3 @@ function createRandomUser(fullname: string): User {
     utilService.saveToStorage(STORAGE_KEY, users)
     console.log(JSON.stringify(users))
 })()
-

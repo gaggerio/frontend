@@ -1,6 +1,6 @@
 <template>
     <div class="user-msg" :class="msg?.type" v-if="msg">
-        <img :src="iconUrl" alt="">
+        <img :src="iconUrl" alt="" />
         <h3>{{ msg.txt }}</h3>
     </div>
 </template>

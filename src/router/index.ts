@@ -11,29 +11,29 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: HomeView
+            component: HomeView,
         },
         {
             path: '/login',
             name: 'login',
-            component: LoginView
+            component: LoginView,
         },
         {
             path: '/editor/:id',
             name: 'editor',
-            component: EditorView
+            component: EditorView,
         },
         {
             path: '/explore',
             name: 'explore',
-            component: ExploreView
+            component: ExploreView,
         },
         {
             path: '/details/:id',
             name: 'details',
-            component: GagDetailsView
+            component: GagDetailsView,
         },
-    ]
+    ],
 })
 
 export default router

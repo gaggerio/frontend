@@ -20,37 +20,33 @@ export const gagService = {
     getById,
     save,
     update,
-    updateRate
+    updateRate,
 }
 
 function query(filterBy: FilterBy) {
-    return ENV === 'local' ?
-        _filteredGags() :
-        httpService.query(API, filterBy)
+    return ENV === 'local' ? _filteredGags() : httpService.query(API, filterBy)
 }
 
 function getById(gagId: string) {
-    return ENV === 'local' ?
-        storageService.get(STORAGE_KEY, gagId) :
-        httpService.get(`${API}/${gagId}`)
+    return ENV === 'local'
+        ? storageService.get(STORAGE_KEY, gagId)
+        : httpService.get(`${API}/${gagId}`)
 }
 
-function save(data: { imgUrl: string, title: string }) {
-    return ENV === 'local' ?
-        _createGag(data) :
-        httpService.post(API, data)
+function save(data: { imgUrl: string; title: string }) {
+    return ENV === 'local' ? _createGag(data) : httpService.post(API, data)
 }
 
 function update(gag: Gag) {
-    return ENV === 'local' ?
-        storageService.put(STORAGE_KEY, gag) :
-        httpService.put(API, gag)
+    return ENV === 'local'
+        ? storageService.put(STORAGE_KEY, gag)
+        : httpService.put(API, gag)
 }
 
 function updateRate(gagId: string, dir: string, diff: number) {
-    return ENV === 'local' ?
-        _updateRate(gagId, dir, diff) :
-        httpService.post(`${API}/rate`, { gagId, dir, diff })
+    return ENV === 'local'
+        ? _updateRate(gagId, dir, diff)
+        : httpService.post(`${API}/rate`, { gagId, dir, diff })
 }
 
 async function _updateRate(gagId: string, dir: string, diff: number) {
@@ -63,7 +59,7 @@ async function _filteredGags() {
     return await storageService.query(STORAGE_KEY)
 }
 
-function _createGag({ title, imgUrl }: { imgUrl: string, title: string }) {
+function _createGag({ title, imgUrl }: { imgUrl: string; title: string }) {
     const gag: Gag = {
         _id: '',
         title,
@@ -72,10 +68,10 @@ function _createGag({ title, imgUrl }: { imgUrl: string, title: string }) {
         imgUrl,
         rate: {
             up: [],
-            down: []
+            down: [],
         },
         comments: [],
-        gags: []
+        gags: [],
     }
     return storageService.post(STORAGE_KEY, gag)
 }
@@ -101,20 +97,20 @@ function _createRandomGag() {
         comments: [],
         rate: {
             up: userService.getRandomUserIds(),
-            down: userService.getRandomUserIds()
+            down: userService.getRandomUserIds(),
         },
-        gags: []
+        gags: [],
     }
     return gag
 }
 
-(() => {
+;(() => {
     if (ENV !== 'local') return
     let gags = utilService.loadFromStorage<Gag>(STORAGE_KEY)
     if (gags) return
 
     gags = _createRandomGags()
-    gags.forEach(g => commentService.createRandomComments(g._id))
+    gags.forEach((g) => commentService.createRandomComments(g._id))
     utilService.saveToStorage(STORAGE_KEY, gags)
     console.log(JSON.stringify(gags))
     console.log(JSON.stringify(utilService.loadFromStorage('comment_db')))

@@ -55,7 +55,7 @@ const getTitle = computed(() => {
     const titles: { [name: string]: string } = {
         explore: 'Explore templates',
         details: 'Post',
-        editor: 'Edit'
+        editor: 'Edit',
     }
     return titles[route.name as string]
 })

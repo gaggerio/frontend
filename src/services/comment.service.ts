@@ -60,7 +60,7 @@ function _createComment(commentForm: CommentForm): Promise<Comment> {
         attachments: commentForm.file as string,
         rate: {
             up: [],
-            down: []
+            down: [],
         },
     }
     return storageService.post(STORAGE_KEY, comment)
@@ -78,7 +78,7 @@ function _getRandomComment(gagId: string): Comment {
         attachments: chance > 0.5 ? imgService.getRandomImg().url : '',
         rate: {
             up: userService.getRandomUserIds(),
-            down: userService.getRandomUserIds()
+            down: userService.getRandomUserIds(),
         },
     }
 }
