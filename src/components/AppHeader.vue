@@ -19,16 +19,15 @@
 
 <script lang="ts" setup>
 // import { useUserStore } from '@/stores/user.store'
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 // import { utilService } from '../services/util.service'
-import HamburgerSvg from '../svgs/HamburgerSvg.vue'
 import { useRoute } from 'vue-router'
 import ArrowSvg from '../svgs/ArrowSvg.vue'
+import HamburgerSvg from '../svgs/HamburgerSvg.vue'
 
 // const userStore = useUserStore()
 const route = useRoute()
 // const router = useRouter()
-
 const isNavOpen = ref(false)
 // const currRoute = ref('')
 

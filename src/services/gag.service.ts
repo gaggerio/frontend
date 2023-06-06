@@ -14,7 +14,7 @@ const ENV = import.meta.env.VITE_ENV
 
 const storageService = useStorageService<Gag>()
 const httpService = useHttpService<Gag>()
-
+console.log('here!!')
 export const gagService = {
     query,
     getById,
@@ -104,8 +104,8 @@ function _createRandomGag() {
     return gag
 }
 
-/* eslint-disable */ 
-;(() => {
+/* eslint-disable */
+; (() => {
     if (ENV !== 'local') return
     let gags = utilService.loadFromStorage<Gag>(STORAGE_KEY)
     if (gags) return
