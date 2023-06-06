@@ -8,11 +8,12 @@
 <script lang="ts" setup>
 import { ref, computed, onUnmounted } from 'vue'
 import { eventBus } from '../services/event-bus.service'
-import type { Msg } from '../services/event-bus.service'
+import type { MSG } from '../services/event-bus.service'
+import { SHOW_MSG } from '../services/event-bus.service'
 import { utilService } from '../services/util.service'
 
-const msg = ref<Msg | null>(null)
-const unsub = eventBus.on('show-msg', showMsg)
+const msg = ref<MSG | null>(null)
+const unsub = eventBus.on(SHOW_MSG, showMsg)
 
 const iconUrl = computed(() => {
     if (!msg.value) return ''
@@ -23,7 +24,7 @@ onUnmounted(() => {
     unsub()
 })
 
-function showMsg(msgData: Msg) {
+function showMsg(msgData: MSG) {
     msg.value = msgData
     setTimeout(() => {
         msg.value = null
