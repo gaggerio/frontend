@@ -31,12 +31,12 @@ function createEventEmitter<T>(): EventEmitter<T> {
     }
 }
 
-export const eventBus: EventEmitter<{ txt: string; type: string }> =
-    createEventEmitter()
+export const eventBus: EventEmitter<MSG> = createEventEmitter()
 
 export const SHOW_MSG = 'show-msg'
+export type MSG = { txt: string; type: string }
 
-export function showUserMsg(msg: { txt: string; type: string }) {
+export function showUserMsg(msg: MSG) {
     eventBus.emit(SHOW_MSG, msg)
 }
 

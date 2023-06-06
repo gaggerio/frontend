@@ -1,9 +1,9 @@
 {
     "files": [
-        "data/comment.json",
-        "data/user.json",
-        "data/img.json",
-        "data/gag.json"
+        "src/assets/data/comment.json",
+        "src/assets/data/user.json",
+        "src/assets/data/img.json",
+        "src/assets/data/gag.json"
     ],
     "references": [
         {

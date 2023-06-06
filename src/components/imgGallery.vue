@@ -1,11 +1,6 @@
 <template>
     <ul class="img-gallery" v-if="imgs">
-        <li
-            class="img-preview"
-            v-for="img in imgs"
-            :key="img._id"
-            @click="onImgSelect(img._id as string)"
-        >
+        <li class="img-preview" v-for="img in imgs" :key="img._id" @click="onImgSelect(img._id as string)">
             <img :src="img.url" alt="" />
         </li>
     </ul>
