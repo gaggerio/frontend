@@ -2,3 +2,4 @@ node_modules/**/*
 proxy-server/**/*
 dist/**/*
 commitlint.config.js
+.husky
