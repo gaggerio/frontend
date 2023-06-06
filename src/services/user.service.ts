@@ -106,6 +106,7 @@ function createRandomUser(fullname: string): User {
     }
 }
 
+/* eslint-disable */ 
 ;(() => {
     if (ENV !== 'local') return
     let users = utilService.loadFromStorage(STORAGE_KEY) || []

@@ -104,6 +104,7 @@ function _createRandomGag() {
     return gag
 }
 
+/* eslint-disable */ 
 ;(() => {
     if (ENV !== 'local') return
     let gags = utilService.loadFromStorage<Gag>(STORAGE_KEY)
