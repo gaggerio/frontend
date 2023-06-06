@@ -1,3 +1,4 @@
 node_modules/**/*
 proxy-server/**/*
-public/**/*
+dist/**/*
+commitlint.config.js
